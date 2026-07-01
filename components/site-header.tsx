@@ -35,7 +35,7 @@ export function SiteHeader() {
   return (
     <>
     <header className="sticky top-0 z-[90] border-b border-line bg-background/70 backdrop-blur-xl">
-      <div className="container-edge flex items-center justify-between py-2.5">
+      <div className="container-edge flex items-center justify-between pb-2.5 pt-[calc(0.625rem+env(safe-area-inset-top))]">
         <Logo />
 
         <nav className="hidden items-center gap-9 md:flex">
