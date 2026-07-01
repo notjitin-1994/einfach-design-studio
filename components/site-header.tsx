@@ -33,7 +33,8 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-[80] border-b border-line bg-background/70 backdrop-blur-xl">
+    <>
+    <header className="sticky top-0 z-[90] border-b border-line bg-background/70 backdrop-blur-xl">
       <div className="container-edge flex items-center justify-between py-2.5">
         <Logo />
 
@@ -81,12 +82,15 @@ export function SiteHeader() {
         </div>
       </div>
 
-      {/* Mobile overlay menu — premium full-screen reveal */}
-      <AnimatePresence>
+    </header>
+
+    {/* Mobile overlay menu — full-screen reveal (sibling of header so the
+        header's backdrop-filter doesn't trap the fixed overlay in a tiny box) */}
+    <AnimatePresence>
         {open && (
           <motion.div
             key="mobile-menu"
-            className="fixed inset-0 z-[70] bg-background/95 backdrop-blur-xl md:hidden"
+            className="fixed inset-0 z-[80] bg-background/95 backdrop-blur-xl md:hidden"
             initial={
               reduce
                 ? { opacity: 0 }
@@ -106,7 +110,7 @@ export function SiteHeader() {
               reduce ? { duration: 0.2 } : { duration: 0.5, ease: EASE_IN_OUT }
             }
           >
-            <div className="container-edge flex h-full flex-col pt-16">
+            <div className="container-edge flex h-full flex-col pt-24">
               <nav className="flex flex-1 flex-col justify-center">
                 <motion.ul
                   initial="hidden"
@@ -190,6 +194,6 @@ export function SiteHeader() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
