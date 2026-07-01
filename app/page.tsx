@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Reveal } from "@/components/reveal";
+import { Reveal, Stagger, StaggerItem } from "@/components/reveal";
 import { Hero } from "@/components/hero";
 import {
   Container,
@@ -35,7 +35,7 @@ export default function HomePage() {
       {/* APPROACH */}
       <section className="py-14 md:py-20">
         <Container className="grid gap-14 lg:grid-cols-12">
-          <div className="lg:col-span-5">
+          <Reveal className="lg:col-span-5">
             <SectionHeading
               eyebrow="Our Approach"
               title={
@@ -45,8 +45,11 @@ export default function HomePage() {
                 </>
               }
             />
-          </div>
-          <div className="space-y-6 text-lg leading-relaxed text-muted lg:col-span-7">
+          </Reveal>
+          <Reveal
+            delay={0.1}
+            className="space-y-6 text-lg leading-relaxed text-muted lg:col-span-7"
+          >
             <p>
               Before thinking about forms, materials, or finishes, we take time
               to understand how people live, work, and move through a space.
@@ -60,7 +63,7 @@ export default function HomePage() {
               The result is architecture and interiors that feel intuitive,
               purposeful, and built to last.
             </p>
-          </div>
+          </Reveal>
         </Container>
       </section>
 
@@ -82,9 +85,9 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="mt-14 grid gap-px overflow-hidden rounded-sm border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
-            {services.map((s, i) => (
-              <Reveal key={s.index} delay={i * 0.04}>
+          <Stagger className="mt-14 grid gap-px overflow-hidden rounded-sm border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+            {services.map((s) => (
+              <StaggerItem key={s.index}>
                 <Link
                   href="/services"
                   className="group flex h-full flex-col bg-background p-8 transition-colors duration-500 hover:bg-surface"
@@ -102,9 +105,9 @@ export default function HomePage() {
                     Learn more →
                   </span>
                 </Link>
-              </Reveal>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </Container>
       </section>
 
@@ -141,9 +144,9 @@ export default function HomePage() {
             title="From first conversation to final detail."
             align="center"
           />
-          <div className="mt-16 grid gap-px overflow-hidden rounded-sm border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
-            {processSteps.map((step, i) => (
-              <Reveal key={step.index} delay={i * 0.04}>
+          <Stagger className="mt-16 grid gap-px overflow-hidden rounded-sm border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+            {processSteps.map((step) => (
+              <StaggerItem key={step.index}>
                 <div className="h-full bg-background p-8">
                   <div className="flex items-baseline gap-4">
                     <span className="font-display text-4xl font-light text-accent">
@@ -157,9 +160,9 @@ export default function HomePage() {
                     {step.description}
                   </p>
                 </div>
-              </Reveal>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </Container>
       </section>
 
@@ -178,13 +181,13 @@ export default function HomePage() {
               View Projects
             </Button>
           </div>
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {featured.map((p, i) => (
-              <Reveal key={p.id} delay={i * 0.06}>
+          <Stagger className="mt-14 grid gap-6 md:grid-cols-3">
+            {featured.map((p) => (
+              <StaggerItem key={p.id}>
                 <ProjectCard project={p} />
-              </Reveal>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </Container>
       </section>
 
