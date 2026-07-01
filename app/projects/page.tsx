@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Reveal } from "@/components/reveal";
-import { Container, Eyebrow, ProjectCard } from "@/components/ui";
+import { Container, ProjectCard } from "@/components/ui";
 import { projects, projectCategories } from "@/lib/content";
 
 export default function ProjectsPage() {
@@ -30,13 +30,16 @@ export default function ProjectsPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-[#000f08]/82 via-[#000f08]/58 to-[#000f08]/92" />
         </div>
         <Container className="relative grid items-stretch gap-10 py-20 md:grid-cols-2 md:gap-12 md:py-28">
-          <div className="flex flex-col justify-center">
-            <Eyebrow>Our Work</Eyebrow>
+          <div className="flex flex-col justify-center text-[#e9e0c9] md:text-foreground">
+            <span className="inline-flex items-center gap-2 text-[0.74rem] font-medium uppercase tracking-[0.22em] text-[#e9e0c9]/70 md:text-muted">
+              <span className="h-px w-6 bg-accent/70" aria-hidden />
+              Our Work
+            </span>
             <h1 className="font-display mt-7 max-w-4xl text-balance text-[clamp(2.4rem,6vw,5.5rem)] font-light leading-[1.02]">
               Spaces shaped around{" "}
               <span className="italic text-accent">people.</span>
             </h1>
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted">
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-[#e9e0c9]/75 md:text-muted">
               Every project is unique, but our approach remains the same:
               understand first, design with purpose, and refine until every
               decision feels right. A selection of residential, commercial, and

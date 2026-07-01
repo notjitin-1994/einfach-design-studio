@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Reveal } from "@/components/reveal";
-import { Container, Eyebrow, SectionHeading, Button } from "@/components/ui";
+import { Container, SectionHeading, Button } from "@/components/ui";
 import { services } from "@/lib/content";
 
 export const metadata = {
@@ -31,9 +31,12 @@ export default function ServicesPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-[#000f08]/82 via-[#000f08]/58 to-[#000f08]/92" />
         </div>
         <Container className="relative grid items-stretch gap-10 py-20 md:grid-cols-2 md:gap-12 md:py-28">
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center text-[#e9e0c9] md:text-foreground">
             <Reveal>
-              <Eyebrow>What We Do</Eyebrow>
+              <span className="inline-flex items-center gap-2 text-[0.74rem] font-medium uppercase tracking-[0.22em] text-[#e9e0c9]/70 md:text-muted">
+                <span className="h-px w-6 bg-accent/70" aria-hidden />
+                What We Do
+              </span>
             </Reveal>
             <Reveal delay={0.05}>
               <h1 className="font-display mt-7 max-w-4xl text-balance text-[clamp(2.4rem,6vw,5.5rem)] font-light leading-[1.02]">
@@ -42,7 +45,7 @@ export default function ServicesPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted">
+              <p className="mt-8 max-w-2xl text-lg leading-relaxed text-[#e9e0c9]/75 md:text-muted">
                 We offer architectural, interior, and strategic design services
                 that help clients make better decisions from concept to
                 completion.
