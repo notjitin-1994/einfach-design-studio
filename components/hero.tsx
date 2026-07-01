@@ -46,11 +46,11 @@ export function Hero() {
           />
         </motion.div>
 
-        {/* Legibility scrim — adapts to theme (dark wash / cream wash) */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/75 via-background/55 to-background/90" />
-        {/* Brand-dark wash (uses dark-mode bg colour in both themes) */}
-        <div className="absolute inset-0 bg-[#000f08]/35 mix-blend-multiply" />
-        {/* Hairline grain edge at bottom for a refined transition */}
+        {/* Premium legibility scrim — brand-dark, multi-stop, bottom-heavy (refined in both themes) */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#000f08]/70 via-[#000f08]/45 to-[#000f08]/90" />
+        {/* Subtle accent warmth — soft radial glow */}
+        <div className="absolute left-1/2 top-1/3 h-[42vh] w-[64vw] -translate-x-1/2 rounded-full bg-accent/[0.07] blur-[130px]" />
+        {/* Hairline edge at bottom for a refined transition */}
         <div className="absolute inset-x-0 bottom-0 h-px bg-line" />
       </div>
 

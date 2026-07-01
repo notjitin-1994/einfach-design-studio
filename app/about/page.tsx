@@ -16,16 +16,73 @@ export default function AboutPage() {
   return (
     <>
       <section className="relative overflow-hidden border-b border-line">
-        <Container className="py-20 md:py-28">
-          <Reveal>
-            <Eyebrow>About the Studio</Eyebrow>
-          </Reveal>
-          <Reveal delay={0.05}>
-            <h1 className="font-display mt-7 max-w-4xl text-balance text-[clamp(2.4rem,6vw,5.5rem)] font-light leading-[1.02]">
-              Simplicity has a{" "}
-              <span className="italic text-accent">process.</span>
-            </h1>
-          </Reveal>
+        {/* Oversized faded year mark — graphic device */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute -right-4 top-1/2 -translate-y-1/2 select-none font-display text-[26vw] font-light leading-none text-foreground/[0.035] md:text-[20vw]"
+        >
+          2021
+        </span>
+        <Container className="relative grid items-center gap-12 py-20 md:grid-cols-12 md:py-28">
+          <div className="md:col-span-7">
+            <Reveal>
+              <Eyebrow>About the Studio</Eyebrow>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <h1 className="font-display mt-7 max-w-4xl text-balance text-[clamp(2.4rem,6vw,5.5rem)] font-light leading-[1.02]">
+                Simplicity has a{" "}
+                <span className="italic text-accent">process.</span>
+              </h1>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted">
+                A Dubai-based architecture and interior design practice founded
+                on the belief that the best spaces start with clear thinking —
+                and decisions made before construction begins.
+              </p>
+            </Reveal>
+            <Reveal delay={0.18}>
+              <div className="mt-10 flex flex-wrap items-center gap-8 border-t border-line pt-6">
+                <div>
+                  <span className="block text-[0.65rem] uppercase tracking-[0.22em] text-muted">
+                    Founded
+                  </span>
+                  <span className="mt-1 block font-display text-lg">2021</span>
+                </div>
+                <div className="hidden h-8 w-px bg-line sm:block" />
+                <div>
+                  <span className="block text-[0.65rem] uppercase tracking-[0.22em] text-muted">
+                    Based in
+                  </span>
+                  <span className="mt-1 block font-display text-lg">
+                    Dubai, UAE
+                  </span>
+                </div>
+                <div className="hidden h-8 w-px bg-line sm:block" />
+                <div>
+                  <span className="block text-[0.65rem] uppercase tracking-[0.22em] text-muted">
+                    Practice
+                  </span>
+                  <span className="mt-1 block font-display text-lg">
+                    Architecture &amp; Interiors
+                  </span>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+          <div className="md:col-span-5">
+            <Reveal delay={0.1}>
+              <div className="relative aspect-[4/5] overflow-hidden rounded-sm border border-line">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"
+                  alt="Architectural interior detail"
+                  className="duotone h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#000f08]/50 via-transparent to-transparent" />
+              </div>
+            </Reveal>
+          </div>
         </Container>
       </section>
 
