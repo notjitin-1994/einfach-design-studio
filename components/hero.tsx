@@ -69,14 +69,14 @@ export function Hero() {
         >
           <motion.h1
             variants={{ hidden, show }}
-            className="font-display text-balance text-[clamp(2.9rem,8.5vw,7.5rem)] font-light leading-[0.98]"
+            className="font-display text-balance text-[clamp(2.9rem,8.5vw,7.5rem)] font-light leading-[0.98] text-[#e9e0c9]"
           >
             Design with <span className="italic text-accent">clarity.</span>
           </motion.h1>
 
           <motion.p
             variants={{ hidden, show }}
-            className="mx-auto mt-8 max-w-2xl text-pretty text-lg leading-relaxed text-muted md:text-xl"
+            className="mx-auto mt-8 max-w-2xl text-pretty text-lg leading-relaxed text-[#e9e0c9]/75 md:text-xl"
           >
             Simple isn&apos;t our style. It&apos;s the outcome of thoughtful
             design. At Einfach Design Studio, we create architecture and
@@ -89,7 +89,7 @@ export function Hero() {
             className="mt-11 flex flex-wrap items-center justify-center gap-4"
           >
             <Button href="/contact">Book a Consultation</Button>
-            <Button href="/projects" variant="ghost">
+            <Button href="/projects" variant="ghost" className="text-[#e9e0c9]">
               View Projects
             </Button>
           </motion.div>
@@ -103,7 +103,7 @@ export function Hero() {
         transition={{ delay: 0.75, duration: 0.8, ease: EASE }}
         className="relative"
       >
-        <Container className="flex items-center justify-between gap-6 pb-9 pt-4 text-[0.68rem] uppercase tracking-[0.2em] text-muted">
+        <Container className="flex items-center justify-between gap-6 pb-9 pt-4 text-[0.68rem] uppercase tracking-[0.2em] text-[#e9e0c9]/60">
           <span>Dubai, UAE</span>
           <span>Est. 2021</span>
         </Container>
