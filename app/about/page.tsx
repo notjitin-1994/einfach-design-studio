@@ -21,7 +21,7 @@ export default function AboutPage() {
           aria-hidden
           className="pointer-events-none absolute -right-4 top-1/2 hidden -translate-y-1/2 select-none font-display text-[26vw] font-light leading-none text-foreground/[0.035] md:block md:text-[20vw]"
         >
-          2021
+          2026
         </span>
         {/* Mobile full-bleed background image */}
         <div className="absolute inset-0 md:hidden">
@@ -61,7 +61,7 @@ export default function AboutPage() {
                   <span className="block text-[0.65rem] uppercase tracking-[0.22em] text-[#e9e0c9]/60 md:text-muted">
                     Founded
                   </span>
-                  <span className="mt-1 block font-display text-lg">2021</span>
+                  <span className="mt-1 block font-display text-lg">2026</span>
                 </div>
                 <div className="hidden h-8 w-px bg-[#e9e0c9]/20 sm:block md:bg-line" />
                 <div>
