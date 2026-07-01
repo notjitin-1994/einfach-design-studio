@@ -1,5 +1,5 @@
 import { Reveal } from "@/components/reveal";
-import { Container, Eyebrow, SectionHeading, Button } from "@/components/ui";
+import { Container, SectionHeading, Button } from "@/components/ui";
 
 export const metadata = {
   title: "About",
@@ -19,14 +19,28 @@ export default function AboutPage() {
         {/* Oversized faded year mark — graphic device */}
         <span
           aria-hidden
-          className="pointer-events-none absolute -right-4 top-1/2 -translate-y-1/2 select-none font-display text-[26vw] font-light leading-none text-foreground/[0.035] md:text-[20vw]"
+          className="pointer-events-none absolute -right-4 top-1/2 hidden -translate-y-1/2 select-none font-display text-[26vw] font-light leading-none text-foreground/[0.035] md:block md:text-[20vw]"
         >
           2021
         </span>
+        {/* Mobile full-bleed background image */}
+        <div className="absolute inset-0 md:hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80"
+            alt=""
+            className="h-full w-full object-cover"
+            style={{ filter: "grayscale(0.35) contrast(1.05)" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#000f08]/82 via-[#000f08]/58 to-[#000f08]/92" />
+        </div>
         <Container className="relative grid items-center gap-12 py-20 md:grid-cols-12 md:py-28">
-          <div className="md:col-span-7">
+          <div className="text-[#e9e0c9] md:col-span-7 md:text-foreground">
             <Reveal>
-              <Eyebrow>About the Studio</Eyebrow>
+              <span className="inline-flex items-center gap-2 text-[0.74rem] font-medium uppercase tracking-[0.22em] text-[#e9e0c9]/70 md:text-muted">
+                <span className="h-px w-6 bg-accent" aria-hidden />
+                About the Studio
+              </span>
             </Reveal>
             <Reveal delay={0.05}>
               <h1 className="font-display mt-7 max-w-4xl text-balance text-[clamp(2.4rem,6vw,5.5rem)] font-light leading-[1.02]">
@@ -35,32 +49,32 @@ export default function AboutPage() {
               </h1>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted">
+              <p className="mt-8 max-w-xl text-lg leading-relaxed text-[#e9e0c9]/80 md:text-muted">
                 A Dubai-based architecture and interior design practice founded
                 on the belief that the best spaces start with clear thinking —
                 and decisions made before construction begins.
               </p>
             </Reveal>
             <Reveal delay={0.18}>
-              <div className="mt-10 flex flex-wrap items-center gap-8 border-t border-line pt-6">
+              <div className="mt-10 flex flex-wrap items-center gap-8 border-t border-[#e9e0c9]/15 pt-6 md:border-line">
                 <div>
-                  <span className="block text-[0.65rem] uppercase tracking-[0.22em] text-muted">
+                  <span className="block text-[0.65rem] uppercase tracking-[0.22em] text-[#e9e0c9]/60 md:text-muted">
                     Founded
                   </span>
                   <span className="mt-1 block font-display text-lg">2021</span>
                 </div>
-                <div className="hidden h-8 w-px bg-line sm:block" />
+                <div className="hidden h-8 w-px bg-[#e9e0c9]/20 sm:block md:bg-line" />
                 <div>
-                  <span className="block text-[0.65rem] uppercase tracking-[0.22em] text-muted">
+                  <span className="block text-[0.65rem] uppercase tracking-[0.22em] text-[#e9e0c9]/60 md:text-muted">
                     Based in
                   </span>
                   <span className="mt-1 block font-display text-lg">
                     Dubai, UAE
                   </span>
                 </div>
-                <div className="hidden h-8 w-px bg-line sm:block" />
+                <div className="hidden h-8 w-px bg-[#e9e0c9]/20 sm:block md:bg-line" />
                 <div>
-                  <span className="block text-[0.65rem] uppercase tracking-[0.22em] text-muted">
+                  <span className="block text-[0.65rem] uppercase tracking-[0.22em] text-[#e9e0c9]/60 md:text-muted">
                     Practice
                   </span>
                   <span className="mt-1 block font-display text-lg">
@@ -70,7 +84,7 @@ export default function AboutPage() {
               </div>
             </Reveal>
           </div>
-          <div className="md:col-span-5">
+          <div className="hidden md:col-span-5 md:block">
             <Reveal delay={0.1}>
               <div className="relative aspect-[4/5] overflow-hidden rounded-sm border border-line">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
