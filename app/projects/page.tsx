@@ -44,7 +44,7 @@ export default function ProjectsPage() {
                   type="button"
                   onClick={() => setActive(cat)}
                   className={
-                    "rounded-full border px-5 py-2 text-sm transition-colors duration-300 " +
+                    "rounded-sm border px-5 py-2 text-sm transition-colors duration-300 " +
                     (isActive
                       ? "border-accent bg-accent text-white"
                       : "border-line text-muted hover:border-accent/50 hover:text-foreground")

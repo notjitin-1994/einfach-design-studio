@@ -121,7 +121,7 @@ export default function ContactPage() {
                         {projectTypes.map((t) => (
                           <label
                             key={t}
-                            className="cursor-pointer rounded-full border border-line px-4 py-2 text-sm text-muted transition-colors has-[:checked]:border-accent has-[:checked]:bg-accent has-[:checked]:text-white hover:border-accent/50"
+                            className="cursor-pointer rounded-sm border border-line px-4 py-2 text-sm text-muted transition-colors has-[:checked]:border-accent has-[:checked]:bg-accent has-[:checked]:text-white hover:border-accent/50"
                           >
                             <input type="radio" name="projectType" value={t} className="sr-only" />
                             {t}
@@ -140,7 +140,7 @@ export default function ContactPage() {
                     <div>
                       <button
                         type="submit"
-                        className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-medium text-white transition-all duration-300 hover:bg-accent-deep"
+                        className="group inline-flex items-center gap-2 rounded-sm bg-accent px-7 py-3.5 text-sm font-medium text-white transition-all duration-300 hover:bg-accent-deep"
                       >
                         Send message
                         <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

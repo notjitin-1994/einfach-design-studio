@@ -77,11 +77,11 @@ export function Button({
   ...rest
 }: ButtonProps) {
   const styles = cn(
-    "group inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-medium tracking-wide transition-all duration-300",
+    "group inline-flex items-center justify-center gap-2 rounded-sm px-7 py-3.5 text-sm font-medium tracking-wide transition-all duration-300",
     variant === "primary" &&
       "bg-accent text-white hover:bg-accent-deep shadow-[0_8px_30px_-12px_rgba(251,54,64,0.6)]",
     variant === "ghost" &&
-      "border border-line text-foreground hover:border-accent/60 hover:text-accent",
+      "border border-line bg-foreground/10 text-foreground backdrop-blur-md hover:border-accent hover:text-accent hover:shadow-[0_0_24px_-4px_rgba(251,54,64,0.6)]",
     className,
   );
   if (!href) {

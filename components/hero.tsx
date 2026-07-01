@@ -48,8 +48,8 @@ export function Hero() {
 
         {/* Legibility scrim — adapts to theme (dark wash / cream wash) */}
         <div className="absolute inset-0 bg-gradient-to-b from-background/75 via-background/55 to-background/90" />
-        {/* Accent tint for brand compliance */}
-        <div className="absolute inset-0 bg-accent/10 mix-blend-multiply" />
+        {/* Brand-dark wash (uses dark-mode bg colour in both themes) */}
+        <div className="absolute inset-0 bg-[#000f08]/35 mix-blend-multiply" />
         {/* Hairline grain edge at bottom for a refined transition */}
         <div className="absolute inset-x-0 bottom-0 h-px bg-line" />
       </div>
