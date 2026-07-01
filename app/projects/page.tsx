@@ -21,7 +21,7 @@ export default function ProjectsPage() {
         <div className="absolute inset-0 md:hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://images.unsplash.com/photo-1600585154526-990dced4d246?auto=format&fit=crop&w=1600&q=80"
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80"
             alt=""
             aria-hidden
             className="h-full w-full object-cover"
@@ -47,7 +47,7 @@ export default function ProjectsPage() {
           <div className="relative hidden min-h-[320px] md:block">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://images.unsplash.com/photo-1600585154526-990dced4d246?auto=format&fit=crop&w=1400&q=80"
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80"
               alt="Featured architecture project"
               className="duotone h-full w-full rounded-sm border border-line object-cover"
             />

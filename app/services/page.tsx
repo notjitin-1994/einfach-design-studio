@@ -51,16 +51,12 @@ export default function ServicesPage() {
           </div>
           {/* Desktop: equal-height image column */}
           <div className="relative hidden min-h-[320px] md:block">
-            <Reveal delay={0.1}>
-              <div className="relative h-full">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1400&q=80"
-                  alt="Design process and drafting"
-                  className="duotone h-full w-full rounded-sm border border-line object-cover"
-                />
-              </div>
-            </Reveal>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1400&q=80"
+              alt="Design process and drafting"
+              className="duotone h-full w-full rounded-sm border border-line object-cover"
+            />
           </div>
         </Container>
       </section>
