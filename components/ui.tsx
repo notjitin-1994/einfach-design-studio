@@ -101,7 +101,7 @@ export function Button({
 export function ProjectCard({ project }: { project: Project }) {
   return (
     <Link
-      href="/projects"
+      href={`/projects/${project.id}`}
       className="group block focus-visible:outline-none"
       aria-label={`${project.title}, ${project.category}`}
     >
