@@ -142,13 +142,13 @@ export default function HomePage() {
                     <span className="font-display text-3xl font-light text-accent">
                       {s.index}
                     </span>
-                    <h3 className="font-display mt-5 text-2xl font-light text-foreground">
+                    <h3 className="font-display mt-5 text-2xl font-light text-white/90">
                       {s.title}
                     </h3>
-                    <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-white/60">
                       {s.description}
                     </p>
-                    <span className="link-underline mt-6 text-xs font-medium text-foreground/80">
+                    <span className="link-underline mt-6 text-xs font-medium text-white/70">
                       Learn more →
                     </span>
                   </div>
@@ -211,11 +211,11 @@ export default function HomePage() {
                       <span className="font-display text-4xl font-light text-accent">
                         {step.index}
                       </span>
-                      <h3 className="font-display text-2xl font-light text-foreground">
+                      <h3 className="font-display text-2xl font-light text-white/90">
                         {step.title}
                       </h3>
                     </div>
-                    <p className="mt-4 text-sm leading-relaxed text-muted">
+                    <p className="mt-4 text-sm leading-relaxed text-white/60">
                       {step.description}
                     </p>
                   </div>
