@@ -19,17 +19,15 @@ export function Hero() {
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video || reduce) return;
 
-    if (reduce) {
-      video.currentTime = 0;
-      return;
-    }
+    video.muted = true;
+    video.defaultMuted = true;
 
-    const SPEED = 0.5;
-    let fwd = true;
-    let last = 0;
     let raf = 0;
+    let last = 0;
+    let reversing = false;
+    const SPEED = 0.5;
 
     const tick = (now: number) => {
       const dur = video.duration;
@@ -39,33 +37,56 @@ export function Hero() {
       }
       const dt = (now - last) / 1000;
       last = now;
-      if (fwd) {
-        video.currentTime += dt * SPEED;
-        if (video.currentTime >= dur - 0.05) {
-          video.currentTime = dur - 0.05;
-          fwd = false;
-        }
+      video.currentTime = Math.max(0.02, video.currentTime - dt * SPEED);
+      if (video.currentTime <= 0.05) {
+        reversing = false;
+        cancelAnimationFrame(raf);
+        raf = 0;
+        video.currentTime = 0.05;
+        void video.play().catch(() => {});
       } else {
-        video.currentTime -= dt * SPEED;
-        if (video.currentTime <= 0.05) {
-          video.currentTime = 0.05;
-          fwd = true;
-        }
+        raf = requestAnimationFrame(tick);
       }
-      raf = requestAnimationFrame(tick);
     };
 
-    const start = () => {
-      video.pause();
-      video.muted = true;
-      last = performance.now();
-      raf = requestAnimationFrame(tick);
+    const onTimeUpdate = () => {
+      if (reversing) return;
+      const dur = video.duration;
+      if (dur && isFinite(dur) && video.currentTime >= dur - 0.05) {
+        reversing = true;
+        video.pause();
+        last = performance.now();
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(tick);
+      }
     };
 
-    if (video.readyState >= 2) start();
-    else video.addEventListener("loadeddata", start, { once: true });
+    const onPlay = () => {
+      if (reversing) return;
+    };
 
-    return () => cancelAnimationFrame(raf);
+    video.addEventListener("timeupdate", onTimeUpdate);
+    video.addEventListener("play", onPlay);
+
+    const kick = () => {
+      const p = video.play();
+      if (p && typeof p.then === "function") {
+        p.catch(() => {
+          video.muted = true;
+          video.defaultMuted = true;
+          void video.play().catch(() => {});
+        });
+      }
+    };
+
+    if (video.readyState >= 1) kick();
+    else video.addEventListener("loadedmetadata", kick, { once: true });
+
+    return () => {
+      video.removeEventListener("timeupdate", onTimeUpdate);
+      video.removeEventListener("play", onPlay);
+      cancelAnimationFrame(raf);
+    };
   }, [reduce]);
 
   const hidden = reduce ? { opacity: 0 } : { opacity: 0, y: 22 };
@@ -81,6 +102,7 @@ export function Hero() {
           src={HERO_VIDEO}
           muted
           playsInline
+          loop
           preload="auto"
           aria-hidden
           tabIndex={-1}
