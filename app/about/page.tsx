@@ -35,7 +35,7 @@ export default function AboutPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#000f08]/82 via-[#000f08]/58 to-[#000f08]/92" />
         </div>
-        <Container className="relative grid items-center gap-12 py-8 md:grid-cols-12 md:py-11">
+        <Container className="relative grid items-center gap-12 py-10 md:grid-cols-12 md:py-14">
           <div className="text-[#e9e0c9] md:col-span-7 md:text-foreground">
             <Reveal>
               <span className="inline-flex items-center gap-2 text-[0.74rem] font-medium uppercase tracking-[0.22em] text-[#e9e0c9]/70 md:text-muted">
@@ -103,7 +103,7 @@ export default function AboutPage() {
 
       {/* STATEMENT */}
       {/* STATEMENT */}
-      <section className="py-10 md:py-12">
+      <section className="py-12 md:py-16">
         <Container className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <p className="eyebrow">“Einfach”</p>
@@ -133,7 +133,7 @@ export default function AboutPage() {
       <hr className="hairline" />
 
       {/* STORY */}
-      <section className="py-10 md:py-12">
+      <section className="py-12 md:py-16">
         <Container className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <SectionHeading eyebrow="Our Story" title="Founded on a better way." />
@@ -168,7 +168,7 @@ export default function AboutPage() {
       <hr className="hairline" />
 
       {/* VISION & MISSION */}
-      <section className="py-10 md:py-12">
+      <section className="py-12 md:py-16">
         <Container>
           <div className="grid gap-px overflow-hidden rounded-sm border border-line bg-line md:grid-cols-2">
             <Reveal>
@@ -201,7 +201,7 @@ export default function AboutPage() {
 
       <hr className="hairline" />
 
-      <section className="py-6 md:py-10">
+      <section className="py-8 md:py-12">
         <Container>
           <div
             className="relative overflow-hidden rounded-sm border-[0.5px] px-6 py-16 text-center shadow-[0_0_30px_-8px_rgba(251,54,64,0.35)] transition-shadow duration-500 hover:shadow-[0_0_50px_-5px_rgba(251,54,64,0.5)] md:px-16 md:py-24"

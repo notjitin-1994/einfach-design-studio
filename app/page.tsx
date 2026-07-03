@@ -72,7 +72,7 @@ export default function HomePage() {
       <hr className="hairline" />
 
       {/* APPROACH */}
-      <section className="py-6 md:py-8">
+      <section className="py-8 md:py-10">
         <Container className="grid items-start gap-14 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">
             <SectionHeading
@@ -106,7 +106,7 @@ export default function HomePage() {
       <hr className="hairline" />
 
       {/* SERVICES */}
-      <section className="py-6 md:py-8">
+      <section className="py-8 md:py-10">
         <Container>
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <SectionHeading
@@ -162,7 +162,7 @@ export default function HomePage() {
       <hr className="hairline" />
 
       {/* WHY */}
-      <section className="py-6 md:py-8">
+      <section className="py-8 md:py-10">
         <Container className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <SectionHeading eyebrow="Why Einfach?" title="Principles over trends." />
@@ -185,7 +185,7 @@ export default function HomePage() {
       <hr className="hairline" />
 
       {/* PROCESS */}
-      <section className="py-6 md:py-8">
+      <section className="py-8 md:py-10">
         <Container>
           <SectionHeading
             eyebrow="Our Process"
@@ -229,7 +229,7 @@ export default function HomePage() {
       <hr className="hairline" />
 
       {/* FEATURED PROJECTS */}
-      <section className="py-6 md:py-8">
+      <section className="py-8 md:py-10">
         <Container>
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <SectionHeading
@@ -254,7 +254,7 @@ export default function HomePage() {
       <hr className="hairline" />
 
       {/* CTA */}
-      <section className="py-6 md:py-10">
+      <section className="py-8 md:py-12">
         <Container>
           <div
             className="relative overflow-hidden rounded-sm border-[0.5px] px-6 py-16 text-center shadow-[0_0_30px_-8px_rgba(251,54,64,0.35)] transition-shadow duration-500 hover:shadow-[0_0_50px_-5px_rgba(251,54,64,0.5)] md:px-16 md:py-24"

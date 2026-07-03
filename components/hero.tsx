@@ -37,7 +37,7 @@ export function Hero() {
         <div className="absolute inset-x-0 bottom-0 h-px bg-line" />
       </div>
 
-      <Container className="relative flex flex-1 flex-col justify-center py-12 md:py-16">
+      <Container className="relative flex flex-1 flex-col justify-center py-16 md:py-20">
         <motion.div
           className="mx-auto max-w-4xl text-center"
           initial="hidden"

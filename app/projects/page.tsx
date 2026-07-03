@@ -45,7 +45,7 @@ export default function ProjectsPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#000f08]/82 via-[#000f08]/58 to-[#000f08]/92" />
         </div>
-        <Container className="relative grid items-stretch gap-10 py-8 md:grid-cols-2 md:gap-12 md:py-11">
+        <Container className="relative grid items-stretch gap-10 py-10 md:grid-cols-2 md:gap-12 md:py-14">
           <div className="flex flex-col justify-center text-[#e9e0c9] md:text-foreground">
             <span className="inline-flex items-center gap-2 text-[0.74rem] font-medium uppercase tracking-[0.22em] text-[#e9e0c9]/70 md:text-muted">
               <span className="h-px w-6 bg-accent/70" aria-hidden />
@@ -74,7 +74,7 @@ export default function ProjectsPage() {
         </Container>
       </section>
 
-      <section className="py-5 md:py-6">
+      <section className="py-6 md:py-8">
         <Container>
           {/* Filters */}
           <div className="flex flex-wrap items-center gap-2 border-b border-line pb-8">
@@ -156,7 +156,7 @@ export default function ProjectsPage() {
 
       <hr className="hairline" />
 
-      <section className="py-6 md:py-10">
+      <section className="py-8 md:py-12">
         <Container>
           <div
             className="relative overflow-hidden rounded-sm border-[0.5px] px-6 py-16 text-center shadow-[0_0_30px_-8px_rgba(251,54,64,0.35)] transition-shadow duration-500 hover:shadow-[0_0_50px_-5px_rgba(251,54,64,0.5)] md:px-16 md:py-24"

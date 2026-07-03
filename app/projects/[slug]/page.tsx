@@ -76,7 +76,7 @@ export default async function ProjectPage({
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#000f08]/65 via-[#000f08]/40 to-[#000f08]/90" />
         </div>
-        <Container className="relative mt-auto flex flex-col gap-6 py-8 text-[#e9e0c9] md:py-11">
+        <Container className="relative mt-auto flex flex-col gap-6 py-10 text-[#e9e0c9] md:py-14">
           <Reveal>
             <span className="inline-flex items-center gap-2 text-[0.74rem] font-medium uppercase tracking-[0.22em] text-[#e9e0c9]/70">
               <span className="h-px w-6 bg-accent/80" aria-hidden />
@@ -111,7 +111,7 @@ export default async function ProjectPage({
       </section>
 
       {/* Process narrative — the six phases */}
-      <section className="py-6 md:py-10">
+      <section className="py-8 md:py-12">
         <Container>
           <Reveal>
             <span className="inline-flex items-center gap-2 text-[0.74rem] font-medium uppercase tracking-[0.22em] text-muted">
@@ -149,7 +149,7 @@ export default async function ProjectPage({
       </section>
 
       {/* Gallery — bento grid */}
-      <section className="border-t border-line py-6 md:py-10">
+      <section className="border-t border-line py-8 md:py-12">
         <Container>
           <Reveal>
             <span className="inline-flex items-center gap-2 text-[0.74rem] font-medium uppercase tracking-[0.22em] text-muted">
@@ -187,7 +187,7 @@ export default async function ProjectPage({
       </section>
 
       {/* CTA back to projects */}
-      <section className="border-t border-line py-6 md:py-10">
+      <section className="border-t border-line py-8 md:py-12">
         <Container className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="font-display max-w-xl text-balance text-[clamp(1.7rem,3.6vw,2.8rem)] font-light leading-[1.1]">
@@ -209,7 +209,7 @@ export default async function ProjectPage({
 
       <hr className="hairline" />
 
-      <section className="py-6 md:py-10">
+      <section className="py-8 md:py-12">
         <Container>
           <div
             className="relative overflow-hidden rounded-sm border-[0.5px] px-6 py-16 text-center shadow-[0_0_30px_-8px_rgba(251,54,64,0.35)] transition-shadow duration-500 hover:shadow-[0_0_50px_-5px_rgba(251,54,64,0.5)] md:px-16 md:py-24"
