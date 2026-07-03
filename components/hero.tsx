@@ -26,32 +26,46 @@ export function Hero() {
       return;
     }
 
-    const onTimeUpdate = () => {
+    const SPEED = 0.5;
+    let fwd = true;
+    let last = 0;
+    let raf = 0;
+
+    const tick = (now: number) => {
       const dur = video.duration;
-      if (!dur || !isFinite(dur)) return;
-      if (video.playbackRate > 0 && video.currentTime >= dur - 0.08) {
-        video.playbackRate = -1;
-      } else if (video.playbackRate < 0 && video.currentTime <= 0.08) {
-        video.playbackRate = 1;
+      if (!dur || !isFinite(dur)) {
+        raf = requestAnimationFrame(tick);
+        return;
       }
+      const dt = (now - last) / 1000;
+      last = now;
+      if (fwd) {
+        video.currentTime += dt * SPEED;
+        if (video.currentTime >= dur - 0.05) {
+          video.currentTime = dur - 0.05;
+          fwd = false;
+        }
+      } else {
+        video.currentTime -= dt * SPEED;
+        if (video.currentTime <= 0.05) {
+          video.currentTime = 0.05;
+          fwd = true;
+        }
+      }
+      raf = requestAnimationFrame(tick);
     };
 
     const start = () => {
-      video.playbackRate = 1;
-      video.play().catch(() => {});
-      video.addEventListener("timeupdate", onTimeUpdate);
+      video.pause();
+      video.muted = true;
+      last = performance.now();
+      raf = requestAnimationFrame(tick);
     };
 
-    if (video.readyState >= 2) {
-      start();
-    } else {
-      video.addEventListener("loadeddata", start, { once: true });
-    }
+    if (video.readyState >= 2) start();
+    else video.addEventListener("loadeddata", start, { once: true });
 
-    return () => {
-      video.removeEventListener("timeupdate", onTimeUpdate);
-      video.removeEventListener("loadeddata", start);
-    };
+    return () => cancelAnimationFrame(raf);
   }, [reduce]);
 
   const hidden = reduce ? { opacity: 0 } : { opacity: 0, y: 22 };
@@ -67,7 +81,6 @@ export function Hero() {
           src={HERO_VIDEO}
           muted
           playsInline
-          loop
           preload="auto"
           aria-hidden
           tabIndex={-1}
