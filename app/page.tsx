@@ -136,8 +136,8 @@ export default function HomePage() {
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     style={{ filter: "blur(1px) saturate(1.1) brightness(0.9)" }}
                   />
-                  <div className="absolute inset-0 dark:bg-background/50 dark:backdrop-blur-sm dark:group-hover:bg-background/35" />
-                  <div className="absolute inset-0 dark:bg-gradient-to-t dark:from-background/60 dark:via-background/25 dark:to-background/40" />
+                  <div className="absolute inset-0 bg-black/40 backdrop-blur-sm group-hover:bg-black/30" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-black/40" />
                   <div className="relative flex flex-1 flex-col">
                     <span className="font-display text-3xl font-light text-accent">
                       {s.index}
@@ -204,8 +204,8 @@ export default function HomePage() {
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     style={{ filter: "blur(1px) saturate(1.1) brightness(0.9)" }}
                   />
-                  <div className="absolute inset-0 dark:bg-background/50 dark:backdrop-blur-sm dark:group-hover:bg-background/35" />
-                  <div className="absolute inset-0 dark:bg-gradient-to-t dark:from-background/60 dark:via-background/25 dark:to-background/40" />
+                  <div className="absolute inset-0 bg-black/40 backdrop-blur-sm group-hover:bg-black/30" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-black/40" />
                   <div className="relative flex flex-1 flex-col">
                     <div className="flex items-baseline gap-4">
                       <span className="font-display text-4xl font-light text-accent">
