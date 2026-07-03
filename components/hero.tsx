@@ -1,19 +1,66 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Container, Button } from "@/components/ui";
 
-const HERO_IMG =
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80";
-
+const HERO_VIDEO = "/hero.mp4";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 export function Hero() {
   const prefersReduced = useReducedMotion();
   const [mounted, setMounted] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const direction = useRef(1);
+  const rafRef = useRef<number | null>(null);
+
   useEffect(() => setMounted(true), []);
   const reduce = mounted && Boolean(prefersReduced);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (reduce) {
+      video.currentTime = 0;
+      return;
+    }
+
+    const startPingPong = () => {
+      let last = performance.now();
+      const tick = (now: number) => {
+        const delta = (now - last) / 1000;
+        last = now;
+        const dur = video.duration;
+        if (dur && isFinite(dur) && dur > 0) {
+          let next = video.currentTime + direction.current * delta;
+          if (next >= dur) {
+            next = dur;
+            direction.current = -1;
+          } else if (next <= 0) {
+            next = 0;
+            direction.current = 1;
+          }
+          video.currentTime = next;
+        }
+        rafRef.current = requestAnimationFrame(tick);
+      };
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    const onLoaded = () => startPingPong();
+
+    if (video.readyState >= 2) {
+      onLoaded();
+    } else {
+      video.addEventListener("loadeddata", onLoaded, { once: true });
+    }
+
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      video.removeEventListener("loadeddata", onLoaded);
+    };
+  }, [reduce]);
 
   const hidden = reduce ? { opacity: 0 } : { opacity: 0, y: 22 };
   const show = reduce
@@ -22,39 +69,24 @@ export function Hero() {
 
   return (
     <section className="relative isolate flex min-h-[100svh] flex-col overflow-hidden">
-      {/* Background image + brand treatment */}
       <div className="absolute inset-0 -z-10">
-        <motion.div
-          className="absolute inset-0"
-          initial={reduce ? undefined : { scale: 1.05 }}
-          animate={reduce ? undefined : { scale: 1.13 }}
-          transition={{
-            duration: 18,
-            ease: "easeInOut",
-            repeat: Infinity,
-            repeatType: "reverse",
-          }}
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={HERO_IMG}
-            alt=""
-            aria-hidden
-            fetchPriority="high"
-            className="h-full w-full object-cover"
-            style={{ filter: "grayscale(0.4) contrast(1.05) brightness(0.95)" }}
-          />
-        </motion.div>
+        <video
+          ref={videoRef}
+          src={HERO_VIDEO}
+          muted
+          playsInline
+          preload="auto"
+          aria-hidden
+          tabIndex={-1}
+          className="h-full w-full object-cover"
+          style={{ filter: "grayscale(0.4) contrast(1.05) brightness(0.95)" }}
+        />
 
-        {/* Premium legibility scrim — brand-dark, multi-stop, bottom-heavy (refined in both themes) */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#000f08]/70 via-[#000f08]/45 to-[#000f08]/90" />
-        {/* Subtle accent warmth — soft radial glow */}
         <div className="absolute left-1/2 top-1/3 h-[42vh] w-[64vw] -translate-x-1/2 rounded-full bg-accent/[0.07] blur-[130px]" />
-        {/* Hairline edge at bottom for a refined transition */}
         <div className="absolute inset-x-0 bottom-0 h-px bg-line" />
       </div>
 
-      {/* Content */}
       <Container className="relative flex flex-1 flex-col justify-center py-32 md:py-44">
         <motion.div
           className="mx-auto max-w-4xl text-center"
@@ -96,7 +128,6 @@ export function Hero() {
         </motion.div>
       </Container>
 
-      {/* Foot bar — meta + scroll cue */}
       <motion.footer
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

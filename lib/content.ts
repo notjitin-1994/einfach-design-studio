@@ -16,7 +16,6 @@ export type ProjectCategory = "Residential" | "Commercial" | "Workplaces";
 export type GalleryImage = {
   src: string;
   alt: string;
-  caption: string;
 };
 
 export type ProjectProcess = {
@@ -117,44 +116,44 @@ export const nav = [
 
 // ---------- Project assets & copy ----------
 
-const dir = (slug: string) => `/projects/${slug}`;
+const d = (slug: string) => `/projects/${slug}`;
 
 export const projects: Project[] = [
   {
     id: "apartment-complex-ernakulam",
-    title: "Apartment Complex",
+    title: "Apartment Complex, Ernakulam",
     category: "Residential",
     year: "2025",
     location: "Ernakulam, Kerala",
     summary:
-      "A multi-unit residential development shaped around Kerala's climate — deep overhangs, cross-ventilated cores, and a façade that balances privacy with street-level warmth.",
-    image: `${dir("apartment-complex-ernakulam")}/thumb.png`,
-    tags: ["Architecture", "New Build", "Climate-led"],
+      "Sixteen compact 2BHK apartments across four floors — proof that density and dignity can coexist when every square foot earns its place.",
+    image: `${d("apartment-complex-ernakulam")}/thumb.png`,
+    tags: ["Architecture", "Interiors", "Multi-Unit"],
     hero:
-      "Set on a tight urban plot in Ernakulam, this residential complex rethinks the typical apartment block as a series of layered, naturally-cooled homes rather than stacked identical floors. Each unit was planned for cross-ventilation, daylight from two sides, and a private outdoor extension.",
+      "A G+3 residential development of sixteen 2BHK homes, each held under 700 square feet without ever feeling small. Through disciplined planning, cross-ventilation, and a soft material palette, the complex proves that affordability and generosity can share the same address.",
     process: {
       understand:
-        "We began by listening to the developer's ambition for a building that would feel like a home rather than a unit number — and by studying how families in Ernakulam actually live through the humidity and monsoon.",
+        "The brief was deceptively simple — sixteen 2BHK apartments, each under 700 square feet, compact yet genuinely spacious. We studied how Kerala families live day to day, where privacy matters, and how a few square feet saved on circulation could be returned to living space.",
       define:
-        "From those conversations we set clear priorities: every home needs daylight from two sides, natural cross-ventilation, acoustic privacy between neighbours, and a genuinely useable outdoor space.",
+        "With both architecture and interiors in scope, we set a clear target: maximise usable area, admit daylight from two sides in every unit, and let cross-ventilation do the work of mechanical cooling — all within the compact footprint.",
       design:
-        "The massing splits the block into two slender wings around a central lightwell, opening up the deep plan. Deep concrete overhangs shade the glazing, and a screen of vertical fins modulates sun and privacy without sealing the building off from the street.",
+        "Four units per floor wrap a shared core, keeping each apartment narrow enough for light to penetrate fully. Interiors follow a soft, simple language — pale surfaces, clean junctions, and openings placed to chase the day's light across the room.",
       refine:
-        "We tested fin spacing and overhang depth against the year's sun path, simplified the core plumbing runs, and reworked the balcony details until they read as part of the architecture rather than an addition.",
+        "We pressure-tested every plan against the 700-square-foot ceiling, trimming wasted circulation and merging functional zones until each home felt generous. Material junctions were simplified for clean construction and lower cost.",
       deliver:
-        "The final package — architectural drawings, structural coordination, façade details, and a material schedule tuned to local trades — gave the contractor a buildable, unambiguous set of instructions.",
+        "Architectural drawings, interior layouts, and a buildable material schedule were packaged for the contractor — clear enough to execute without guesswork across all sixteen units.",
       support:
-        "During construction we stayed close, reviewing façade mock-ups, settling joinery on site, and protecting the design intent when contractor substitutions were proposed.",
+        "Through construction we reviewed the first typical floor as a prototype, settled details before the remaining three were repeated, and stayed available to resolve the questions that only surface on site.",
     },
     gallery: [
-      { src: `${dir("apartment-complex-ernakulam")}/01.png`, alt: "Principal elevation at golden hour", caption: "The principal elevation at golden hour — the vertical fin screen casts shifting shadows across the façade through the day." },
-      { src: `${dir("apartment-complex-ernakulam")}/02.png`, alt: "Entrance sequence framing a tree", caption: "The entrance sequence frames a single tree, slowing the arrival from the street." },
-      { src: `${dir("apartment-complex-ernakulam")}/03.png`, alt: "Side elevation showing the two-wing split", caption: "Side elevation showing the two-wing split and the central lightwell between them." },
-      { src: `${dir("apartment-complex-ernakulam")}/04.png`, alt: "Deep concrete overhang detail", caption: "Detail of the deep concrete overhang shading the upper-floor glazing." },
-      { src: `${dir("apartment-complex-ernakulam")}/05.png`, alt: "Street view at dusk", caption: "Street view at dusk, with warm interior light revealing the depth of the loggias." },
-      { src: `${dir("apartment-complex-ernakulam")}/06.png`, alt: "Vertical fin screen close-up", caption: "The vertical fin screen — proportioned to block low afternoon sun while preserving outward views." },
-      { src: `${dir("apartment-complex-ernakulam")}/07.png`, alt: "Aerial perspective of the footprint", caption: "Aerial perspective showing the building's footprint and the landscaped edges." },
-      { src: `${dir("apartment-complex-ernakulam")}/08.png`, alt: "Rear elevation", caption: "Rear elevation, with the secondary stair core and service access kept discreet." },
+      { src: `${d("apartment-complex-ernakulam")}/01.png`, alt: "Principal elevation at golden hour" },
+      { src: `${d("apartment-complex-ernakulam")}/02.png`, alt: "Entrance sequence framing a tree" },
+      { src: `${d("apartment-complex-ernakulam")}/03.png`, alt: "Side elevation showing the two-wing split" },
+      { src: `${d("apartment-complex-ernakulam")}/04.png`, alt: "Deep concrete overhang detail" },
+      { src: `${d("apartment-complex-ernakulam")}/05.png`, alt: "Street view at dusk" },
+      { src: `${d("apartment-complex-ernakulam")}/06.png`, alt: "Vertical fin screen close-up" },
+      { src: `${d("apartment-complex-ernakulam")}/07.png`, alt: "Aerial perspective of the footprint" },
+      { src: `${d("apartment-complex-ernakulam")}/08.png`, alt: "Rear elevation" },
     ],
   },
   {
@@ -164,33 +163,33 @@ export const projects: Project[] = [
     year: "2024",
     location: "Dubai, UAE",
     summary:
-      "A contemporary Dubai apartment designed for calm — warm material tones, layered lighting, and bespoke joinery that turns a generous plan into a series of intimate, purposeful rooms.",
-    image: `${dir("apartment-interior-dubai")}/thumb.png`,
-    tags: ["Interior", "Bespoke Joinery", "Lighting"],
+      "Quiet luxury in a 3BHK — muted tones, layered lighting, and spatial zoning that turns a standard plan into a calm, purposeful home.",
+    image: `${d("apartment-interior-dubai")}/thumb.png`,
+    tags: ["Interiors", "Lighting Design", "Bespoke Joinery"],
     hero:
-      "Designed for a young family in Dubai, this apartment interior sets aside the city's default of glossy surfaces and statement lighting in favour of calm, textural materials and a lighting strategy built on layers rather than spectacle. The plan opens the living, dining and kitchen into one continuous space while keeping the private wing quiet and separate.",
+      "A full interior revamp of a Dubai 3BHK — foyer, living, kitchen, and two bedrooms — guided by one conviction: premium does not have to mean loud. Through spatial zoning, muted material tones, and a layered lighting strategy, the apartment reads as understated, intentional, and calm.",
     process: {
       understand:
-        "We started with how the family actually lives — morning routines, where the children do homework, how often they host, and what 'calm' meant to them in a busy city.",
+        "We began with how the family actually lives — morning routines, where the children play, how often they host — and what 'premium' meant to them. It turned out to mean quiet, not glossy. They wanted a home, not a showroom.",
       define:
-        "The brief crystallised around three words: warm, quiet, flexible. Every later decision — material, lighting, layout — was tested against them.",
+        "The brief crystallised around spatial zoning: distinct areas within an open plan, maximum kitchen storage as a non-negotiable, and lighting that was designed rather than just specified. A dedicated children's bedroom with its own personality rounded out the scope.",
       design:
-        "The public wing was opened into one continuous living–dining–kitchen landscape anchored by a fluted stone feature wall; the private wing stays cellular and hushed. Lighting was layered — ambient coves, task pendants, accent spikes — so the mood could shift from family evening to dinner party.",
+        "A muted tonal palette runs through every room to reduce visual noise. Lighting was layered — ambient coves, task pendants, accent spikes — so the mood could shift from morning routine to evening hosting. The kitchen was planned around storage capacity first; the children's bedroom was given a distinct character within the calm language of the rest of the home.",
       refine:
-        "We softened the material palette, replaced a heavy stone island with a lighter oak-wrapped one, and reworked the joinery proportions until the rooms felt generous rather than full.",
+        "We softened finishes further, removed a planned feature wall that would have added visual noise, and reworked the kitchen joinery internals until every cabinet earned its place rather than filling a gap.",
       deliver:
-        "Drawings, joinery schedules, finish and lighting specifications, and an FF&E package gave the fit-out contractor a complete, buildable set with no ambiguity.",
+        "Interior drawings, joinery schedules, lighting design, and a full finish specification gave the fit-out contractor a complete, unambiguous set.",
       support:
-        "We reviewed prototypes on site, checked stone veining and veneer matching, and resolved the inevitable service clashes as walls went up.",
+        "On site we approved material samples, checked veneer matching, and resolved the inevitable service clashes that appear once walls close up.",
     },
     gallery: [
-      { src: `${dir("apartment-interior-dubai")}/01.png`, alt: "Living room with fluted stone wall", caption: "The living room anchors around a fluted stone feature wall that catches layered cove light after dark." },
-      { src: `${dir("apartment-interior-dubai")}/02.png`, alt: "Open-plan living and dining", caption: "The continuous living–dining landscape, with the oak-wrapped island marking the kitchen zone." },
-      { src: `${dir("apartment-interior-dubai")}/03.png`, alt: "Kitchen detail", caption: "Kitchen detail — handleless oak cabinetry and a warm stone counter kept deliberately quiet." },
-      { src: `${dir("apartment-interior-dubai")}/04.png`, alt: "Dining area at dusk", caption: "Dining area at dusk, showing the layered lighting strategy shifting the room toward evening." },
-      { src: `${dir("apartment-interior-dubai")}/05.png`, alt: "Primary bedroom", caption: "The primary bedroom — upholstered headboard wall and a single pendant for a calm, low-lit close to the day." },
-      { src: `${dir("apartment-interior-dubai")}/06.png`, alt: "Joinery detail", caption: "Bespoke joinery detail — the same oak language carries from kitchen to storage to bedside." },
-      { src: `${dir("apartment-interior-dubai")}/07.png`, alt: "Foyer and entry", caption: "The entry foyer, where a low bench and a slot of light set the calm tone for the rest of the home." },
+      { src: `${d("apartment-interior-dubai")}/01.png`, alt: "Living room with fluted stone feature wall" },
+      { src: `${d("apartment-interior-dubai")}/02.png`, alt: "Open-plan living and dining" },
+      { src: `${d("apartment-interior-dubai")}/03.png`, alt: "Kitchen with handleless oak cabinetry" },
+      { src: `${d("apartment-interior-dubai")}/04.png`, alt: "Dining area at dusk" },
+      { src: `${d("apartment-interior-dubai")}/05.png`, alt: "Primary bedroom" },
+      { src: `${d("apartment-interior-dubai")}/06.png`, alt: "Bespoke joinery detail" },
+      { src: `${d("apartment-interior-dubai")}/07.png`, alt: "Foyer and entry" },
     ],
   },
   {
@@ -200,98 +199,98 @@ export const projects: Project[] = [
     year: "2023",
     location: "Ernakulam, Kerala",
     summary:
-      "A fully realised apartment interior — a layered, lived-in home where warm Kerala materials meet a contemporary, light-filled plan.",
-    image: `${dir("apartment-interior-ernakulam")}/thumb.jpg`,
-    tags: ["Interior", "Renovation", "Realised"],
+      "A realised apartment where real wood, bright accents, and traditional Indian warmth meet modern minimalist discipline.",
+    image: `${d("apartment-interior-ernakulam")}/thumb.jpg`,
+    tags: ["Interiors", "Execution", "Spatial Zoning"],
     hero:
-      "Completed and photographed, this Ernakulam apartment is a study in restraint — a limited palette of warm timber, limewashed walls, and natural stone, organised around a single axial living space that runs the length of the flat. The result is a home that feels settled and intentional the moment you walk in.",
+      "An apartment interior designed and executed end to end — rethinking an existing layout through spatial zoning, relocating key functions for privacy and hygiene, and introducing a palette of real wood and bright colour drawn from traditional Indian interiors, balanced by modern minimalist restraint.",
     process: {
       understand:
-        "We walked the existing flat with the owners, understanding which views mattered, where the family gathered, and how the original plan fought their daily routine.",
+        "We walked the existing flat with the owners, understanding where the layout fought their daily routine. The dining sink sat in the wrong place, private zones were exposed, and hygiene patterns the original plan ignored had become daily friction.",
       define:
-        "The direction was clear: open the living axis, reclaim wasted circulation, and let a single warm material palette carry through every room for continuity.",
+        "The direction was spatial zoning — reorganise the plan so each function earns its rightful place. The dining sink was relocated, private zones were insulated, and a material direction was set: real wood, bright accents, rooted in traditional Indian interiors but held in check by modern minimalism.",
       design:
-        "The kitchen was pulled forward to meet the living room, a long storage wall unified the corridor, and timber, limewash, and honed stone were composed so each room felt both distinct and part of the same home.",
+        "Real wood carries through every room, paired with a bright, considered colour palette. Traditional Indian warmth informs the proportions and the material choices, while modern minimalism keeps the spaces uncluttered and light-filled.",
       refine:
-        "We edited hard — removing a planned feature ceiling, simplifying the lighting, and trimming the furniture list so the architecture could breathe.",
+        "We edited the palette toward fewer, better materials — letting the wood and two accent colours do the work rather than layering decoration that would compete for attention.",
       deliver:
-        "A full set of interior drawings, joinery details, finish samples, and a lighting layout meant the contractor could execute without guesswork.",
+        "As a design-and-execute engagement, the interior drawings, joinery, finishes, and on-site execution were all under one roof — ensuring the design intent was carried through to completion without the usual handoff gaps.",
       support:
-        "We stayed on through fit-out, approving stone and veneer selections on site and resolving the small clashes that only appear once walls close up.",
+        "Because we executed the project, support was built in. Every detail was resolved on site, adjusted as real materials met real light, and carried through to the final handover.",
     },
     gallery: [
-      { src: `${dir("apartment-interior-ernakulam")}/01.jpg`, alt: "Axial living space", caption: "The axial living space running the length of the flat — timber, limewash, and stone in a single continuous composition." },
-      { src: `${dir("apartment-interior-ernakulam")}/02.jpg`, alt: "Living room seating area", caption: "The seating area, oriented toward the best daylight and the long view through the home." },
-      { src: `${dir("apartment-interior-ernakulam")}/03.jpg`, alt: "Dining and kitchen connection", caption: "Dining and kitchen, now connected rather than compartmentalised — the heart of the daily routine." },
-      { src: `${dir("apartment-interior-ernakulam")}/04.jpg`, alt: "Kitchen detail", caption: "Kitchen detail showing the consistent material language carried from the living spaces." },
-      { src: `${dir("apartment-interior-ernakulam")}/05.jpg`, alt: "Corridor storage wall", caption: "The corridor's long storage wall, which reclaimed wasted circulation and unified the private wing." },
-      { src: `${dir("apartment-interior-ernakulam")}/06.jpg`, alt: "Bedroom", caption: "A bedroom kept deliberately quiet — the architecture does the work, not the furniture." },
-      { src: `${dir("apartment-interior-ernakulam")}/07.jpg`, alt: "Material and detail close-up", caption: "Detail of the timber, limewash, and honed stone palette that carries through every room." },
+      { src: `${d("apartment-interior-ernakulam")}/01.jpg`, alt: "Axial living space" },
+      { src: `${d("apartment-interior-ernakulam")}/02.jpg`, alt: "Living room seating area" },
+      { src: `${d("apartment-interior-ernakulam")}/03.jpg`, alt: "Dining and kitchen connection" },
+      { src: `${d("apartment-interior-ernakulam")}/04.jpg`, alt: "Kitchen detail" },
+      { src: `${d("apartment-interior-ernakulam")}/05.jpg`, alt: "Corridor storage wall" },
+      { src: `${d("apartment-interior-ernakulam")}/06.jpg`, alt: "Bedroom" },
+      { src: `${d("apartment-interior-ernakulam")}/07.jpg`, alt: "Material and detail close-up" },
     ],
   },
   {
     id: "commercial-renovation-ernakulam",
-    title: "Commercial Renovation",
+    title: "Commercial Renovation, Ernakulam",
     category: "Commercial",
     year: "2024",
     location: "Ernakulam, Kerala",
     summary:
-      "The renovation of a tired commercial space into a bright, branded, efficient premises — rethinking circulation, daylight, and the customer journey end to end.",
-    image: `${dir("commercial-renovation-ernakulam")}/thumb.png`,
-    tags: ["Renovation", "Commercial", "Branding"],
+      "A budget-friendly facade transformation for a twenty-year-old building — minimal invasion, maximum impact, and a breath of green.",
+    image: `${d("commercial-renovation-ernakulam")}/thumb.png`,
+    tags: ["Facade", "Renovation", "Biophilic"],
     hero:
-      "What was a dark, compartmentalised commercial unit in Ernakulam is reimagined as a bright, legible premises with a clear customer journey. The renovation opens up the plan, brings daylight deep into the space, and uses a restrained brand-led palette to give the business a confident, recognisable identity.",
+      "A twenty-year-old commercial building given a new face without losing its bones. Through a lightweight framework layered over the existing facade — without disrupting the structure or its natural ventilation — and the introduction of biophilic elements, the building reads as contemporary, alive, and inviting, all on a budget that respected the client's constraints.",
     process: {
       understand:
-        "We studied how customers moved through the existing space, where they paused, and where the business lost them — and listened to staff on what made the old layout hard to work in.",
+        "We assessed what the twenty-year-old building still offered structurally and where it had aged — a dull facade, tired interior, and a street presence that no longer served the business. The client needed impact without the cost or disruption of a full rebuild.",
       define:
-        "The brief centred on clarity: a single welcoming entry sequence, intuitive circulation, more usable display area, and a stronger brand presence without overspending.",
+        "The brief was clear: an attractive facade, budget-friendly, minimal invasion. We committed to working with the existing structure rather than against it, and to bringing life back through natural rather than manufactured means.",
       design:
-        "Partition walls came out to let daylight reach the back, a clear sightline was opened from entry to service counter, and a consistent material and signage system gave the brand a calm, confident face.",
+        "A lightweight framework was introduced over the existing facade — a new skin that transforms the building's appearance without touching its structural bones or sealing its natural ventilation. Biophilic elements — planted pockets and green framing — soften the hard edges and connect the building back to its street. Inside, the interior was refreshed to match the confidence of the new exterior.",
       refine:
-        "We value-engineered the fit-out — swapping specified finishes for locally available equivalents, simplifying the lighting runs, and protecting the few details that carried the brand identity.",
+        "We value-engineered the facade framework, simplifying the detailing and sourcing locally to keep the budget intact while protecting the elements that delivered the visual transformation.",
       deliver:
-        "Drawings, a brand-compliant finishes schedule, signage artwork, and a lighting layout were packaged for a single contractor to deliver without gaps.",
+        "Facade details, interior drawings, and a planting strategy were packaged for a single contractor, with clear instructions on what to preserve and what to renew.",
       support:
-        "We reviewed mock-ups, approved the final signage fabrication, and resolved the service coordination that always surfaces once an old shell is opened up.",
+        "Through construction we reviewed the facade mock-up, oversaw the planting installation, and ensured the existing structure was respected at every junction.",
     },
     gallery: [
-      { src: `${dir("commercial-renovation-ernakulam")}/01.png`, alt: "Renovated interior view 1", caption: "The renovated interior — daylight now reaches deep into a space that was previously dark at the back." },
-      { src: `${dir("commercial-renovation-ernakulam")}/02.png`, alt: "Renovated interior view 2", caption: "The clear entry-to-service sightline that guides customers intuitively through the premises." },
-      { src: `${dir("commercial-renovation-ernakulam")}/03.png`, alt: "Renovated interior view 3", caption: "Brand-led material and signage system, applied consistently across walls, counter, and wayfinding." },
-      { src: `${dir("commercial-renovation-ernakulam")}/04.png`, alt: "Renovated interior view 4", caption: "Display area reorganised for more usable, flexible merchandising after the partition walls came out." },
+      { src: `${d("commercial-renovation-ernakulam")}/01.png`, alt: "Renovated facade view 1" },
+      { src: `${d("commercial-renovation-ernakulam")}/02.png`, alt: "Renovated facade view 2" },
+      { src: `${d("commercial-renovation-ernakulam")}/03.png`, alt: "Biophilic framework detail" },
+      { src: `${d("commercial-renovation-ernakulam")}/04.png`, alt: "Renovated facade view 4" },
     ],
   },
   {
     id: "e3-media-office-ajman",
-    title: "E3 Media Office",
+    title: "E3 Media Office, Ajman",
     category: "Workplaces",
     year: "2025",
     location: "Ajman, UAE",
     summary:
-      "A media company headquarters in Ajman designed around focus, collaboration, and a strong brand presence — balancing deep-work studios with open social and production zones.",
-    image: `${dir("e3-media-office-ajman")}/thumb.png`,
-    tags: ["Workplace", "HQ", "Brand"],
+      "A podcast studio and nine-person office designed around wellbeing — clustered workspaces, a breakout zone built for decompression, and branding that works for staff and guests alike.",
+    image: `${d("e3-media-office-ajman")}/thumb.png`,
+    tags: ["Workplace", "Studio", "Branding"],
     hero:
-      "E3 Media's Ajman headquarters is planned as two halves of one working day: quiet, enclosed studios where creative deep-work happens, and an open, energetic social and production zone where ideas cross-pollinate. A confident brand language runs through both, making the office read as a single, deliberate place.",
+      "An office interior with a dedicated podcast studio for a nine-person media team — designed under real space and budget constraints, yet planned as a genuinely positive work environment. Wellbeing, not just aesthetics, drove every decision: clustered workspaces that invite collaboration, a breakout space engineered for stress relief, and a brand language that elevates the experience for everyone who walks in.",
     process: {
       understand:
-        "We shadowed the team across a working week — seeing where focus broke down, where spontaneous collaboration happened, and how the brand currently felt (or didn't) inside their own space.",
+        "We spent time with the team — nine people sharing limited space, producing media daily, needing both a podcast studio and room to think. The constraints were real, but so was the ambition: a space that improved how they felt at work, not just how it looked.",
       define:
-        "The strategy separated deep-work studios from social and production zones, with brand identity carried materially through both so the office felt unmistakably like E3.",
+        "The brief combined a functional workspace for nine, a podcast studio, a breakout area designed for brainstorming and decompression, and branding that would signal identity to both staff and guests. Wellbeing was set as the primary measure of success — not aesthetics.",
       design:
-        "Acoustically-treated studios line the quiet edge; an open collaboration hub with a branded feature volume sits at the heart; production and meeting rooms cluster around a shared, daylight-filled break area.",
+        "Workspaces were clustered to create natural opportunities for teamwork, the breakout and meeting space was designed specifically to relieve stress and recharge focus, and brand elements were woven materially through the office so the space felt unmistakably its own. The podcast studio was acoustically isolated without feeling cut off from the energy of the rest of the office.",
       refine:
-        "We reworked the acoustic detailing, trimmed an over-designed feature wall down to its essentials, and rebalanced the budget toward the spaces the team would actually live in.",
+        "We rebalanced the budget toward the spaces the team would inhabit most, simplified the brand detailing to its strongest moments, and ensured the acoustic treatment served function without deadening the room visually.",
       deliver:
-        "A complete workplace package — plans, joinery, acoustics, AV coordination, signage, and FF&E — gave the fit-out team a single coordinated source of truth.",
+        "Interior plans, joinery, acoustic detailing, studio specification, and brand application were packaged into a single coordinated set.",
       support:
-        "Through fit-out we approved fabric and finish samples, coordinated AV and acoustic install, and protected the brand moments from value-engineering erasure.",
+        "Through fit-out we approved fabric and finish samples, coordinated the studio's acoustic and AV install, and protected the brand moments from value engineering.",
     },
     gallery: [
-      { src: `${dir("e3-media-office-ajman")}/01.png`, alt: "Open collaboration hub", caption: "The open collaboration hub at the heart of the office, with the branded feature volume anchoring the space." },
-      { src: `${dir("e3-media-office-ajman")}/02.png`, alt: "Deep-work studio", caption: "A quiet, acoustically-treated studio where focused creative work can happen without interruption." },
-      { src: `${dir("e3-media-office-ajman")}/03.png`, alt: "Production and meeting zone", caption: "The production and meeting rooms clustered around the shared daylight-filled break area." },
+      { src: `${d("e3-media-office-ajman")}/01.png`, alt: "Open collaboration hub" },
+      { src: `${d("e3-media-office-ajman")}/02.png`, alt: "Podcast studio" },
+      { src: `${d("e3-media-office-ajman")}/03.png`, alt: "Breakout and meeting zone" },
     ],
   },
   {
@@ -301,31 +300,31 @@ export const projects: Project[] = [
     year: "2026",
     location: "Tirur, Kerala",
     summary:
-      "A new-build family residence designed around a central courtyard — a home that breathes with Kerala's climate and gathers the household around a single shaded outdoor room.",
-    image: `${dir("residence-design-tirur")}/thumb.png`,
-    tags: ["New Build", "Courtyard", "Climate-led"],
+      "A budget-conscious Kerala home with a built-in growth path — 2BHK today, 4BHK tomorrow, rooted in tropical modern style and rustic warmth.",
+    image: `${d("residence-design-tirur")}/thumb.png`,
+    tags: ["Architecture", "Interiors", "New Build"],
     hero:
-      "This new-build residence in Tirur is organised around a shaded central courtyard — the traditional Kerala response to heat, rain, and extended-family living, reinterpreted for a contemporary household. Every principal room opens onto the court, so the home feels generous, cross-ventilated, and centred on a single shared outdoor room.",
+      "A residence designed under real budget and area constraints, yet given the freedom to feel spacious. Planned as a 2BHK with a deliberate path to expand into a 4BHK, the home blends Kerala traditional character with simple rustic warmth inside and a tropical modern exterior — proof that constraint and generosity can share a roof.",
     process: {
       understand:
-        "We sat with three generations of the family, understanding who needed privacy, who gathered where, and how the home had to perform through monsoon and the long hot months.",
+        "We sat with the family — a growing household with a clear budget ceiling and limited area to work with, but a genuine openness to design ideas. The home needed to serve them today and grow with them tomorrow.",
       define:
-        "The direction was a contemporary courtyard house: private wings around a shared shaded court, cross-ventilation through every room, and a plan that could absorb a growing family.",
+        "The brief was a 2BHK designed for future expansion into a 4BHK, under strict budget and area limits, with full design freedom. We committed to making the home feel larger than its footprint through planning, light, and proportion rather than added square footage.",
       design:
-        "Living, dining, and the elders' quarters wrap the courtyard on the cooler sides; bedrooms occupy the upper floor with shaded balconies; a single perforated screen wall filters the afternoon sun along the west.",
+        "The exterior follows a tropical modern language — deep overhangs, clean lines, and openings tuned to Kerala's climate. Inside, a simple rustic palette — warm wood, honest materials, and traditional Kerala character — makes the rooms feel grounded and generous. The plan was structured so future bedrooms could be added without disrupting the lived-in home.",
       refine:
-        "We tested the courtyard proportions for shade and airflow, simplified the roof drainage, and reworked the stair so it became a feature rather than a leftover.",
+        "We value-engineered every detail toward cost-effectiveness without surrendering the sense of space — simplifying junctions, choosing materials that perform and age well, and protecting the proportions that make the home feel bigger than it is.",
       deliver:
-        "Architectural drawings, structural and services coordination, courtyard detailing, and a material schedule tuned to local masons gave the builder a clear, buildable set.",
+        "Architecture and interior drawings, plus execution guidance and coordination, were delivered with a clear phasing plan for future expansion — so the family could build what they could afford now and grow later.",
       support:
-        "We stayed engaged through construction — reviewing the screen wall mock-up, settling the courtyard paving, and protecting the proportions as budget pressures arose.",
+        "Our scope included execution coordination — we stayed engaged through construction, guiding the builder, settling details on site, and ensuring the design intent survived the realities of budget building.",
     },
     gallery: [
-      { src: `${dir("residence-design-tirur")}/01.png`, alt: "Courtyard view", caption: "The shaded central courtyard — the heart of the home, around which every principal room is organised." },
-      { src: `${dir("residence-design-tirur")}/02.png`, alt: "Principal elevation", caption: "The principal elevation, with the perforated screen wall filtering the western afternoon sun." },
-      { src: `${dir("residence-design-tirur")}/03.png`, alt: "Living area opening to courtyard", caption: "The living area opening directly onto the courtyard — inside and outside held in deliberate balance." },
-      { src: `${dir("residence-design-tirur")}/04.png`, alt: "Upper-floor balcony", caption: "An upper-floor shaded balcony, giving the bedrooms private outdoor space and cross-ventilation." },
-      { src: `${dir("residence-design-tirur")}/05.png`, alt: "Entry and circulation", caption: "The entry sequence, which compresses before releasing into the light and air of the courtyard." },
+      { src: `${d("residence-design-tirur")}/01.png`, alt: "Courtyard view" },
+      { src: `${d("residence-design-tirur")}/02.png`, alt: "Principal elevation" },
+      { src: `${d("residence-design-tirur")}/03.png`, alt: "Living area opening to courtyard" },
+      { src: `${d("residence-design-tirur")}/04.png`, alt: "Upper-floor balcony" },
+      { src: `${d("residence-design-tirur")}/05.png`, alt: "Entry and circulation" },
     ],
   },
   {
@@ -335,31 +334,31 @@ export const projects: Project[] = [
     year: "2024",
     location: "Ernakulam, Kerala",
     summary:
-      "The renovation and extension of an existing residence — preserving its bones while reworking the plan, light, and materials into a calmer, more generous family home.",
-    image: `${dir("residence-renovation-ernakulam")}/thumb.png`,
-    tags: ["Renovation", "Extension", "Light"],
+      "A complete exterior, interior, and landscape renovation — exposed laterite, jali screens, an extended verandah, and an industrial staircase that transform a structurally sound but tired home.",
+    image: `${d("residence-renovation-ernakulam")}/thumb.png`,
+    tags: ["Renovation", "Landscape", "Facade"],
     hero:
-      "Rather than demolish and start over, this Ernakulam renovation keeps the sound bones of the original house and reworks everything around them — a reorganised plan that pulls light deep into the interior, a rear extension that adds generous family space, and a calm, warm material palette that ties old and new together.",
+      "A full renovation — exterior, interior, and landscape — of a structurally sound home whose facade, circulation, and outdoor life had all failed the family. The transformation introduces exposed laterite and jali screens, an extended verandah with new outdoor seating, an industrial staircase replacing a removed interior stair, and a calm interior palette of natural wood tones and neutral colours.",
     process: {
       understand:
-        "We documented what the existing house did well and where it failed the family — dark rooms, dead corridors, and a kitchen cut off from the life of the home.",
+        "We assessed what the existing house still offered structurally — sound bones — and where it had failed: a poor road-facing elevation, compromised bathroom windows, dead circulation, and no real connection between inside and outside. The family needed space, flow, and outdoor life without rebuilding from scratch.",
       define:
-        "The brief was to preserve the structure, reclaim the wasted space, bring daylight into the core, and add a single generous rear extension for family living.",
+        "The scope was total: exterior facade, interior plan, and landscape, including the entry gate and elevation. The direction was rustic-meets-modern — exposed laterite and jalis, an extended verandah and outdoor seating, an industrial staircase inside, and simple natural-wood interiors.",
       design:
-        "Internal walls were selectively removed to open the plan, a new rooflight dropped daylight into the centre, and the rear extension added a continuous kitchen–dining–living space connected to the garden.",
+        "The road-facing facade was rebuilt with exposed laterite and jali screens for light, privacy, and character. The verandah was extended and a new outdoor seating area added, connecting the home to its landscape. Inside, the old stair was removed and replaced with an industrial-themed staircase that reorganised circulation. Interiors follow a simple language of natural wood tones and neutral colours.",
       refine:
-        "We tested how new and old would meet — choosing a continuous floor finish and matching brick coursing so the extension read as a respectful continuation, not a graft.",
+        "We worked through the junctions where old structure meets new design — how the laterite meets the existing wall, how the industrial stair lands, how the extended verandah ties back — ensuring every transition felt deliberate rather than patched.",
       deliver:
-        "Demolition plans, new works drawings, joinery, lighting, and a material reconciliation schedule gave the builder a clear picture of what stayed, what went, and what was added.",
+        "Complete renovation drawings — demolition, new works, facade details, staircase design, interior finishes, and landscape — were packaged with a clear schedule of what stayed, what was removed, and what was added.",
       support:
-        "Renovations always hide surprises — we stayed close through the build, resolving structural findings behind the old walls and protecting the daylight strategy as details closed in.",
+        "Renovations always hide surprises behind old walls. We stayed close through the build, resolving structural findings as they surfaced, coordinating the stair installation, and protecting the design intent from the inevitable pressure to simplify.",
     },
     gallery: [
-      { src: `${dir("residence-renovation-ernakulam")}/01.png`, alt: "Renovated living space view 1", caption: "The renovated living space — once dark, now opened and connected to the rest of the home." },
-      { src: `${dir("residence-renovation-ernakulam")}/02.png`, alt: "Renovated living space view 2", caption: "The new rear extension, a continuous kitchen–dining–living space opening onto the garden." },
-      { src: `${dir("residence-renovation-ernakulam")}/03.png`, alt: "Renovated living space view 3", caption: "Daylight reaching deep into the core, courtesy of the new central rooflight." },
-      { src: `${dir("residence-renovation-ernakulam")}/04.png`, alt: "Renovated living space view 4", caption: "A continuous floor finish and matched brick coursing so new and old read as one calm home." },
-      { src: `${dir("residence-renovation-ernakulam")}/05.jpg`, alt: "The house before renovation", caption: "Before — the original house, whose sound bones were preserved while the plan, light, and materials were reworked." },
+      { src: `${d("residence-renovation-ernakulam")}/01.png`, alt: "Renovated facade with laterite and jali" },
+      { src: `${d("residence-renovation-ernakulam")}/02.png`, alt: "Extended verandah and outdoor seating" },
+      { src: `${d("residence-renovation-ernakulam")}/03.png`, alt: "Industrial staircase" },
+      { src: `${d("residence-renovation-ernakulam")}/04.png`, alt: "Interior with natural wood tones" },
+      { src: `${d("residence-renovation-ernakulam")}/05.jpg`, alt: "The house before renovation" },
     ],
   },
 ];

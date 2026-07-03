@@ -3,6 +3,18 @@ import { notFound } from "next/navigation";
 import { Reveal } from "@/components/reveal";
 import { Container, Button } from "@/components/ui";
 import { projects, getProject } from "@/lib/content";
+import { cn } from "@/lib/utils";
+
+const bentoSpans = [
+  "col-span-2 row-span-2 md:col-span-2 md:row-span-2",
+  "col-span-1 md:col-span-2",
+  "col-span-1 md:col-span-2",
+  "col-span-2 md:col-span-2",
+  "col-span-1 md:col-span-2",
+  "col-span-1 md:col-span-2",
+  "col-span-2 md:col-span-4",
+  "col-span-2 md:col-span-2",
+];
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.id }));
@@ -132,7 +144,7 @@ export default async function ProjectPage({
         </Container>
       </section>
 
-      {/* Gallery — captioned design images */}
+      {/* Gallery — bento grid */}
       <section className="border-t border-line py-16 md:py-24">
         <Container>
           <Reveal>
@@ -145,38 +157,24 @@ export default async function ProjectPage({
             </h2>
           </Reveal>
 
-          <div className="mt-12 flex flex-col gap-12 md:gap-16">
+          <div className="mt-12 grid auto-rows-[160px] grid-cols-2 gap-3 md:auto-rows-[220px] md:grid-cols-4 md:gap-4">
             {project.gallery.map((img, i) => (
-              <Reveal key={img.src} delay={0.05}>
-                <figure
-                  className={
-                    "grid gap-5 md:grid-cols-12 md:items-end " +
-                    (i % 2 === 1 ? "md:[&>div:first-child]:order-2" : "")
-                  }
-                >
-                  <div
-                    className={
-                      "overflow-hidden rounded-sm border border-line bg-surface " +
-                      (i % 2 === 1 ? "md:col-span-8" : "md:col-span-8")
-                    }
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={img.src}
-                      alt={img.alt}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 ease-out"
-                    />
-                  </div>
-                  <figcaption className="md:col-span-4">
-                    <span className="font-display text-sm text-accent">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <p className="mt-2 text-base leading-relaxed text-muted">
-                      {img.caption}
-                    </p>
-                  </figcaption>
-                </figure>
+              <Reveal
+                key={img.src}
+                delay={Math.min(i * 0.05, 0.25)}
+                className={cn(
+                  "group relative overflow-hidden rounded-sm border border-line bg-surface",
+                  bentoSpans[i % bentoSpans.length]
+                )}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-[800ms] ease-out group-hover:scale-105"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#000f08]/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               </Reveal>
             ))}
           </div>
