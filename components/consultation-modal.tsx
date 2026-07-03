@@ -231,191 +231,242 @@ export function ConsultationModal() {
             transition={{ duration: reduce ? 0.15 : 0.3, ease: EASE }}
             className="relative z-10 w-full max-w-2xl rounded-sm border border-line bg-background shadow-2xl"
           >
-            {sent ? (
-              <div className="flex min-h-[24rem] flex-1 flex-col items-center justify-center p-8 text-center">
-                <span className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-accent text-accent">
-                  <Check className="h-6 w-6" />
-                </span>
-                <h2 id={titleId} className="font-display mt-6 text-3xl font-light">
-                  Thank you.
-                </h2>
-                <p className="mt-3 max-w-md text-muted">
-                  Your consultation request has reached us. We&apos;ll be in
-                  touch within two business days.
-                </p>
-                <button
-                  type="button"
-                  onClick={close}
-                  className="link-underline mt-8 text-sm text-accent"
+            <AnimatePresence mode="wait">
+              {sent ? (
+                <motion.div
+                  key="thank-you"
+                  initial={reduce ? { opacity: 0 } : { opacity: 0, y: 12, scale: 0.98 }}
+                  animate={reduce ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
+                  exit={reduce ? { opacity: 0 } : { opacity: 0, y: -8, scale: 0.98 }}
+                  transition={{ duration: reduce ? 0.1 : 0.35, ease: EASE }}
+                  className="flex min-h-[24rem] flex-col items-center justify-center p-8 text-center"
                 >
-                  Close
-                </button>
-              </div>
-            ) : (
-              <>
-                <div className="flex items-start justify-between border-b border-line p-5 md:p-6">
-                  <div>
-                    <span className="eyebrow">Book a consultation</span>
-                    <h2
-                      id={titleId}
-                      className="font-display mt-2 text-balance text-xl font-light leading-tight md:text-2xl"
-                    >
-                      Tell us about your{" "}
-                      <span className="italic text-accent">project.</span>
-                    </h2>
-                  </div>
-                  <button
+                  <motion.span
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{
+                      type: "spring",
+                      duration: 0.5,
+                      bounce: 0.3,
+                      delay: reduce ? 0 : 0.05,
+                    }}
+                    className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-accent text-accent"
+                  >
+                    <Check className="h-6 w-6" />
+                  </motion.span>
+                  <motion.h2
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: reduce ? 0.1 : 0.3,
+                      ease: EASE,
+                      delay: reduce ? 0 : 0.1,
+                    }}
+                    id={titleId}
+                    className="font-display mt-6 text-3xl font-light"
+                  >
+                    Thank you.
+                  </motion.h2>
+                  <motion.p
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: reduce ? 0.1 : 0.3,
+                      ease: EASE,
+                      delay: reduce ? 0 : 0.18,
+                    }}
+                    className="mt-3 max-w-md text-muted"
+                  >
+                    Your consultation request has reached us. We&apos;ll be in
+                    touch within two business days.
+                  </motion.p>
+                  <motion.button
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: reduce ? 0.1 : 0.3,
+                      ease: EASE,
+                      delay: reduce ? 0 : 0.26,
+                    }}
                     type="button"
                     onClick={close}
-                    aria-label="Close"
-                    className="ml-4 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-sm border border-line text-muted transition-colors hover:border-accent hover:text-accent"
+                    className="link-underline mt-8 text-sm text-accent"
                   >
-                    <X className="h-4 w-4" />
-                  </button>
-                </div>
-
-                <form onSubmit={handleSubmit} noValidate className="grid gap-4 p-5 md:grid-cols-2 md:gap-5 md:p-6">
-                  <div className="md:col-span-1">
-                    <label htmlFor="consult-name" className="eyebrow block">
-                      Full name
-                    </label>
-                    <input
-                      ref={firstFieldRef}
-                      id="consult-name"
-                      name="name"
-                      type="text"
-                      autoComplete="name"
-                      maxLength={FIELD_LIMITS.name}
-                      value={values.name}
-                      onChange={update("name")}
-                      placeholder="Your name"
-                      className={`mt-2 w-full rounded-sm border bg-surface px-4 py-2.5 text-sm text-foreground placeholder:text-muted/60 outline-none transition-colors focus:border-accent ${
-                        errors.name ? "border-accent" : "border-line"
-                      }`}
-                    />
-                    {errors.name && (
-                      <p className="mt-1.5 text-xs text-accent">{errors.name}</p>
-                    )}
-                  </div>
-
-                  <div className="md:col-span-1">
-                    <label htmlFor="consult-email" className="eyebrow block">
-                      Email
-                    </label>
-                    <input
-                      id="consult-email"
-                      name="email"
-                      type="email"
-                      inputMode="email"
-                      autoComplete="email"
-                      maxLength={FIELD_LIMITS.email}
-                      value={values.email}
-                      onChange={update("email")}
-                      placeholder="you@email.com"
-                      className={`mt-2 w-full rounded-sm border bg-surface px-4 py-2.5 text-sm text-foreground placeholder:text-muted/60 outline-none transition-colors focus:border-accent ${
-                        errors.email ? "border-accent" : "border-line"
-                      }`}
-                    />
-                    {errors.email && (
-                      <p className="mt-1.5 text-xs text-accent">{errors.email}</p>
-                    )}
-                  </div>
-
-                  <div className="md:col-span-2">
-                    <label htmlFor="consult-phone" className="eyebrow block">
-                      Phone number
-                    </label>
-                    <input
-                      id="consult-phone"
-                      name="phone"
-                      type="tel"
-                      inputMode="tel"
-                      autoComplete="tel"
-                      maxLength={FIELD_LIMITS.phone}
-                      value={values.phone}
-                      onChange={update("phone")}
-                      placeholder="+971 XX XXX XXXX"
-                      className={`mt-2 w-full rounded-sm border bg-surface px-4 py-2.5 text-sm text-foreground placeholder:text-muted/60 outline-none transition-colors focus:border-accent ${
-                        errors.phone ? "border-accent" : "border-line"
-                      }`}
-                    />
-                    {errors.phone && (
-                      <p className="mt-1.5 text-xs text-accent">{errors.phone}</p>
-                    )}
-                  </div>
-
-                  <div className="md:col-span-2">
-                    <p className="eyebrow mb-3">Project type</p>
-                    <div className="flex flex-wrap gap-2">
-                      {projectTypes.map((t) => (
-                        <label
-                          key={t}
-                          className={`cursor-pointer rounded-sm border px-4 py-2 text-sm transition-colors ${
-                            values.projectType === t
-                              ? "border-accent bg-accent text-white"
-                              : "border-line text-muted hover:border-accent/50"
-                          }`}
-                        >
-                          <input
-                            type="radio"
-                            name="projectType"
-                            value={t}
-                            checked={values.projectType === t}
-                            onChange={() => {
-                              setValues((v) => ({ ...v, projectType: t }));
-                              if (errors.projectType)
-                                setErrors((er) => ({ ...er, projectType: undefined }));
-                            }}
-                            className="sr-only"
-                          />
-                          {t}
-                        </label>
-                      ))}
+                    Close
+                  </motion.button>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="form"
+                  initial={reduce ? { opacity: 0 } : { opacity: 0, y: 12, scale: 0.98 }}
+                  animate={reduce ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
+                  exit={reduce ? { opacity: 0 } : { opacity: 0, y: -8, scale: 0.98 }}
+                  transition={{ duration: reduce ? 0.1 : 0.2, ease: EASE }}
+                >
+                  <div className="flex items-start justify-between border-b border-line p-5 md:p-6">
+                    <div>
+                      <span className="eyebrow">Book a consultation</span>
+                      <h2
+                        id={titleId}
+                        className="font-display mt-2 text-balance text-xl font-light leading-tight md:text-2xl"
+                      >
+                        Tell us about your{" "}
+                        <span className="italic text-accent">project.</span>
+                      </h2>
                     </div>
-                    {errors.projectType && (
-                      <p className="mt-2 text-xs text-accent">{errors.projectType}</p>
-                    )}
-                  </div>
-
-                  <div className="md:col-span-2">
-                    <label htmlFor="consult-desc" className="eyebrow block">
-                      Tell us about your project
-                    </label>
-                    <textarea
-                      id="consult-desc"
-                      name="description"
-                      rows={3}
-                      maxLength={FIELD_LIMITS.description}
-                      value={values.description}
-                      onChange={update("description")}
-                      placeholder="What are you hoping to achieve? Timeline, location, anything that helps us understand."
-                      className={`mt-2 w-full resize-none rounded-sm border bg-surface px-4 py-2.5 text-sm text-foreground placeholder:text-muted/60 outline-none transition-colors focus:border-accent ${
-                        errors.description ? "border-accent" : "border-line"
-                      }`}
-                    />
-                    {errors.description && (
-                      <p className="mt-1.5 text-xs text-accent">{errors.description}</p>
-                    )}
-                  </div>
-
-                  <div className="md:col-span-2">
                     <button
-                      type="submit"
-                      disabled={submitting}
-                      className="group inline-flex items-center gap-2 rounded-sm bg-accent px-6 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-accent-deep disabled:cursor-not-allowed disabled:opacity-60"
+                      type="button"
+                      onClick={close}
+                      aria-label="Close"
+                      className="ml-4 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-sm border border-line text-muted transition-colors hover:border-accent hover:text-accent"
                     >
-                      {submitting ? "Sending…" : "Request consultation"}
-                      {!submitting && (
-                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                      )}
+                      <X className="h-4 w-4" />
                     </button>
-                    <p className="mt-2 text-xs text-muted">
-                      We typically reply within two business days.
-                    </p>
                   </div>
-                </form>
-              </>
-            )}
+
+                  <form onSubmit={handleSubmit} noValidate className="grid gap-4 p-5 md:grid-cols-2 md:gap-5 md:p-6">
+                    <div className="md:col-span-1">
+                      <label htmlFor="consult-name" className="eyebrow block">
+                        Full name
+                      </label>
+                      <input
+                        ref={firstFieldRef}
+                        id="consult-name"
+                        name="name"
+                        type="text"
+                        autoComplete="name"
+                        maxLength={FIELD_LIMITS.name}
+                        value={values.name}
+                        onChange={update("name")}
+                        placeholder="Your name"
+                        className={`mt-2 w-full rounded-sm border bg-surface px-4 py-2.5 text-sm text-foreground placeholder:text-muted/60 outline-none transition-colors focus:border-accent ${
+                          errors.name ? "border-accent" : "border-line"
+                        }`}
+                      />
+                      {errors.name && (
+                        <p className="mt-1.5 text-xs text-accent">{errors.name}</p>
+                      )}
+                    </div>
+
+                    <div className="md:col-span-1">
+                      <label htmlFor="consult-email" className="eyebrow block">
+                        Email
+                      </label>
+                      <input
+                        id="consult-email"
+                        name="email"
+                        type="email"
+                        inputMode="email"
+                        autoComplete="email"
+                        maxLength={FIELD_LIMITS.email}
+                        value={values.email}
+                        onChange={update("email")}
+                        placeholder="you@email.com"
+                        className={`mt-2 w-full rounded-sm border bg-surface px-4 py-2.5 text-sm text-foreground placeholder:text-muted/60 outline-none transition-colors focus:border-accent ${
+                          errors.email ? "border-accent" : "border-line"
+                        }`}
+                      />
+                      {errors.email && (
+                        <p className="mt-1.5 text-xs text-accent">{errors.email}</p>
+                      )}
+                    </div>
+
+                    <div className="md:col-span-2">
+                      <label htmlFor="consult-phone" className="eyebrow block">
+                        Phone number
+                      </label>
+                      <input
+                        id="consult-phone"
+                        name="phone"
+                        type="tel"
+                        inputMode="tel"
+                        autoComplete="tel"
+                        maxLength={FIELD_LIMITS.phone}
+                        value={values.phone}
+                        onChange={update("phone")}
+                        placeholder="+971 XX XXX XXXX"
+                        className={`mt-2 w-full rounded-sm border bg-surface px-4 py-2.5 text-sm text-foreground placeholder:text-muted/60 outline-none transition-colors focus:border-accent ${
+                          errors.phone ? "border-accent" : "border-line"
+                        }`}
+                      />
+                      {errors.phone && (
+                        <p className="mt-1.5 text-xs text-accent">{errors.phone}</p>
+                      )}
+                    </div>
+
+                    <div className="md:col-span-2">
+                      <p className="eyebrow mb-3">Project type</p>
+                      <div className="flex flex-wrap gap-2">
+                        {projectTypes.map((t) => (
+                          <label
+                            key={t}
+                            className={`cursor-pointer rounded-sm border px-4 py-2 text-sm transition-colors ${
+                              values.projectType === t
+                                ? "border-accent bg-accent text-white"
+                                : "border-line text-muted hover:border-accent/50"
+                            }`}
+                          >
+                            <input
+                              type="radio"
+                              name="projectType"
+                              value={t}
+                              checked={values.projectType === t}
+                              onChange={() => {
+                                setValues((v) => ({ ...v, projectType: t }));
+                                if (errors.projectType)
+                                  setErrors((er) => ({ ...er, projectType: undefined }));
+                              }}
+                              className="sr-only"
+                            />
+                            {t}
+                          </label>
+                        ))}
+                      </div>
+                      {errors.projectType && (
+                        <p className="mt-2 text-xs text-accent">{errors.projectType}</p>
+                      )}
+                    </div>
+
+                    <div className="md:col-span-2">
+                      <label htmlFor="consult-desc" className="eyebrow block">
+                        Tell us about your project
+                      </label>
+                      <textarea
+                        id="consult-desc"
+                        name="description"
+                        rows={3}
+                        maxLength={FIELD_LIMITS.description}
+                        value={values.description}
+                        onChange={update("description")}
+                        placeholder="What are you hoping to achieve? Timeline, location, anything that helps us understand."
+                        className={`mt-2 w-full resize-none rounded-sm border bg-surface px-4 py-2.5 text-sm text-foreground placeholder:text-muted/60 outline-none transition-colors focus:border-accent ${
+                          errors.description ? "border-accent" : "border-line"
+                        }`}
+                      />
+                      {errors.description && (
+                        <p className="mt-1.5 text-xs text-accent">{errors.description}</p>
+                      )}
+                    </div>
+
+                    <div className="md:col-span-2">
+                      <button
+                        type="submit"
+                        disabled={submitting}
+                        className="group inline-flex items-center gap-2 rounded-sm bg-accent px-6 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-accent-deep disabled:cursor-not-allowed disabled:opacity-60"
+                      >
+                        {submitting ? "Sending…" : "Request consultation"}
+                        {!submitting && (
+                          <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                        )}
+                      </button>
+                      <p className="mt-2 text-xs text-muted">
+                        We typically reply within two business days.
+                      </p>
+                    </div>
+                  </form>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
         </motion.div>
       )}
