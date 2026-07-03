@@ -9,7 +9,7 @@ import { nav } from "@/lib/content";
 import { cn } from "@/lib/utils";
 import { Logo } from "./logo";
 import { ThemeToggle } from "./theme-toggle";
-import { Button } from "./ui";
+import { BookConsultationButton } from "./book-consultation-button";
 
 const EASE = [0.23, 1, 0.32, 1] as const;
 const EASE_IN_OUT = [0.77, 0, 0.175, 1] as const;
@@ -63,9 +63,7 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-3 md:flex">
           <ThemeToggle />
-          <Button href="/contact" className="px-5 py-2.5">
-            Book a Consultation
-          </Button>
+          <BookConsultationButton className="px-5 py-2.5" />
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
@@ -186,9 +184,7 @@ export function SiteHeader() {
                 }
                 className="py-8"
               >
-                <Button href="/contact" className="w-full">
-                  Book a Consultation
-                </Button>
+                <BookConsultationButton className="w-full" />
               </motion.div>
             </div>
           </motion.div>

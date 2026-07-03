@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/reveal";
-import { Container, SectionHeading, Button } from "@/components/ui";
+import { Container, Eyebrow, SectionHeading } from "@/components/ui";
+import { BookConsultationButton } from "@/components/book-consultation-button";
 
 export const metadata = {
   title: "About",
@@ -199,15 +200,35 @@ export default function AboutPage() {
 
       <hr className="hairline" />
 
-      <section className="py-24 md:py-32">
-        <Container className="text-center">
-          <SectionHeading
-            align="center"
-            eyebrow="Work With Us"
-            title="Let&apos;s design something that lasts."
-          />
-          <div className="mt-10 flex justify-center">
-            <Button href="/contact">Book a Consultation</Button>
+      <section className="py-16 md:py-24">
+        <Container>
+          <div
+            className="relative overflow-hidden rounded-sm border-[0.5px] px-6 py-16 text-center shadow-[0_0_30px_-8px_rgba(251,54,64,0.35)] transition-shadow duration-500 hover:shadow-[0_0_50px_-5px_rgba(251,54,64,0.5)] md:px-16 md:py-24"
+            style={{ borderColor: "var(--accent)" }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/process/01-understand.jpg"
+              alt=""
+              aria-hidden
+              className="absolute inset-0 h-full w-full object-cover"
+              style={{ filter: "blur(0.3px) brightness(0.4)" }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/90" />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/15 blur-[100px]"
+            />
+            <Reveal className="relative">
+              <Eyebrow>Work With Us</Eyebrow>
+              <h2 className="font-display mx-auto mt-6 max-w-3xl text-balance text-[clamp(2rem,5vw,4rem)] font-light leading-[1.05]">
+                Let&apos;s design something that{" "}
+                <span className="italic text-accent">lasts.</span>
+              </h2>
+              <div className="mt-10 flex justify-center">
+                <BookConsultationButton />
+              </div>
+            </Reveal>
           </div>
         </Container>
       </section>

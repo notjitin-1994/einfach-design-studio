@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ChangeEvent } from "react";
 import { MapPin, Mail, Phone, ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { Container, Eyebrow } from "@/components/ui";
@@ -22,8 +22,87 @@ const contactDetails = [
 
 const socials = ["Instagram", "LinkedIn", "Behance", "Pinterest"];
 
+const EMAIL_RE = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
+const PHONE_RE = /^[+\d\s\-()]{7,20}$/;
+
+type FormValues = {
+  name: string;
+  email: string;
+  phone: string;
+  projectType: string;
+  message: string;
+};
+
+type FormErrors = Partial<Record<keyof FormValues, string>>;
+
+const FIELD_LIMITS: Record<keyof FormValues, number> = {
+  name: 100,
+  email: 254,
+  phone: 20,
+  projectType: 50,
+  message: 2000,
+};
+
+const INITIAL: FormValues = {
+  name: "",
+  email: "",
+  phone: "",
+  projectType: "",
+  message: "",
+};
+
+function stripControlChars(s: string): string {
+  return s.replace(/[\u0000-\u001f\u007f]/g, "");
+}
+
+function validate(values: FormValues): FormErrors {
+  const errors: FormErrors = {};
+
+  const name = stripControlChars(values.name).trim();
+  if (!name) errors.name = "Please enter your name.";
+  else if (name.length < 2) errors.name = "Name must be at least 2 characters.";
+
+  const email = stripControlChars(values.email).trim();
+  if (!email) errors.email = "Please enter your email.";
+  else if (!EMAIL_RE.test(email)) errors.email = "Please enter a valid email address.";
+
+  const phone = stripControlChars(values.phone).trim();
+  const phoneDigits = (phone.match(/\d/g) || []).length;
+  if (!phone) errors.phone = "Please enter your phone number.";
+  else if (!PHONE_RE.test(phone)) errors.phone = "Phone number contains invalid characters.";
+  else if (phoneDigits < 7) errors.phone = "Phone number must have at least 7 digits.";
+
+  if (!values.projectType) errors.projectType = "Please select a project type.";
+  else if (!projectTypes.includes(values.projectType)) errors.projectType = "Invalid project type.";
+
+  const message = stripControlChars(values.message).trim();
+  if (!message) errors.message = "Please tell us about your project.";
+  else if (message.length < 10) errors.message = "Please provide at least 10 characters.";
+
+  return errors;
+}
+
 export default function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [values, setValues] = useState<FormValues>(INITIAL);
+  const [errors, setErrors] = useState<FormErrors>({});
+
+  const update = (field: keyof FormValues) => (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const raw = e.target.value;
+    const cleaned = stripControlChars(raw).slice(0, FIELD_LIMITS[field]);
+    setValues((v) => ({ ...v, [field]: cleaned }));
+    if (errors[field]) setErrors((er) => ({ ...er, [field]: undefined }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const fieldErrors = validate(values);
+    if (Object.keys(fieldErrors).length > 0) {
+      setErrors(fieldErrors);
+      return;
+    }
+    setSent(true);
+  };
 
   return (
     <>
@@ -70,6 +149,20 @@ export default function ContactPage() {
               ))}
             </ul>
 
+            <div className="mt-10 overflow-hidden rounded-sm border border-line">
+              <iframe
+                title="Einfach Design Studio location — Dubai, UAE"
+                src="https://maps.google.com/maps?q=Dubai,+United+Arab+Emirates&t=&z=11&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="220"
+                style={{ border: 0, display: "block" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="map-dark"
+              />
+            </div>
+
             <p className="eyebrow mt-12">Follow our journey</p>
             <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
               {socials.map((s) => (
@@ -96,24 +189,47 @@ export default function ContactPage() {
                     </p>
                     <button
                       type="button"
-                      onClick={() => setSent(false)}
+                      onClick={() => {
+                        setSent(false);
+                        setValues(INITIAL);
+                        setErrors({});
+                      }}
                       className="link-underline mt-8 text-sm text-accent"
                     >
                       Send another message
                     </button>
                   </div>
                 ) : (
-                  <form
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      setSent(true);
-                    }}
-                    className="grid gap-8"
-                  >
-                    <div className="grid gap-8 sm:grid-cols-2">
-                      <Field label="Full name" name="name" placeholder="Your name" />
-                      <Field label="Email" name="email" type="email" placeholder="you@email.com" />
+                  <form onSubmit={handleSubmit} noValidate className="grid gap-5">
+                    <div className="grid gap-5 sm:grid-cols-2">
+                      <Field
+                        label="Full name"
+                        name="name"
+                        placeholder="Your name"
+                        value={values.name}
+                        onChange={update("name")}
+                        error={errors.name}
+                      />
+                      <Field
+                        label="Email"
+                        name="email"
+                        type="email"
+                        placeholder="you@email.com"
+                        value={values.email}
+                        onChange={update("email")}
+                        error={errors.email}
+                      />
                     </div>
+
+                    <Field
+                      label="Phone number"
+                      name="phone"
+                      type="tel"
+                      placeholder="+971 XX XXX XXXX"
+                      value={values.phone}
+                      onChange={update("phone")}
+                      error={errors.phone}
+                    />
 
                     <div>
                       <p className="eyebrow mb-3">Project type</p>
@@ -121,13 +237,31 @@ export default function ContactPage() {
                         {projectTypes.map((t) => (
                           <label
                             key={t}
-                            className="cursor-pointer rounded-sm border border-line px-4 py-2 text-sm text-muted transition-colors has-[:checked]:border-accent has-[:checked]:bg-accent has-[:checked]:text-white hover:border-accent/50"
+                            className={`cursor-pointer rounded-sm border px-4 py-2 text-sm transition-colors ${
+                              values.projectType === t
+                                ? "border-accent bg-accent text-white"
+                                : "border-line text-muted hover:border-accent/50"
+                            }`}
                           >
-                            <input type="radio" name="projectType" value={t} className="sr-only" />
+                            <input
+                              type="radio"
+                              name="projectType"
+                              value={t}
+                              checked={values.projectType === t}
+                              onChange={() => {
+                                setValues((v) => ({ ...v, projectType: t }));
+                                if (errors.projectType)
+                                  setErrors((er) => ({ ...er, projectType: undefined }));
+                              }}
+                              className="sr-only"
+                            />
                             {t}
                           </label>
                         ))}
                       </div>
+                      {errors.projectType && (
+                        <p className="mt-2 text-xs text-accent">{errors.projectType}</p>
+                      )}
                     </div>
 
                     <Field
@@ -135,17 +269,20 @@ export default function ContactPage() {
                       name="message"
                       textarea
                       placeholder="What are you hoping to achieve? Timeline, location, anything that helps us understand."
+                      value={values.message}
+                      onChange={update("message")}
+                      error={errors.message}
                     />
 
                     <div>
                       <button
                         type="submit"
-                        className="group inline-flex items-center gap-2 rounded-sm bg-accent px-7 py-3.5 text-sm font-medium text-white transition-all duration-300 hover:bg-accent-deep"
+                        className="group inline-flex items-center gap-2 rounded-sm bg-accent px-6 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-accent-deep"
                       >
                         Send message
                         <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                       </button>
-                      <p className="mt-4 text-xs text-muted">
+                      <p className="mt-2 text-xs text-muted">
                         We typically reply within two business days.
                       </p>
                     </div>
@@ -166,15 +303,23 @@ function Field({
   type = "text",
   placeholder,
   textarea,
+  value,
+  onChange,
+  error,
 }: {
   label: string;
   name: string;
   type?: string;
   placeholder?: string;
   textarea?: boolean;
+  value?: string;
+  onChange?: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  error?: string;
 }) {
   const base =
-    "mt-2 w-full rounded-sm border border-line bg-surface px-4 py-3 text-base text-foreground placeholder:text-muted/60 outline-none transition-colors focus:border-accent";
+    `mt-2 w-full rounded-sm border bg-surface px-4 py-2.5 text-sm text-foreground placeholder:text-muted/60 outline-none transition-colors focus:border-accent ${
+      error ? "border-accent" : "border-line"
+    }`;
   return (
     <label className="block">
       <span className="eyebrow">{label}</span>
@@ -184,6 +329,8 @@ function Field({
           rows={4}
           placeholder={placeholder}
           className={base + " resize-none"}
+          value={value}
+          onChange={onChange}
         />
       ) : (
         <input
@@ -191,8 +338,11 @@ function Field({
           name={name}
           placeholder={placeholder}
           className={base}
+          value={value}
+          onChange={onChange}
         />
       )}
+      {error && <p className="mt-1.5 text-xs text-accent">{error}</p>}
     </label>
   );
 }

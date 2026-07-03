@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Reveal } from "@/components/reveal";
-import { Container, Button } from "@/components/ui";
+import { Container, Eyebrow, Button } from "@/components/ui";
+import { BookConsultationButton } from "@/components/book-consultation-button";
 import { projects, getProject } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
@@ -202,6 +203,45 @@ export default async function ProjectPage({
               All projects
             </Button>
             <Button href="/contact">Start a project</Button>
+          </div>
+        </Container>
+      </section>
+
+      <hr className="hairline" />
+
+      <section className="py-16 md:py-24">
+        <Container>
+          <div
+            className="relative overflow-hidden rounded-sm border-[0.5px] px-6 py-16 text-center shadow-[0_0_30px_-8px_rgba(251,54,64,0.35)] transition-shadow duration-500 hover:shadow-[0_0_50px_-5px_rgba(251,54,64,0.5)] md:px-16 md:py-24"
+            style={{ borderColor: "var(--accent)" }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/process/01-understand.jpg"
+              alt=""
+              aria-hidden
+              className="absolute inset-0 h-full w-full object-cover"
+              style={{ filter: "blur(0.3px) brightness(0.4)" }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/90" />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/15 blur-[100px]"
+            />
+            <Reveal className="relative">
+              <Eyebrow>Like what you see?</Eyebrow>
+              <h2 className="font-display mx-auto mt-6 max-w-3xl text-balance text-[clamp(2rem,5vw,4rem)] font-light leading-[1.05]">
+                Let&apos;s create your{" "}
+                <span className="italic text-accent">story.</span>
+              </h2>
+              <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted">
+                Every project is unique. Start a conversation and we&apos;ll
+                help you shape what comes next.
+              </p>
+              <div className="mt-10 flex justify-center">
+                <BookConsultationButton />
+              </div>
+            </Reveal>
           </div>
         </Container>
       </section>

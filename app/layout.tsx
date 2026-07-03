@@ -7,6 +7,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { ThemeColorMeta } from "@/components/theme-color";
+import { ConsultationProvider } from "@/components/consultation-context";
+import { ConsultationModal } from "@/components/consultation-modal";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -81,10 +83,13 @@ export default function RootLayout({
         >
           <ThemeColorMeta />
           <SmoothScroll>
-            <ScrollProgress />
-            <SiteHeader />
-            <main className="flex-1">{children}</main>
-            <SiteFooter />
+            <ConsultationProvider>
+              <ScrollProgress />
+              <SiteHeader />
+              <main className="flex-1">{children}</main>
+              <SiteFooter />
+              <ConsultationModal />
+            </ConsultationProvider>
           </SmoothScroll>
         </ThemeProvider>
       </body>

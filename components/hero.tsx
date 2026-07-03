@@ -1,93 +1,19 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Button } from "@/components/ui";
+import { BookConsultationButton } from "@/components/book-consultation-button";
 
-const HERO_VIDEO = "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/hero.mp4";
+const HERO_IMAGE = "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/residence-design-tirur/01.png";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 export function Hero() {
   const prefersReduced = useReducedMotion();
   const [mounted, setMounted] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const direction = useRef(1);
-  const rafRef = useRef<number | null>(null);
 
   useEffect(() => setMounted(true), []);
   const reduce = mounted && Boolean(prefersReduced);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video || reduce) return;
-
-    video.muted = true;
-    video.defaultMuted = true;
-
-    let raf = 0;
-    let last = 0;
-    let reversing = false;
-    const SPEED = 0.5;
-
-    const tick = (now: number) => {
-      const dur = video.duration;
-      if (!dur || !isFinite(dur)) {
-        raf = requestAnimationFrame(tick);
-        return;
-      }
-      const dt = (now - last) / 1000;
-      last = now;
-      video.currentTime = Math.max(0.02, video.currentTime - dt * SPEED);
-      if (video.currentTime <= 0.05) {
-        reversing = false;
-        cancelAnimationFrame(raf);
-        raf = 0;
-        video.currentTime = 0.05;
-        void video.play().catch(() => {});
-      } else {
-        raf = requestAnimationFrame(tick);
-      }
-    };
-
-    const onTimeUpdate = () => {
-      if (reversing) return;
-      const dur = video.duration;
-      if (dur && isFinite(dur) && video.currentTime >= dur - 0.05) {
-        reversing = true;
-        video.pause();
-        last = performance.now();
-        cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(tick);
-      }
-    };
-
-    const onPlay = () => {
-      if (reversing) return;
-    };
-
-    video.addEventListener("timeupdate", onTimeUpdate);
-    video.addEventListener("play", onPlay);
-
-    const kick = () => {
-      const p = video.play();
-      if (p && typeof p.then === "function") {
-        p.catch(() => {
-          video.muted = true;
-          video.defaultMuted = true;
-          void video.play().catch(() => {});
-        });
-      }
-    };
-
-    if (video.readyState >= 1) kick();
-    else video.addEventListener("loadedmetadata", kick, { once: true });
-
-    return () => {
-      video.removeEventListener("timeupdate", onTimeUpdate);
-      video.removeEventListener("play", onPlay);
-      cancelAnimationFrame(raf);
-    };
-  }, [reduce]);
 
   const hidden = reduce ? { opacity: 0 } : { opacity: 0, y: 22 };
   const show = reduce
@@ -97,17 +23,13 @@ export function Hero() {
   return (
     <section className="relative isolate flex min-h-[100svh] flex-col overflow-hidden">
       <div className="absolute inset-0 -z-10">
-        <video
-          ref={videoRef}
-          src={HERO_VIDEO}
-          muted
-          playsInline
-          loop
-          preload="auto"
+        <div
           aria-hidden
-          tabIndex={-1}
-          className="h-full w-full object-cover"
-          style={{ filter: "grayscale(0.4) contrast(1.05) brightness(0.95)" }}
+          className="h-full w-full bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${HERO_IMAGE})`,
+            filter: "grayscale(0.4) contrast(1.05) brightness(0.95)",
+          }}
         />
 
         <div className="absolute inset-0 bg-gradient-to-b from-[#000f08]/70 via-[#000f08]/45 to-[#000f08]/90" />
@@ -148,7 +70,7 @@ export function Hero() {
             variants={{ hidden, show }}
             className="mt-11 flex flex-wrap items-center justify-center gap-4"
           >
-            <Button href="/contact">Book a Consultation</Button>
+            <BookConsultationButton />
             <Button href="/projects" variant="ghost" className="text-[#e9e0c9]">
               View Projects
             </Button>

@@ -149,3 +149,7 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+.dark .map-dark {
+  filter: invert(0.92) hue-rotate(180deg) saturate(0.5) brightness(0.92) contrast(0.95);
+}

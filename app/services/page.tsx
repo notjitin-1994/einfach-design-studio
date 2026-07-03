@@ -1,6 +1,7 @@
-import Link from "next/link";
 import { Reveal } from "@/components/reveal";
-import { Container, SectionHeading, Button } from "@/components/ui";
+import { Container, Eyebrow } from "@/components/ui";
+import { BookConsultationButton } from "@/components/book-consultation-button";
+import { ServicesAccordion } from "@/components/services-accordion";
 import { services } from "@/lib/content";
 
 export const metadata = {
@@ -53,12 +54,12 @@ export default function ServicesPage() {
             </Reveal>
           </div>
           {/* Desktop: equal-height image column */}
-          <div className="relative hidden min-h-[320px] md:block">
+          <div className="relative hidden overflow-hidden md:block">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/commercial-renovation-ernakulam/01.png"
               alt="Design process and drafting"
-              className="duotone h-full w-full rounded-sm border border-line object-cover"
+              className="duotone absolute inset-0 rounded-sm border border-line object-cover"
             />
           </div>
         </Container>
@@ -66,55 +67,45 @@ export default function ServicesPage() {
 
       <section className="py-12 md:py-16">
         <Container>
-          {services.map((s, i) => (
-            <Reveal key={s.index}>
-              <div className="grid gap-8 border-b border-line py-12 md:grid-cols-12 md:gap-12 md:py-16">
-                <div className="md:col-span-1">
-                  <span className="font-display text-2xl font-light text-accent">
-                    {s.index}
-                  </span>
-                </div>
-                <div className="md:col-span-5">
-                  <h2 className="font-display text-balance text-3xl font-light md:text-4xl">
-                    {s.title}
-                  </h2>
-                  <p className="mt-5 text-base leading-relaxed text-muted">
-                    {s.description}
-                  </p>
-                  <Link
-                    href="/contact"
-                    className="link-underline mt-6 inline-block text-sm text-accent"
-                  >
-                    Enquire about {s.title} →
-                  </Link>
-                </div>
-                <ul className="md:col-span-5 md:col-start-8">
-                  {s.bullets.map((b) => (
-                    <li
-                      key={b}
-                      className="flex items-center gap-3 border-b border-line py-4 text-sm"
-                    >
-                      <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          ))}
+          <ServicesAccordion services={services} />
         </Container>
       </section>
 
-      <section className="py-24 md:py-32">
-        <Container className="text-center">
-          <SectionHeading
-            align="center"
-            eyebrow="Not Sure What You Need?"
-            title="Start with a conversation."
-            intro="Tell us about your project and we’ll help you find the right path forward — no obligation."
-          />
-          <div className="mt-10 flex justify-center">
-            <Button href="/contact">Book a Consultation</Button>
+      <hr className="hairline" />
+
+      <section className="py-16 md:py-24">
+        <Container>
+          <div
+            className="relative overflow-hidden rounded-sm border-[0.5px] px-6 py-16 text-center shadow-[0_0_30px_-8px_rgba(251,54,64,0.35)] transition-shadow duration-500 hover:shadow-[0_0_50px_-5px_rgba(251,54,64,0.5)] md:px-16 md:py-24"
+            style={{ borderColor: "var(--accent)" }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/process/01-understand.jpg"
+              alt=""
+              aria-hidden
+              className="absolute inset-0 h-full w-full object-cover"
+              style={{ filter: "blur(0.3px) brightness(0.4)" }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/90" />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/15 blur-[100px]"
+            />
+            <Reveal className="relative">
+              <Eyebrow>Not Sure What You Need?</Eyebrow>
+              <h2 className="font-display mx-auto mt-6 max-w-3xl text-balance text-[clamp(2rem,5vw,4rem)] font-light leading-[1.05]">
+                Start with a{" "}
+                <span className="italic text-accent">conversation.</span>
+              </h2>
+              <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted">
+                Tell us about your project and we&apos;ll help you find the
+                right path forward — no obligation.
+              </p>
+              <div className="mt-10 flex justify-center">
+                <BookConsultationButton />
+              </div>
+            </Reveal>
           </div>
         </Container>
       </section>
