@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Reveal } from "@/components/reveal";
 import { Container, Button } from "@/components/ui";
@@ -63,11 +64,13 @@ export default async function ProjectPage({
       {/* Hero — full-bleed thumbnail with dark scrim */}
       <section className="relative isolate flex min-h-[78svh] flex-col overflow-hidden border-b border-line">
         <div className="absolute inset-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={project.image}
             alt={project.title}
-            className="h-full w-full object-cover"
+            fill
+            sizes="100vw"
+            priority
+            className="object-cover"
             style={{ filter: "grayscale(0.25) contrast(1.05) brightness(0.85)" }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#000f08]/65 via-[#000f08]/40 to-[#000f08]/90" />
@@ -167,12 +170,13 @@ export default async function ProjectPage({
                   bentoSpans[i % bentoSpans.length]
                 )}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={img.src}
                   alt={img.alt}
+                  fill
+                  sizes="(max-width: 768px) 50vw, 25vw"
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-[800ms] ease-out group-hover:scale-105"
+                  className="object-cover transition-transform duration-[800ms] ease-out group-hover:scale-105"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#000f08]/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               </Reveal>

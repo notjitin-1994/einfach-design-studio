@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Container, Button } from "@/components/ui";
 
-const HERO_VIDEO = "/hero.mp4";
+const HERO_VIDEO = "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/hero.mp4";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 export function Hero() {

@@ -21,7 +21,7 @@ export default function ProjectsPage() {
         <div className="absolute inset-0 md:hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/projects/residence-design-tirur/02.png"
+            src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/residence-design-tirur/02.png"
             alt=""
             aria-hidden
             className="h-full w-full object-cover"
@@ -50,7 +50,7 @@ export default function ProjectsPage() {
           <div className="relative hidden min-h-[320px] md:block">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/projects/residence-design-tirur/02.png"
+              src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/residence-design-tirur/02.png"
               alt="Featured architecture project"
               className="duotone h-full w-full rounded-sm border border-line object-cover"
             />

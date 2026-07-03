@@ -27,7 +27,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 md:hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/projects/apartment-interior-dubai/04.png"
+            src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/apartment-interior-dubai/04.png"
             alt=""
             className="h-full w-full object-cover"
             style={{ filter: "grayscale(0.35) contrast(1.05)" }}
@@ -89,7 +89,7 @@ export default function AboutPage() {
               <div className="relative aspect-[4/5] overflow-hidden rounded-sm border border-line">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/projects/apartment-interior-dubai/04.png"
+                  src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/apartment-interior-dubai/04.png"
                   alt="Architectural interior detail"
                   className="duotone h-full w-full object-cover"
                 />

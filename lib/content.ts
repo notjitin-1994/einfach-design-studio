@@ -116,7 +116,8 @@ export const nav = [
 
 // ---------- Project assets & copy ----------
 
-const d = (slug: string) => `/projects/${slug}`;
+const SB_MEDIA = "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media";
+const d = (slug: string) => `${SB_MEDIA}/projects/${slug}`;
 
 export const projects: Project[] = [
   {

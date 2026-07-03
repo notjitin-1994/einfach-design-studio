@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { ComponentProps, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/lib/content";
@@ -106,12 +107,13 @@ export function ProjectCard({ project }: { project: Project }) {
       aria-label={`${project.title}, ${project.category}`}
     >
       <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-surface">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={project.image}
           alt={project.title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           loading="lazy"
-          className="duotone h-full w-full object-cover"
+          className="duotone object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/0 to-black/0" />
         <div className="absolute left-5 top-5">
