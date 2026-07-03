@@ -107,7 +107,7 @@ export default function ContactPage() {
   return (
     <>
       <section className="border-b border-line">
-        <Container className="py-10 md:py-14">
+        <Container className="py-14 md:py-20">
           <Eyebrow>Contact</Eyebrow>
           <h1 className="font-display mt-7 max-w-4xl text-balance text-[clamp(2.4rem,6vw,5.5rem)] font-light leading-[1.02]">
             Let&apos;s start the{" "}
@@ -121,7 +121,7 @@ export default function ContactPage() {
         </Container>
       </section>
 
-      <section className="py-10 md:py-14">
+      <section className="py-14 md:py-20">
         <Container className="grid gap-16 lg:grid-cols-12">
           {/* Details */}
           <div className="lg:col-span-4">

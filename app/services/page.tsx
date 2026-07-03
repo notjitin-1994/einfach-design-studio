@@ -31,7 +31,7 @@ export default function ServicesPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#000f08]/82 via-[#000f08]/58 to-[#000f08]/92" />
         </div>
-        <Container className="relative grid items-stretch gap-10 py-10 md:grid-cols-2 md:gap-12 md:py-14">
+        <Container className="relative grid items-stretch gap-10 py-14 md:grid-cols-2 md:gap-12 md:py-20">
           <div className="flex flex-col justify-center text-[#e9e0c9] md:text-foreground">
             <Reveal>
               <span className="inline-flex items-center gap-2 text-[0.74rem] font-medium uppercase tracking-[0.22em] text-[#e9e0c9]/70 md:text-muted">
@@ -65,7 +65,7 @@ export default function ServicesPage() {
         </Container>
       </section>
 
-      <section className="py-6 md:py-8">
+      <section className="py-8 md:py-11">
         <Container>
           <ServicesAccordion services={services} />
         </Container>
@@ -73,7 +73,7 @@ export default function ServicesPage() {
 
       <hr className="hairline" />
 
-      <section className="py-8 md:py-12">
+      <section className="py-11 md:py-16">
         <Container>
           <div
             className="relative overflow-hidden rounded-sm border-[0.5px] px-6 py-16 text-center shadow-[0_0_30px_-8px_rgba(251,54,64,0.35)] transition-shadow duration-500 hover:shadow-[0_0_50px_-5px_rgba(251,54,64,0.5)] md:px-16 md:py-24"
