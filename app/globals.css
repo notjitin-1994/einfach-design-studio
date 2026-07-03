@@ -13,19 +13,34 @@
   --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
 }
 
-:root,
-.dark {
-  --background: #000f08;
-  --foreground: #e9e0c9;
-  --accent: #fb3640;
-  --accent-soft: #fc6d72;
-  --accent-deep: #c92730;
-  --surface: rgba(233, 224, 201, 0.05);
-  --line: rgba(233, 224, 201, 0.14);
-  --muted: rgba(233, 224, 201, 0.62);
-  color-scheme: dark;
+/* Initial render matches system preference — no JS required */
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #e9e0c9;
+    --foreground: #000f08;
+    --accent: #fb3640;
+    --accent-soft: #c92730;
+    --accent-deep: #9c1d25;
+    --surface: rgba(0, 15, 8, 0.045);
+    --line: rgba(0, 15, 8, 0.16);
+    --muted: rgba(0, 15, 8, 0.62);
+  }
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000f08;
+    --foreground: #e9e0c9;
+    --accent: #fb3640;
+    --accent-soft: #fc6d72;
+    --accent-deep: #c92730;
+    --surface: rgba(233, 224, 201, 0.05);
+    --line: rgba(233, 224, 201, 0.14);
+    --muted: rgba(233, 224, 201, 0.62);
+  }
+}
+
+/* User override classes — applied by next-themes when user has explicitly chosen */
 .light {
   --background: #e9e0c9;
   --foreground: #000f08;
@@ -36,6 +51,18 @@
   --line: rgba(0, 15, 8, 0.16);
   --muted: rgba(0, 15, 8, 0.62);
   color-scheme: light;
+}
+
+.dark {
+  --background: #000f08;
+  --foreground: #e9e0c9;
+  --accent: #fb3640;
+  --accent-soft: #fc6d72;
+  --accent-deep: #c92730;
+  --surface: rgba(233, 224, 201, 0.05);
+  --line: rgba(233, 224, 201, 0.14);
+  --muted: rgba(233, 224, 201, 0.62);
+  color-scheme: dark;
 }
 
 * {
