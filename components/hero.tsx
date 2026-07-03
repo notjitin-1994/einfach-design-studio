@@ -26,39 +26,31 @@ export function Hero() {
       return;
     }
 
-    const startPingPong = () => {
-      let last = performance.now();
-      const tick = (now: number) => {
-        const delta = (now - last) / 1000;
-        last = now;
-        const dur = video.duration;
-        if (dur && isFinite(dur) && dur > 0) {
-          let next = video.currentTime + direction.current * delta;
-          if (next >= dur) {
-            next = dur;
-            direction.current = -1;
-          } else if (next <= 0) {
-            next = 0;
-            direction.current = 1;
-          }
-          video.currentTime = next;
-        }
-        rafRef.current = requestAnimationFrame(tick);
-      };
-      rafRef.current = requestAnimationFrame(tick);
+    const onTimeUpdate = () => {
+      const dur = video.duration;
+      if (!dur || !isFinite(dur)) return;
+      if (video.playbackRate > 0 && video.currentTime >= dur - 0.08) {
+        video.playbackRate = -1;
+      } else if (video.playbackRate < 0 && video.currentTime <= 0.08) {
+        video.playbackRate = 1;
+      }
     };
 
-    const onLoaded = () => startPingPong();
+    const start = () => {
+      video.playbackRate = 1;
+      video.play().catch(() => {});
+      video.addEventListener("timeupdate", onTimeUpdate);
+    };
 
     if (video.readyState >= 2) {
-      onLoaded();
+      start();
     } else {
-      video.addEventListener("loadeddata", onLoaded, { once: true });
+      video.addEventListener("loadeddata", start, { once: true });
     }
 
     return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      video.removeEventListener("loadeddata", onLoaded);
+      video.removeEventListener("timeupdate", onTimeUpdate);
+      video.removeEventListener("loadeddata", start);
     };
   }, [reduce]);
 
@@ -75,6 +67,7 @@ export function Hero() {
           src={HERO_VIDEO}
           muted
           playsInline
+          loop
           preload="auto"
           aria-hidden
           tabIndex={-1}
