@@ -102,6 +102,7 @@ export function ConsultationModal() {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [submitting, setSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
 
   const titleId = useId();
   const firstFieldRef = useRef<HTMLInputElement>(null);
@@ -173,6 +174,7 @@ export function ConsultationModal() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setFormError(null);
     const fieldErrors = validate(values);
     if (Object.keys(fieldErrors).length > 0) {
       setErrors(fieldErrors);
@@ -189,12 +191,18 @@ export function ConsultationModal() {
           phone: values.phone.trim(),
           projectType: values.projectType,
           description: values.description.trim(),
+          source: "modal",
         }),
       });
-      if (!res.ok) throw new Error("submit failed");
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        throw new Error(data.error || "Something went wrong. Please try again.");
+      }
       setSent(true);
-    } catch {
-      setErrors({ description: "Something went wrong. Please try again." });
+    } catch (err) {
+      setFormError(
+        err instanceof Error ? err.message : "Something went wrong. Please try again.",
+      );
     } finally {
       setSubmitting(false);
     }
@@ -448,7 +456,25 @@ export function ConsultationModal() {
                       )}
                     </div>
 
+                    {/* Honeypot — hidden from humans, traps bots */}
+                    <label className="sr-only" htmlFor="consult-website">
+                      Website
+                    </label>
+                    <input
+                      id="consult-website"
+                      name="website"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      className="absolute h-0 w-0 opacity-0"
+                      value=""
+                      readOnly
+                    />
+
                     <div className="md:col-span-2">
+                      {formError && (
+                        <p className="mb-2 text-xs text-accent">{formError}</p>
+                      )}
                       <button
                         type="submit"
                         disabled={submitting}

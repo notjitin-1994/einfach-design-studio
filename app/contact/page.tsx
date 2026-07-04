@@ -86,6 +86,8 @@ export default function ContactPage() {
   const [sent, setSent] = useState(false);
   const [values, setValues] = useState<FormValues>(INITIAL);
   const [errors, setErrors] = useState<FormErrors>({});
+  const [submitting, setSubmitting] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
 
   const update = (field: keyof FormValues) => (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const raw = e.target.value;
@@ -94,14 +96,41 @@ export default function ContactPage() {
     if (errors[field]) setErrors((er) => ({ ...er, [field]: undefined }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setFormError(null);
     const fieldErrors = validate(values);
     if (Object.keys(fieldErrors).length > 0) {
       setErrors(fieldErrors);
       return;
     }
-    setSent(true);
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/consultation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: values.name.trim(),
+          email: values.email.trim(),
+          phone: values.phone.trim(),
+          projectType: values.projectType,
+          description: values.message.trim(),
+          source: "contact",
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        throw new Error(data.error || "Something went wrong. Please try again.");
+      }
+      setSent(true);
+      setValues(INITIAL);
+    } catch (err) {
+      setFormError(
+        err instanceof Error ? err.message : "Something went wrong. Please try again.",
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -274,13 +303,34 @@ export default function ContactPage() {
                       error={errors.message}
                     />
 
+                    {/* Honeypot — hidden from humans, traps bots */}
+                    <label className="sr-only" htmlFor="contact-website">
+                      Website
+                    </label>
+                    <input
+                      id="contact-website"
+                      name="website"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      className="absolute h-0 w-0 opacity-0"
+                      value=""
+                      readOnly
+                    />
+
                     <div>
+                      {formError && (
+                        <p className="mb-2 text-xs text-accent">{formError}</p>
+                      )}
                       <button
                         type="submit"
-                        className="group inline-flex items-center gap-2 rounded-sm bg-accent px-6 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-accent-deep"
+                        disabled={submitting}
+                        className="group inline-flex items-center gap-2 rounded-sm bg-accent px-6 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-accent-deep disabled:cursor-not-allowed disabled:opacity-60"
                       >
-                        Send message
-                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                        {submitting ? "Sending…" : "Send message"}
+                        {!submitting && (
+                          <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                        )}
                       </button>
                       <p className="mt-2 text-xs text-muted">
                         We typically reply within two business days.
