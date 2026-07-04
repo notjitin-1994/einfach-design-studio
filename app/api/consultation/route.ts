@@ -1,4 +1,7 @@
 import { NextResponse } from "next/server";
+import { z } from "zod";
+import { createClient } from "@/lib/supabase/server";
+import { ratelimit } from "@/lib/rate-limit";
 
 const projectTypes = [
   "New build",
@@ -7,25 +10,36 @@ const projectTypes = [
   "Commercial",
   "Design review",
   "Other",
-];
+] as const;
 
-const FIELD_LIMITS = {
-  name: 100,
-  email: 254,
-  phone: 20,
-  projectType: 50,
-  description: 2000,
-} as const;
+const ConsultationSchema = z.object({
+  name: z.string().min(2).max(100),
+  email: z.string().email().max(254),
+  phone: z.string().max(20).optional().or(z.literal("")),
+  projectType: z.enum(projectTypes),
+  description: z.string().min(10).max(2000),
+  source: z.enum(["modal", "contact"]).default("modal"),
+  website: z.string().optional(),
+});
 
-const EMAIL_RE = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
-const PHONE_RE = /^[+\d\s\-()]{7,20}$/;
+export type ConsultationPayload = z.infer<typeof ConsultationSchema>;
 
-function stripControlChars(s: string): string {
-  return s.replace(/[\u0000-\u001f\u007f]/g, "");
+function isHoneypotTriggered(values: { website?: string }): boolean {
+  return Boolean(values.website && values.website.length > 0);
 }
 
-function isString(v: unknown): v is string {
-  return typeof v === "string";
+function getClientIp(request: Request): string {
+  return (
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+    request.headers.get("x-real-ip") ??
+    "127.0.0.1"
+  );
+}
+
+function jsonResponse(body: unknown, init: ResponseInit = {}): NextResponse {
+  const headers = new Headers(init.headers);
+  headers.set("Cache-Control", "no-store, private");
+  return NextResponse.json(body, { ...init, headers });
 }
 
 export async function POST(request: Request) {
@@ -33,70 +47,59 @@ export async function POST(request: Request) {
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
+    return jsonResponse({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  if (!body || typeof body !== "object") {
-    return NextResponse.json({ error: "Invalid body" }, { status: 400 });
+  const parsed = ConsultationSchema.safeParse(body);
+  if (!parsed.success) {
+    return jsonResponse(
+      { error: "Invalid input", details: parsed.error.flatten().fieldErrors },
+      { status: 400 },
+    );
   }
 
-  const raw = body as Record<string, unknown>;
+  const data = parsed.data;
 
-  // Extract and sanitize each field — all values treated as untrusted strings.
-  // Never pass user input to a query string, shell, or eval. If this data is
-  // later persisted to a database, use parameterized queries (e.g. Supabase
-  // client methods or a tagged-template SQL builder) — never string-concatenate.
-  const name = isString(raw.name) ? stripControlChars(raw.name).trim().slice(0, FIELD_LIMITS.name) : "";
-  const email = isString(raw.email) ? stripControlChars(raw.email).trim().slice(0, FIELD_LIMITS.email) : "";
-  const phone = isString(raw.phone) ? stripControlChars(raw.phone).trim().slice(0, FIELD_LIMITS.phone) : "";
-  const projectType = isString(raw.projectType) ? stripControlChars(raw.projectType).trim().slice(0, FIELD_LIMITS.projectType) : "";
-  const description = isString(raw.description) ? stripControlChars(raw.description).trim().slice(0, FIELD_LIMITS.description) : "";
-
-  // Reject any unexpected fields (defense against parameter pollution)
-  const allowed = new Set(["name", "email", "phone", "projectType", "description"]);
-  for (const key of Object.keys(raw)) {
-    if (!allowed.has(key)) {
-      return NextResponse.json({ error: "Unexpected field" }, { status: 400 });
-    }
+  if (isHoneypotTriggered(data)) {
+    return jsonResponse({ ok: true });
   }
 
-  // Server-side validation (mirrors client validation)
-  if (name.length < 2) return NextResponse.json({ error: "Invalid name" }, { status: 400 });
-  if (!EMAIL_RE.test(email)) return NextResponse.json({ error: "Invalid email" }, { status: 400 });
-
-  const phoneDigits = (phone.match(/\d/g) || []).length;
-  if (!PHONE_RE.test(phone) || phoneDigits < 7 || phoneDigits > 15) {
-    return NextResponse.json({ error: "Invalid phone" }, { status: 400 });
+  const ip = getClientIp(request);
+  const { success, limit, remaining, reset } = await ratelimit.limit(ip);
+  if (!success) {
+    return jsonResponse(
+      { error: "Too many requests. Please try again later." },
+      {
+        status: 429,
+        headers: {
+          "X-RateLimit-Limit": String(limit),
+          "X-RateLimit-Remaining": String(remaining),
+          "X-RateLimit-Reset": String(reset),
+          "Retry-After": String(Math.ceil((reset - Date.now()) / 1000)),
+        },
+      },
+    );
   }
 
-  if (!projectTypes.includes(projectType)) {
-    return NextResponse.json({ error: "Invalid project type" }, { status: 400 });
+  const supabase = await createClient();
+
+  const { error } = await supabase.from("consultations").insert({
+    name: data.name.trim(),
+    email: data.email.trim().toLowerCase(),
+    phone: data.phone?.trim() || null,
+    project_type: data.projectType,
+    description: data.description.trim(),
+    source: data.source,
+  });
+
+  if (error) {
+    // Log server-side only; never leak raw DB errors to the client
+    console.error("[consultation] insert failed:", error.message);
+    return jsonResponse(
+      { error: "Something went wrong. Please try again." },
+      { status: 500 },
+    );
   }
 
-  if (description.length < 10) {
-    return NextResponse.json({ error: "Description too short" }, { status: 400 });
-  }
-
-  // Detect common SQL/XSS injection patterns in the description field as a
-  // belt-and-suspenders check. Real protection comes from parameterized
-  // queries + output encoding; this just rejects obviously hostile payloads
-  // before they reach any downstream system.
-  const injectionPatterns = [
-    /(\b(SELECT|INSERT|UPDATE|DELETE|DROP|UNION|ALTER|CREATE|REPLACE)\b)/i,
-    /(--|;|\/\*|\*\/)/,
-    /<script[\s>]/i,
-    /javascript:/i,
-    /on\w+\s*=/i,
-  ];
-  for (const pattern of injectionPatterns) {
-    if (pattern.test(description) || pattern.test(name)) {
-      return NextResponse.json({ error: "Invalid input" }, { status: 400 });
-    }
-  }
-
-  // TODO: when persistence is added, insert via parameterized query:
-  //   await db.from("consultations").insert({ name, email, phone, projectType, description })
-  // Never: await db.query(`INSERT INTO consultations VALUES ('${name}', ...)`)
-
-  return NextResponse.json({ ok: true });
+  return jsonResponse({ ok: true }, { status: 201 });
 }
