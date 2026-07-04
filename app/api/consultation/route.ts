@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
-import { ratelimit } from "@/lib/rate-limit";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 const projectTypes = [
   "New build",
@@ -65,17 +65,14 @@ export async function POST(request: Request) {
   }
 
   const ip = getClientIp(request);
-  const { success, limit, remaining, reset } = await ratelimit.limit(ip);
-  if (!success) {
+  const rateLimitResult = await checkRateLimit(ip);
+  if (!rateLimitResult.allowed) {
     return jsonResponse(
       { error: "Too many requests. Please try again later." },
       {
         status: 429,
         headers: {
-          "X-RateLimit-Limit": String(limit),
-          "X-RateLimit-Remaining": String(remaining),
-          "X-RateLimit-Reset": String(reset),
-          "Retry-After": String(Math.ceil((reset - Date.now()) / 1000)),
+          "Retry-After": String(rateLimitResult.retryAfterSeconds),
         },
       },
     );
@@ -93,7 +90,6 @@ export async function POST(request: Request) {
   });
 
   if (error) {
-    // Log server-side only; never leak raw DB errors to the client
     console.error("[consultation] insert failed:", error.message);
     return jsonResponse(
       { error: "Something went wrong. Please try again." },
