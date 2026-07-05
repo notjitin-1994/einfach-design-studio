@@ -167,6 +167,78 @@ export default function AboutPage() {
 
       <hr className="hairline" />
 
+      {/* FOUNDERS */}
+      <section className="py-16 md:py-24">
+        <Container>
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-14">
+            <div className="lg:col-span-5">
+              <Reveal>
+                <div className="relative aspect-[4/5] overflow-hidden rounded-sm border border-line">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/IMG_5715.PNG"
+                    alt="Joe V Johnson and Catherine Yesudas, co-founders of Einfach Design Studio, in their Dubai studio"
+                    loading="lazy"
+                    decoding="async"
+                    className="duotone h-full w-full object-cover"
+                  />
+                </div>
+              </Reveal>
+              <Reveal delay={0.08}>
+                <p className="mt-5 flex items-center gap-3 text-sm text-muted">
+                  <span className="h-px w-6 bg-accent/70" aria-hidden />
+                  <span>Joe &amp; Catherine · Dubai, 2026</span>
+                </p>
+              </Reveal>
+            </div>
+
+            <div className="lg:col-span-7">
+              <Reveal>
+                <Eyebrow>The Founders</Eyebrow>
+              </Reveal>
+
+              <Reveal delay={0.1}>
+                <div className="mt-10 border-t border-line pt-10">
+                  <p className="font-display pb-1 text-[clamp(2rem,4.2vw,3.4rem)] font-light leading-[1.15] text-balance">
+                    <span className="italic">Joe V</span> Johnson
+                    <span className="text-muted"> &amp; </span>
+                    <span className="italic">Catherine</span> Yesudas
+                  </p>
+                  <p className="mt-4 text-[0.78rem] uppercase tracking-[0.22em] text-muted">
+                    Co-Founders
+                  </p>
+
+                  <div className="mt-6 max-w-xl space-y-5 text-base leading-relaxed text-muted">
+                    <p>
+                      Founded in [TBD], Einfach is the practice of Joe V
+                      Johnson and Catherine Yesudas — an architecture and
+                      interior design studio based in Dubai, working across
+                      residential, hospitality, and commercial projects
+                      across the UAE.
+                    </p>
+                    <p>
+                      Joe leads the studio&apos;s architectural and spatial
+                      work. Catherine leads its interiors and material
+                      direction. Together they work as a single practice —
+                      one name on the door, one set of drawings, one
+                      conversation with the client.
+                    </p>
+                    <p className="text-foreground">
+                      The studio&apos;s name is the brief:&nbsp;
+                      <span className="italic">einfach</span> — German for
+                      <span className="text-accent"> simple</span> — the
+                      discipline of removing until what remains is necessary.
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <hr className="hairline" />
+
       {/* VISION & MISSION */}
       <section className="py-16 md:py-24">
         <Container>
