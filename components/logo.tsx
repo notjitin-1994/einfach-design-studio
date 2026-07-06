@@ -16,7 +16,7 @@ export function Logo({
     <Link
       href="/"
       className={cn(
-        "group inline-flex items-center focus-visible:outline-none",
+        "inline-flex items-center focus-visible:outline-none",
         className,
       )}
     >
@@ -24,13 +24,13 @@ export function Logo({
       <img
         src="/eds-logo-black.png"
         alt="Einfach Design Studio"
-        className="h-8 w-auto object-contain transition-transform duration-500 group-hover:rotate-[8deg] [html.dark_&]:hidden"
+        className="h-8 w-auto object-contain [html.dark_&]:hidden"
       />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/eds-logo-white.png"
         alt="Einfach Design Studio"
-        className="hidden h-8 w-auto object-contain transition-transform duration-500 group-hover:rotate-[8deg] [html.dark_&]:block"
+        className="hidden h-8 w-auto object-contain [html.dark_&]:block"
       />
     </Link>
   );
