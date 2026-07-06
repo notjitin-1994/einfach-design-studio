@@ -8,7 +8,7 @@ import { BookConsultationButton } from "@/components/book-consultation-button";
 const HERO_IMAGE = "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/residence-design-tirur/01.png";
 // TODO: Replace with Joe's hero background video URL once shared.
 // Supports direct MP4/WebM URLs. Leave empty to keep the static image fallback.
-const HERO_VIDEO: string | null = null;
+const HERO_VIDEO: string | null = "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/videos/hero.webm";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 export function Hero() {
