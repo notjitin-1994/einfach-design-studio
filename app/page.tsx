@@ -15,6 +15,31 @@ import { services, processSteps, principles, projects } from "@/lib/content";
 
 const SB_MEDIA =
   "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media";
+const SERVICE_IMAGE_POOL = [
+  `${SB_MEDIA}/projects/apartment-complex-ernakulam/01.png`,
+  `${SB_MEDIA}/projects/apartment-interior-dubai/01.png`,
+  `${SB_MEDIA}/projects/apartment-interior-ernakulam/01.jpg`,
+  `${SB_MEDIA}/projects/commercial-renovation-ernakulam/01.png`,
+  `${SB_MEDIA}/projects/e3-media-office-ajman/01.png`,
+  `${SB_MEDIA}/projects/residence-design-tirur/01.png`,
+  `${SB_MEDIA}/projects/residence-renovation-ernakulam/01.png`,
+  `${SB_MEDIA}/projects/apartment-complex-ernakulam/03.png`,
+  `${SB_MEDIA}/projects/apartment-interior-dubai/03.png`,
+  `${SB_MEDIA}/projects/residence-design-tirur/03.png`,
+  `${SB_MEDIA}/projects/apartment-complex-ernakulam/05.png`,
+  `${SB_MEDIA}/projects/residence-renovation-ernakulam/03.png`,
+];
+
+function shuffle<T>(arr: readonly T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+const serviceImages = shuffle(SERVICE_IMAGE_POOL);
 
 export const metadata: Metadata = {
   description:
@@ -155,23 +180,33 @@ export default function HomePage() {
           </div>
 
           <Stagger className="mt-14 grid gap-px overflow-hidden rounded-sm border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
-            {services.map((s) => (
+            {services.map((s, i) => (
               <StaggerItem key={s.index}>
                 <Link
                   href="/services"
-                  className="group flex h-full flex-col justify-between bg-background p-8 transition-colors hover:bg-surface"
+                  className="group relative flex h-full min-h-[280px] flex-col justify-between overflow-hidden p-8"
                 >
-                  <div>
+                  <Image
+                    src={serviceImages[i % serviceImages.length]}
+                    alt=""
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    style={{ filter: "blur(1px) saturate(1.1) brightness(0.9)" }}
+                  />
+                  <div className="absolute inset-0 bg-black/40 backdrop-blur-sm group-hover:bg-black/30" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-black/40" />
+                  <div className="relative flex flex-1 flex-col">
                     <span className="font-display text-3xl font-light text-accent">
                       {s.index}
                     </span>
-                    <h3 className="font-display mt-5 text-2xl font-light text-foreground">
+                    <h3 className="font-display mt-5 text-2xl font-light text-white/90">
                       {s.title}
                     </h3>
+                    <span className="link-underline mt-auto pt-6 text-xs font-medium text-white/70">
+                      Learn more →
+                    </span>
                   </div>
-                  <span className="link-underline mt-8 text-xs font-medium text-muted">
-                    Learn more →
-                  </span>
                 </Link>
               </StaggerItem>
             ))}
