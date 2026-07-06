@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Container, Button } from "@/components/ui";
+import { Container } from "@/components/ui";
 import { BookConsultationButton } from "@/components/book-consultation-button";
 
 const HERO_IMAGE = "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/residence-design-tirur/01.png";
@@ -92,9 +92,6 @@ export function Hero() {
             className="mt-11 flex flex-wrap items-center justify-center gap-4"
           >
             <BookConsultationButton />
-            <Button href="/projects" variant="ghost" className="text-[#e9e0c9]">
-              View Projects
-            </Button>
           </motion.div>
         </motion.div>
       </Container>
