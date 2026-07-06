@@ -46,62 +46,64 @@ export const services: Service[] = [
     index: "01",
     title: "Architecture",
     description:
-      "From new homes to commercial developments, we design buildings that respond to people, place, and purpose.",
+      "Thoughtfully planned homes and commercial buildings designed around function, context, and longevity.",
     bullets: ["Concept to documentation", "Context-led planning", "Long-life detailing"],
   },
   {
     index: "02",
     title: "Interior Design",
     description:
-      "Thoughtfully designed interiors that enhance everyday living, working, and interaction.",
+      "Interiors that balance comfort, functionality, and timeless aesthetics to support everyday life.",
     bullets: ["Spatial planning", "Material & finish direction", "Bespoke joinery"],
   },
   {
     index: "03",
     title: "Workplace Strategy",
     description:
-      "Helping organisations create workplaces that support productivity, collaboration, and employee wellbeing.",
+      "Designing workplaces that improve collaboration, productivity, efficiency, and employee wellbeing.",
     bullets: ["Workstyle analysis", "Agile planning", "Wellbeing-led design"],
   },
   {
     index: "04",
     title: "Spatial Branding",
     description:
-      "Transforming brand values into memorable physical environments that strengthen customer experience.",
+      "Translating a brand's identity into meaningful physical experiences through thoughtful spatial design.",
     bullets: ["Brand translation", "Experiential design", "Signature moments"],
   },
   {
     index: "05",
     title: "Independent Design Review",
     description:
-      "An expert review of existing architectural or interior proposals to identify opportunities for improvement before construction.",
+      "Already have drawings? We provide an independent review to identify opportunities for better functionality, circulation, and user experience before construction begins.",
     bullets: ["Function & circulation audit", "Value engineering", "Risk flagging"],
   },
   {
     index: "06",
     title: "Design Consultancy",
     description:
-      "Professional advice for clients seeking clarity, direction, or a second opinion at any stage of a project.",
+      "Strategic guidance to help clients make informed architectural and interior design decisions with confidence.",
     bullets: ["Decision frameworks", "Feasibility guidance", "Ongoing advisory"],
   },
 ];
 
 export const processSteps: ProcessStep[] = [
-  { index: "01", title: "Understand", description: "We begin by listening. Every project starts with understanding your goals, lifestyle, business, and the way you use a space." },
-  { index: "02", title: "Define", description: "We analyse opportunities, identify challenges, and establish a clear direction for the project." },
-  { index: "03", title: "Design", description: "Ideas are developed into architectural and interior solutions supported by drawings, visualisations, and thoughtful detailing." },
-  { index: "04", title: "Refine", description: "Through discussion and feedback, every element is evaluated, improved, and simplified until the design feels complete." },
-  { index: "05", title: "Deliver", description: "We prepare the final drawings, documentation, and specifications required to confidently move the project into execution." },
-  { index: "06", title: "Support", description: "During construction, we remain available to clarify details, review progress, and help ensure the design intent is carried through." },
+  { index: "01", title: "Understand", description: "Every project begins with people. We listen, observe, and understand what matters most before making any design decisions." },
+  { index: "02", title: "Define", description: "Together, we establish a clear direction by identifying opportunities, priorities, and project goals." },
+  { index: "03", title: "Design", description: "Thoughtful ideas take shape through architecture and interiors that are functional, timeless, and people-centred." },
+  { index: "04", title: "Refine", description: "We review, simplify, and improve every detail until the design feels complete." },
+  { index: "05", title: "Deliver", description: "Clear drawings and documentation prepare your project for confident execution." },
+  { index: "06", title: "Support", description: "We're with you beyond the design phase, providing guidance and clarity throughout construction." },
 ];
 
 export const principles: string[] = [
-  "Designed around people and the way they live or work",
-  "Practical solutions before unnecessary complexity",
-  "Timeless thinking over short-lived trends",
-  "Honest, transparent design advice",
-  "Collaborative decision-making throughout the process",
-  "Careful attention to the details that shape everyday experience",
+  "People before plans. We design around people, not assumptions.",
+  "Purpose before preference. Every element should have a reason.",
+  "Clarity before complexity. Simplicity often leads to better design.",
+  "Listen before designing. Good design begins with understanding.",
+  "Timeless over temporary. We create spaces that last beyond trends.",
+  "Thoughtful, not excessive. We value what adds meaning, not just more.",
+  "Designed for everyday life. Spaces should feel natural and effortless to use.",
+  "Simple, by design. When only what matters remains, good design speaks for itself.",
 ];
 
 export const projectCategories = ["All", "Residential", "Commercial", "Workplaces"] as const;

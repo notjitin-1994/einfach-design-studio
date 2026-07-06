@@ -17,7 +17,7 @@ export function SiteFooter() {
             begins.
           </p>
           <p className="mt-6 text-sm text-muted">
-            Dubai, United Arab Emirates
+            UAE &amp; India
           </p>
         </div>
 

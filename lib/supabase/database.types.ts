@@ -40,6 +40,24 @@ export type Database = {
         };
         Relationships: [];
       };
+      rate_limits: {
+        Row: {
+          id: string;
+          ip_hash: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          ip_hash: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          ip_hash?: string;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
     };
     Views: {
       [_ in string]: {

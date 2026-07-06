@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Start a conversation with Einfach Design Studio. Tell us about your project — new build, renovation, workplace, or commercial. Dubai, UAE.",
+    "Start a conversation with Einfach Design Studio. Tell us about your project — new build, renovation, workplace, or commercial.",
   openGraph: {
     title: "Contact · Einfach Design Studio",
     description:

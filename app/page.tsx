@@ -13,48 +13,12 @@ import { BookConsultationButton } from "@/components/book-consultation-button";
 import type { Metadata } from "next";
 import { services, processSteps, principles, projects } from "@/lib/content";
 
-const featured = projects.slice(0, 3);
-
 const SB_MEDIA =
   "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media";
-const SERVICE_IMAGE_POOL = [
-  `${SB_MEDIA}/projects/apartment-complex-ernakulam/01.png`,
-  `${SB_MEDIA}/projects/apartment-interior-dubai/01.png`,
-  `${SB_MEDIA}/projects/apartment-interior-ernakulam/01.jpg`,
-  `${SB_MEDIA}/projects/commercial-renovation-ernakulam/01.png`,
-  `${SB_MEDIA}/projects/e3-media-office-ajman/01.png`,
-  `${SB_MEDIA}/projects/residence-design-tirur/01.png`,
-  `${SB_MEDIA}/projects/residence-renovation-ernakulam/01.png`,
-  `${SB_MEDIA}/projects/apartment-complex-ernakulam/03.png`,
-  `${SB_MEDIA}/projects/apartment-interior-dubai/03.png`,
-  `${SB_MEDIA}/projects/residence-design-tirur/03.png`,
-  `${SB_MEDIA}/projects/apartment-complex-ernakulam/05.png`,
-  `${SB_MEDIA}/projects/residence-renovation-ernakulam/03.png`,
-];
-
-function shuffle<T>(arr: readonly T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-const serviceImages = shuffle(SERVICE_IMAGE_POOL);
-
-const processImages = [
-  `${SB_MEDIA}/process/01-understand.jpg`,
-  `${SB_MEDIA}/process/02-define.jpg`,
-  `${SB_MEDIA}/process/03-design.jpg`,
-  `${SB_MEDIA}/process/04-refine.jpg`,
-  `${SB_MEDIA}/process/05-deliver.jpg`,
-  `${SB_MEDIA}/process/06-support.jpg`,
-];
 
 export const metadata: Metadata = {
   description:
-    "Einfach Design Studio creates architecture and interiors that are functional, timeless, and centred around the people who use them. Book a consultation in Dubai, UAE.",
+    "Einfach Design Studio creates architecture and interiors that are functional, timeless, and centred around the people who use them. Book a consultation.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "Einfach Design Studio — Architecture & Interior Design",
@@ -71,7 +35,45 @@ export default function HomePage() {
 
       <hr className="hairline" />
 
-      {/* APPROACH */}
+      {/* WHY EINFACH */}
+      <section className="py-11 md:py-14">
+        <Container className="grid gap-14 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <SectionHeading
+              eyebrow="Why Einfach?"
+              title="Principles over trends."
+            />
+          </div>
+          <div className="space-y-8 lg:col-span-8">
+            <Reveal className="max-w-2xl text-lg leading-relaxed text-muted">
+              <p>
+                Many projects begin with budgets, trends, or appearances. We
+                believe they should begin with people.
+              </p>
+              <p className="mt-4">
+                Before designing a space, we ask a simple question: Is this what
+                you truly need, or what you have been led to believe you need?
+              </p>
+            </Reveal>
+            <ul className="lg:grid lg:grid-cols-2 lg:gap-x-12">
+              {principles.map((p, i) => (
+                <Reveal key={p} delay={i * 0.04}>
+                  <li className="flex items-start gap-4 border-b border-line py-5">
+                    <span className="font-display mt-1 text-sm text-accent">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-base leading-relaxed">{p}</span>
+                  </li>
+                </Reveal>
+              ))}
+            </ul>
+          </div>
+        </Container>
+      </section>
+
+      <hr className="hairline" />
+
+      {/* OUR APPROACH */}
       <section className="py-11 md:py-14">
         <Container className="grid items-start gap-14 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">
@@ -79,25 +81,24 @@ export default function HomePage() {
               eyebrow="Our Approach"
               title={
                 <>
-                  Good design rarely starts with drawings. It starts with{" "}
-                  <span className="text-accent">understanding.</span>
+                  Every space tells us how it wants to be used. Our job is to{" "}
+                  <span className="text-accent">listen.</span>
                 </>
               }
             />
           </Reveal>
           <Reveal className="space-y-6 text-lg leading-relaxed text-muted lg:col-span-7">
             <p>
-              Before thinking about forms, materials, or finishes, we take time
-              to understand how people live, work, and move through a space.
+              Before we think about layouts, materials, or finishes, we take time
+              to understand the people behind the project — their routines,
+              aspirations, challenges, and the moments that matter most.
             </p>
             <p>
-              Every decision is shaped around how that space should{" "}
-              <span className="text-foreground">perform</span> — not just how it
-              should look.
+              Only then do we begin designing. Because when people come first,
+              every decision becomes clearer.
             </p>
             <p className="text-foreground">
-              The result is architecture and interiors that feel intuitive,
-              purposeful, and built to last.
+              And simplicity follows naturally.
             </p>
           </Reveal>
         </Container>
@@ -105,7 +106,39 @@ export default function HomePage() {
 
       <hr className="hairline" />
 
-      {/* SERVICES */}
+      {/* OUR PROCESS */}
+      <section className="py-11 md:py-14">
+        <Container>
+          <SectionHeading
+            eyebrow="Our Process"
+            title="From first conversation to final detail."
+            align="center"
+          />
+          <Stagger className="mt-16 grid gap-px overflow-hidden rounded-sm border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+            {processSteps.map((step) => (
+              <StaggerItem key={step.index}>
+                <div className="group relative flex h-full min-h-[260px] flex-col justify-between overflow-hidden bg-background p-8">
+                  <div className="flex items-baseline gap-4">
+                    <span className="font-display text-4xl font-light text-accent">
+                      {step.index}
+                    </span>
+                    <h3 className="font-display text-2xl font-light text-foreground">
+                      {step.title}
+                    </h3>
+                  </div>
+                  <p className="mt-4 text-sm leading-relaxed text-muted">
+                    {step.description}
+                  </p>
+                </div>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </Container>
+      </section>
+
+      <hr className="hairline" />
+
+      {/* OUR SERVICES */}
       <section className="py-11 md:py-14">
         <Container>
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
@@ -122,104 +155,24 @@ export default function HomePage() {
           </div>
 
           <Stagger className="mt-14 grid gap-px overflow-hidden rounded-sm border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
-            {services.map((s, i) => (
+            {services.map((s) => (
               <StaggerItem key={s.index}>
                 <Link
                   href="/services"
-                  className="group relative flex h-full min-h-[320px] flex-col justify-between overflow-hidden p-8"
+                  className="group flex h-full flex-col justify-between bg-background p-8 transition-colors hover:bg-surface"
                 >
-                  <Image
-                    src={serviceImages[i % serviceImages.length]}
-                    alt=""
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                    style={{ filter: "blur(1px) saturate(1.1) brightness(0.9)" }}
-                  />
-                  <div className="absolute inset-0 bg-black/40 backdrop-blur-sm group-hover:bg-black/30" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-black/40" />
-                  <div className="relative flex flex-1 flex-col">
+                  <div>
                     <span className="font-display text-3xl font-light text-accent">
                       {s.index}
                     </span>
-                    <h3 className="font-display mt-5 text-2xl font-light text-white/90">
+                    <h3 className="font-display mt-5 text-2xl font-light text-foreground">
                       {s.title}
                     </h3>
-                    <p className="mt-3 flex-1 text-sm leading-relaxed text-white/60">
-                      {s.description}
-                    </p>
-                    <span className="link-underline mt-6 text-xs font-medium text-white/70">
-                      Learn more →
-                    </span>
                   </div>
-                </Link>
-              </StaggerItem>
-            ))}
-          </Stagger>
-        </Container>
-      </section>
-
-      <hr className="hairline" />
-
-      {/* WHY */}
-      <section className="py-11 md:py-14">
-        <Container className="grid gap-14 lg:grid-cols-12">
-          <div className="lg:col-span-4">
-            <SectionHeading eyebrow="Why Einfach?" title="Principles over trends." />
-          </div>
-          <ul className="lg:col-span-8 lg:grid lg:grid-cols-2 lg:gap-x-12">
-            {principles.map((p, i) => (
-              <Reveal key={p} delay={i * 0.04}>
-                <li className="flex items-start gap-4 border-b border-line py-5">
-                  <span className="font-display mt-1 text-sm text-accent">
-                    {String(i + 1).padStart(2, "0")}
+                  <span className="link-underline mt-8 text-xs font-medium text-muted">
+                    Learn more →
                   </span>
-                  <span className="text-base leading-relaxed">{p}</span>
-                </li>
-              </Reveal>
-            ))}
-          </ul>
-        </Container>
-      </section>
-
-      <hr className="hairline" />
-
-      {/* PROCESS */}
-      <section className="py-11 md:py-14">
-        <Container>
-          <SectionHeading
-            eyebrow="Our Process"
-            title="From first conversation to final detail."
-            align="center"
-          />
-          <Stagger className="mt-16 grid gap-px overflow-hidden rounded-sm border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
-            {processSteps.map((step) => (
-              <StaggerItem key={step.index}>
-                <div className="group relative flex h-full min-h-[320px] flex-col justify-between overflow-hidden p-8">
-                  <Image
-                    src={processImages[Number(step.index) - 1]}
-                    alt=""
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                    style={{ filter: "blur(1px) saturate(1.1) brightness(0.9)" }}
-                  />
-                  <div className="absolute inset-0 bg-black/40 backdrop-blur-sm group-hover:bg-black/30" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-black/40" />
-                  <div className="relative flex flex-1 flex-col">
-                    <div className="flex items-baseline gap-4">
-                      <span className="font-display text-4xl font-light text-accent">
-                        {step.index}
-                      </span>
-                      <h3 className="font-display text-2xl font-light text-white/90">
-                        {step.title}
-                      </h3>
-                    </div>
-                    <p className="mt-4 text-sm leading-relaxed text-white/60">
-                      {step.description}
-                    </p>
-                  </div>
-                </div>
+                </Link>
               </StaggerItem>
             ))}
           </Stagger>
@@ -242,11 +195,15 @@ export default function HomePage() {
             </Button>
           </div>
           <Stagger className="mt-14 grid gap-6 md:grid-cols-3">
-            {featured.map((p) => (
-              <StaggerItem key={p.id}>
-                <ProjectCard project={p} />
-              </StaggerItem>
-            ))}
+            <StaggerItem>
+              <ProjectCard project={projects[0]} />
+            </StaggerItem>
+            <StaggerItem>
+              <ProjectCard project={projects.find((p) => p.id === "e3-media-office-ajman")!} />
+            </StaggerItem>
+            <StaggerItem>
+              <ProjectCard project={projects.find((p) => p.category === "Commercial")!} />
+            </StaggerItem>
           </Stagger>
         </Container>
       </section>
@@ -257,12 +214,12 @@ export default function HomePage() {
       <section className="py-11 md:py-16">
         <Container>
           <div
-            className="relative overflow-hidden rounded-sm border-[0.5px] px-6 py-16 text-center shadow-[0_0_30px_-8px_rgba(251,54,64,0.35)] transition-shadow duration-500 hover:shadow-[0_0_50px_-5px_rgba(251,54,64,0.5)] md:px-16 md:py-24"
+            className="relative overflow-hidden rounded-sm border-[0.5px] px-6 py-16 text-center shadow-[0_0_30px_-8px_rgba(153,0,0,0.35)] transition-shadow duration-500 hover:shadow-[0_0_50px_-5px_rgba(153,0,0,0.5)] md:px-16 md:py-24"
             style={{ borderColor: "var(--accent)" }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/process/01-understand.jpg"
+              src={`${SB_MEDIA}/process/01-understand.jpg`}
               alt=""
               aria-hidden
               className="absolute inset-0 h-full w-full object-cover"
@@ -276,9 +233,14 @@ export default function HomePage() {
             <Reveal className="relative">
               <Eyebrow>Let&apos;s Create Better Spaces</Eyebrow>
               <h2 className="font-display mx-auto mt-6 max-w-3xl text-balance text-[clamp(2rem,5vw,4rem)] font-light leading-[1.05]">
-                Spaces that feel right — not just on day one, but for years to
-                come.
+                Whether you&apos;re planning a new home, reimagining a workplace,
+                renovating an existing space, or looking for an independent
+                design opinion, we&apos;d love to help.
               </h2>
+              <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted">
+                Let&apos;s create spaces that feel right — not just on the day
+                they&apos;re completed, but for years to come.
+              </p>
               <div className="mt-10 flex justify-center">
                 <BookConsultationButton />
               </div>

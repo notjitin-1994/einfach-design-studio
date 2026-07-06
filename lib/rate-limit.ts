@@ -1,30 +1,46 @@
-import { Ratelimit } from "@upstash/ratelimit";
-import { Redis } from "@upstash/redis";
+import { createHash } from "crypto";
+import { createAdminClient } from "./supabase/admin";
 
-const UPSTASH_REDIS_REST_URL = process.env.UPSTASH_REDIS_REST_URL;
-const UPSTASH_REDIS_REST_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN;
+const RATE_LIMIT_WINDOW_MS = 30 * 60 * 1000;
+const MAX_REQUESTS_PER_WINDOW = 5;
 
-function createRatelimit() {
-  if (UPSTASH_REDIS_REST_URL && UPSTASH_REDIS_REST_TOKEN) {
-    return new Ratelimit({
-      redis: Redis.fromEnv(),
-      limiter: Ratelimit.slidingWindow(5, "30 m"),
-      prefix: "rl:consultation",
-      analytics: true,
-    });
+export async function checkRateLimit(ip: string): Promise<
+  | { allowed: true; remaining: number }
+  | { allowed: false; retryAfterSeconds: number }
+> {
+  const ipHash = createHash("sha256").update(ip).digest("hex");
+  const supabase = createAdminClient();
+  const windowStart = new Date(Date.now() - RATE_LIMIT_WINDOW_MS).toISOString();
+
+  await supabase
+    .from("rate_limits")
+    .delete()
+    .lt("created_at", windowStart);
+
+  const { count, error: countError } = await supabase
+    .from("rate_limits")
+    .select("id", { count: "exact", head: true })
+    .eq("ip_hash", ipHash)
+    .gte("created_at", windowStart);
+
+  if (countError) {
+    console.error("[rate-limit] count failed:", countError.message);
+    return { allowed: true, remaining: MAX_REQUESTS_PER_WINDOW };
   }
 
-  // Fallback when Upstash is not configured. This allows the app to run in
-  // local dev and early deployments, but production sites should set the
-  // Upstash env vars for real distributed rate limiting.
-  return {
-    limit: async () => ({
-      success: true,
-      limit: Number.POSITIVE_INFINITY,
-      remaining: Number.POSITIVE_INFINITY,
-      reset: 0,
-    }),
-  } as unknown as Ratelimit;
-}
+  const currentCount = count ?? 0;
+  if (currentCount >= MAX_REQUESTS_PER_WINDOW) {
+    return { allowed: false, retryAfterSeconds: Math.ceil(RATE_LIMIT_WINDOW_MS / 1000) };
+  }
 
-export const ratelimit = createRatelimit();
+  const { error: insertError } = await supabase
+    .from("rate_limits")
+    .insert({ ip_hash: ipHash });
+
+  if (insertError) {
+    console.error("[rate-limit] insert failed:", insertError.message);
+    return { allowed: true, remaining: MAX_REQUESTS_PER_WINDOW - currentCount };
+  }
+
+  return { allowed: true, remaining: MAX_REQUESTS_PER_WINDOW - currentCount - 1 };
+}
