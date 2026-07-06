@@ -3,7 +3,7 @@
 > "Einfach" = German for *simple*. Simplicity isn't where design begins — it's where it ends.
 
 ## 1. Brand & Positioning
-- **Studio:** Architecture & interior design, Dubai UAE. Domain: `einfachdesignstudio.com`.
+- **Studio:** Architecture & interior design, UAE & India. Domain: `einfachdesignstudio.com`.
 - **Voice:** Calm, confident, editorial. No buzzwords. Every line earns its place.
 - **Promise:** Help clients make confident design decisions *before* construction begins.
 
@@ -16,19 +16,26 @@
 6. **Tactile type contrast** — a refined serif for display set against a clean grotesque for UI/body.
 
 ## 3. Color Tokens
+
+The palette is built around two anchored colors: an onyx black (`#0a0a0a`) and a warm cream (`#e9e0c9`), with a single warm red accent (`#990000`).
+
 | Token | Dark (default) | Light |
 |---|---|---|
-| background | `#0a0a0a` | `#e9e0c9` |
-| foreground | `#e9e0c9` | `#0a0a0a` |
-| accent | `#990000` | `#990000` (same) |
+| background | **Onyx black** `#0a0a0a` | Warm cream `#e9e0c9` |
+| foreground | Warm cream `#e9e0c9` | **Onyx black** `#0a0a0a` |
+| accent | **Warm red** `#990000` | **Warm red** `#990000` |
 
-**Accent ramp (tints/shades of #990000):**
+### Notes
+- **Onyx black `#0a0a0a`** is used as the dark-mode page background *and* as the light-mode text color. It is a neutral near-black that keeps editorial contrast without the green cast of the previous `#000f08`.
+- **Accent red `#990000`** (`rgb(153, 0, 0)`) replaces the previous brighter `#fb3640`. It is used for CTAs, active states, numerals, and emphasis.
+
+### Accent ramp (tints/shades of `#990000`)
 - `--accent-soft`  `#cc3333`  (lighter, hover glows)
 - `--accent`       `#990000`  (base)
-- `--accent-deep`  `#990000`  (pressed/active)
+- `--accent-deep`  `#660000`  (pressed/active)
 - `--accent-glow`  `rgba(153,0,0,0.14)` (halos, focus rings)
 
-Surfaces (translucent foreground overlays for cards/lines):
+### Surfaces (translucent foreground overlays for cards/lines)
 - `--surface` `rgba(233,224,201,0.06)` dark / `rgba(10,10,10,0.05)` light
 - `--border` `rgba(233,224,201,0.14)` dark / `rgba(10,10,10,0.14)` light
 - `--muted` ~60% foreground

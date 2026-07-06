@@ -1,7 +1,7 @@
 # Einfach Design Studio — Website
 
 First draft of the marketing site for **Einfach Design Studio**, an architecture
-and interior design practice (Dubai, UAE). Domain: `einfachdesignstudio.com`.
+and interior design practice (UAE & India). Domain: `einfachdesignstudio.com`.
 
 ## Stack
 - Next.js 16 (App Router) · React 19 · TypeScript
@@ -15,11 +15,17 @@ See [`design.md`](./design.md) for the full design system: color tokens,
 typography, motion, and component principles.
 
 **Palette**
+
+The palette is anchored by an onyx black (`#0a0a0a`) and a warm cream (`#e9e0c9`), with a single warm red accent (`#990000`).
+
 | Token | Dark (default) | Light |
-|---|---|---|
-| Background | `#0a0a0a` | `#e9e0c9` |
-| Foreground | `#e9e0c9` | `#0a0a0a` |
-| Accent | `#990000` | `#990000` |
+|---|---|---|---
+| Background | Onyx black `#0a0a0a` | Warm cream `#e9e0c9` |
+| Foreground | Warm cream `#e9e0c9` | Onyx black `#0a0a0a` |
+| Accent | Warm red `#990000` | Warm red `#990000` |
+
+- **Onyx black `#0a0a0a`** is used as the dark-mode background *and* the light-mode text color.
+- **Warm red `#990000`** (`rgb(153, 0, 0)`) is the brand accent for CTAs, active states, numerals, and emphasis.
 
 ## Pages
 `/` Home · `/about` · `/projects` (filterable, dummy data) · `/services` · `/contact` (form)
