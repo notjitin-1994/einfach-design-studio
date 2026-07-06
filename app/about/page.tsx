@@ -5,13 +5,36 @@ import { BookConsultationButton } from "@/components/book-consultation-button";
 export const metadata = {
   title: "About",
   description:
-    "Einfach Design Studio is a Dubai-based architecture and interior design practice founded on a better way to design — around people, clarity, and decisions made before construction begins.",
+    "Einfach Design Studio is an architecture and interior design practice founded on a better way to design — around people, clarity, and decisions made before construction begins.",
   openGraph: {
     title: "About Einfach Design Studio",
     description:
-      "Simplicity isn’t where design begins. It’s where it ends. Meet the studio behind the work.",
+      "Simplicity isn't where design begins. It's where it ends. Meet the studio behind the work.",
   },
 };
+
+const coreValues = [
+  {
+    title: "Integrity & Responsibility",
+    text: "We believe trust is earned through honesty, accountability, and respect for your time, budget, and aspirations.",
+  },
+  {
+    title: "Craft with Purpose",
+    text: "We value thoughtful decisions, careful detailing, and quality that stands the test of time.",
+  },
+  {
+    title: "Curiosity",
+    text: "We never stop asking questions, exploring possibilities, and learning from every project.",
+  },
+  {
+    title: "Respect",
+    text: "We honour people, places, cultures, and the unique story every project carries.",
+  },
+  {
+    title: "Conscious Impact",
+    text: "We make responsible choices that create lasting value for our clients, communities, and the environment.",
+  },
+];
 
 export default function AboutPage() {
   return (
@@ -22,18 +45,18 @@ export default function AboutPage() {
           aria-hidden
           className="pointer-events-none absolute -right-4 top-1/2 hidden -translate-y-1/2 select-none font-display text-[26vw] font-light leading-none text-foreground/[0.035] md:block md:text-[20vw]"
         >
-          2026
+          2020
         </span>
-        {/* Mobile full-bleed background image */}
+          {/* Mobile full-bleed background image */}
         <div className="absolute inset-0 md:hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/apartment-interior-dubai/04.png"
+            src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/residence-renovation-ernakulam/03.png"
             alt=""
             className="h-full w-full object-cover"
             style={{ filter: "grayscale(0.35) contrast(1.05)" }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#000f08]/82 via-[#000f08]/58 to-[#000f08]/92" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/82 via-[#0a0a0a]/58 to-[#0a0a0a]/92" />
         </div>
         <Container className="relative grid items-center gap-12 py-14 md:grid-cols-12 md:py-20">
           <div className="text-[#e9e0c9] md:col-span-7 md:text-foreground">
@@ -51,9 +74,9 @@ export default function AboutPage() {
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mt-8 max-w-xl text-lg leading-relaxed text-[#e9e0c9]/80 md:text-muted">
-                A Dubai-based architecture and interior design practice founded
-                on the belief that the best spaces start with clear thinking —
-                and decisions made before construction begins.
+                A Dubai and India-based architecture and interior design practice
+                founded on the belief that the best spaces start with clear
+                thinking — and decisions made before construction begins.
               </p>
             </Reveal>
             <Reveal delay={0.18}>
@@ -62,7 +85,7 @@ export default function AboutPage() {
                   <span className="block text-[0.65rem] uppercase tracking-[0.22em] text-[#e9e0c9]/60 md:text-muted">
                     Founded
                   </span>
-                  <span className="mt-1 block font-display text-lg">2026</span>
+                  <span className="mt-1 block font-display text-lg">2020</span>
                 </div>
                 <div className="hidden h-8 w-px bg-[#e9e0c9]/20 sm:block md:bg-line" />
                 <div>
@@ -70,7 +93,7 @@ export default function AboutPage() {
                     Based in
                   </span>
                   <span className="mt-1 block font-display text-lg">
-                    Dubai, UAE
+                    UAE &amp; India
                   </span>
                 </div>
                 <div className="hidden h-8 w-px bg-[#e9e0c9]/20 sm:block md:bg-line" />
@@ -90,19 +113,18 @@ export default function AboutPage() {
               <div className="relative aspect-[4/5] overflow-hidden rounded-sm border border-line">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/apartment-interior-dubai/04.png"
-                  alt="Architectural interior detail"
+                  src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/residence-renovation-ernakulam/03.png"
+                  alt="Residence Renovation, Ernakulam — View 3"
                   className="duotone h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#000f08]/50 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/50 via-transparent to-transparent" />
               </div>
             </Reveal>
           </div>
         </Container>
       </section>
 
-      {/* STATEMENT */}
-      {/* STATEMENT */}
+      {/* NAME */}
       <section className="py-16 md:py-24">
         <Container className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-4">
@@ -113,18 +135,17 @@ export default function AboutPage() {
           </div>
           <div className="space-y-6 text-lg leading-relaxed text-muted lg:col-span-8">
             <p>
-              For us, simplicity isn&apos;t where design begins. It&apos;s where
-              it ends. It is the result of understanding people, asking the
-              right questions, exploring possibilities, and refining every
-              decision until only what truly matters remains.
+              Some names are chosen because they sound good. Ours was chosen
+              because it felt true.
             </p>
             <p>
-              We believe the best spaces don&apos;t compete for attention. They
-              quietly support everyday life through thoughtful planning,
-              meaningful decisions, and enduring quality.
+              For us, it represents a moment. The point where complexity fades.
+              Where uncertainty becomes clarity. Where everything unnecessary is
+              left behind. And what truly matters finally comes into focus.
             </p>
             <p className="text-foreground">
-              That&apos;s the standard we bring to every project.
+              That&apos;s what our name reminds us of. And that&apos;s what we
+              hope every project feels like.
             </p>
           </div>
         </Container>
@@ -140,26 +161,28 @@ export default function AboutPage() {
           </div>
           <div className="space-y-6 text-base leading-relaxed text-muted lg:col-span-7">
             <p>
-              Einfach Design Studio was founded by two architects brought
-              together by a shared belief that good design should solve problems
-              before it creates statements.
+              Einfach didn&apos;t begin with a business plan. It began with two
+              architects who shared a simple belief: Why does everything have to
+              be so complicated?
             </p>
             <p>
-              Too often, projects become driven by trends, assumptions, or
-              decisions made too late — when changes become costly and
-              opportunities have already been lost.
-            </p>
-            <p className="text-foreground">We believed there was a better way.</p>
-            <p>
-              One where every project begins with understanding. Where
-              architecture and interiors are considered as one complete
-              experience. Where clients are guided with clarity from the very
-              beginning, allowing better decisions to be made before
-              construction starts.
+              Though we came from different personalities and perspectives, we
+              were drawn to the same destination — that the best design comes
+              from understanding people, not just creating spaces.
             </p>
             <p>
-              Because great design isn&apos;t remembered for how much was added.
-              It&apos;s remembered for how naturally everything works together.
+              From a foreseen vision to reality, amidst the chaos of the Middle
+              East crisis, we licensed Einfach Design Studio in the UAE to
+              create a difference in how design has to be approached.
+            </p>
+            <p className="text-foreground">
+              Today, our purpose remains the same: to simplify complex decisions
+              and create thoughtful spaces that quietly make everyday life
+              better.
+            </p>
+            <p>
+              Because the best design doesn&apos;t demand attention. It simply
+              feels right.
             </p>
           </div>
         </Container>
@@ -177,7 +200,7 @@ export default function AboutPage() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/IMG_5715.PNG"
-                    alt="Joe V Johnson and Catherine Yesudas, co-founders of Einfach Design Studio, in their Dubai studio"
+                    alt="Cathrin Yesudas E and Joe V Johnson, co-founders of Einfach Design Studio"
                     loading="lazy"
                     decoding="async"
                     className="duotone h-full w-full object-cover"
@@ -187,7 +210,7 @@ export default function AboutPage() {
               <Reveal delay={0.08}>
                 <p className="mt-5 flex items-center gap-3 text-sm text-muted">
                   <span className="h-px w-6 bg-accent/70" aria-hidden />
-                  <span>Joe &amp; Catherine · Dubai, 2026</span>
+                  <span>Cathrin Yesudas E &amp; Joe V Johnson · 2020</span>
                 </p>
               </Reveal>
             </div>
@@ -200,9 +223,9 @@ export default function AboutPage() {
               <Reveal delay={0.1}>
                 <div className="mt-10 border-t border-line pt-10">
                   <p className="font-display pb-1 text-[clamp(2rem,4.2vw,3.4rem)] font-light leading-[1.15] text-balance">
-                    <span className="italic">Joe V</span> Johnson
+                    <span className="italic">Cathrin</span> Yesudas E
                     <span className="text-muted"> &amp; </span>
-                    <span className="italic">Catherine</span> Yesudas
+                    <span className="italic">Joe V</span> Johnson
                   </p>
                   <p className="mt-4 text-[0.78rem] uppercase tracking-[0.22em] text-muted">
                     Co-Founders
@@ -210,18 +233,17 @@ export default function AboutPage() {
 
                   <div className="mt-6 max-w-xl space-y-5 text-base leading-relaxed text-muted">
                     <p>
-                      Founded in [TBD], Einfach is the practice of Joe V
-                      Johnson and Catherine Yesudas — an architecture and
-                      interior design studio based in Dubai, working across
-                      residential, hospitality, and commercial projects
-                      across the UAE.
+                      Founded in 2020, Einfach is the practice of Cathrin
+                      Yesudas E and Joe V Johnson — an architecture and interior
+                      design studio based in the UAE and India, working across
+                      residential, hospitality, and commercial projects.
                     </p>
                     <p>
                       Joe leads the studio&apos;s architectural and spatial
-                      work. Catherine leads its interiors and material
-                      direction. Together they work as a single practice —
-                      one name on the door, one set of drawings, one
-                      conversation with the client.
+                      work. Cathrin leads its interiors and material direction.
+                      Together they work as a single practice — one name on the
+                      door, one set of drawings, one conversation with the
+                      client.
                     </p>
                     <p className="text-foreground">
                       The studio&apos;s name is the brief:&nbsp;
@@ -249,9 +271,8 @@ export default function AboutPage() {
                   Vision
                 </span>
                 <p className="mt-6 text-lg leading-relaxed text-muted">
-                  To create architecture and interiors that improve the way
-                  people live, work, and experience space through thoughtful,
-                  enduring design.
+                  A world where thoughtful design makes everyday life simpler,
+                  more meaningful, and more connected to the people it serves.
                 </p>
               </div>
             </Reveal>
@@ -261,9 +282,8 @@ export default function AboutPage() {
                   Mission
                 </span>
                 <p className="mt-6 text-lg leading-relaxed text-muted">
-                  To guide clients through the design process with insight,
-                  collaboration, and carefully considered solutions that create
-                  lasting value long before construction begins.
+                  To guide better design decisions through clarity,
+                  understanding, and intention.
                 </p>
               </div>
             </Reveal>
@@ -273,10 +293,35 @@ export default function AboutPage() {
 
       <hr className="hairline" />
 
+      {/* CORE VALUES */}
+      <section className="py-16 md:py-24">
+        <Container>
+          <SectionHeading
+            eyebrow="Core Values"
+            title="What guides our work."
+            align="center"
+          />
+          <div className="mt-14 grid gap-px overflow-hidden rounded-sm border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+            {coreValues.map((v) => (
+              <div key={v.title} className="bg-background p-8 md:p-10">
+                <h3 className="font-display text-xl font-light text-foreground">
+                  {v.title}
+                </h3>
+                <p className="mt-4 text-sm leading-relaxed text-muted">
+                  {v.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <hr className="hairline" />
+
       <section className="py-11 md:py-16">
         <Container>
           <div
-            className="relative overflow-hidden rounded-sm border-[0.5px] px-6 py-16 text-center shadow-[0_0_30px_-8px_rgba(251,54,64,0.35)] transition-shadow duration-500 hover:shadow-[0_0_50px_-5px_rgba(251,54,64,0.5)] md:px-16 md:py-24"
+            className="relative overflow-hidden rounded-sm border-[0.5px] px-6 py-16 text-center shadow-[0_0_30px_-8px_rgba(153,0,0,0.35)] transition-shadow duration-500 hover:shadow-[0_0_50px_-5px_rgba(153,0,0,0.5)] md:px-16 md:py-24"
             style={{ borderColor: "var(--accent)" }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}

@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+:root {
+  --header-height: calc(4.25rem + env(safe-area-inset-top));
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -17,23 +21,23 @@
 @media (prefers-color-scheme: light) {
   :root {
     --background: #e9e0c9;
-    --foreground: #000f08;
-    --accent: #fb3640;
-    --accent-soft: #c92730;
-    --accent-deep: #9c1d25;
-    --surface: rgba(0, 15, 8, 0.045);
-    --line: rgba(0, 15, 8, 0.16);
-    --muted: rgba(0, 15, 8, 0.62);
+    --foreground: #0a0a0a;
+    --accent: #990000;
+    --accent-soft: #990000;
+    --accent-deep: #660000;
+    --surface: rgba(10, 10, 10, 0.045);
+    --line: rgba(10, 10, 10, 0.16);
+    --muted: rgba(10, 10, 10, 0.62);
   }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #000f08;
+    --background: #0a0a0a;
     --foreground: #e9e0c9;
-    --accent: #fb3640;
-    --accent-soft: #fc6d72;
-    --accent-deep: #c92730;
+    --accent: #990000;
+    --accent-soft: #cc3333;
+    --accent-deep: #660000;
     --surface: rgba(233, 224, 201, 0.05);
     --line: rgba(233, 224, 201, 0.14);
     --muted: rgba(233, 224, 201, 0.62);
@@ -43,22 +47,22 @@
 /* User override classes — applied by next-themes when user has explicitly chosen */
 .light {
   --background: #e9e0c9;
-  --foreground: #000f08;
-  --accent: #fb3640;
-  --accent-soft: #c92730;
-  --accent-deep: #9c1d25;
-  --surface: rgba(0, 15, 8, 0.045);
-  --line: rgba(0, 15, 8, 0.16);
-  --muted: rgba(0, 15, 8, 0.62);
+  --foreground: #0a0a0a;
+  --accent: #990000;
+  --accent-soft: #990000;
+  --accent-deep: #660000;
+  --surface: rgba(10, 10, 10, 0.045);
+  --line: rgba(10, 10, 10, 0.16);
+  --muted: rgba(10, 10, 10, 0.62);
   color-scheme: light;
 }
 
 .dark {
-  --background: #000f08;
+  --background: #0a0a0a;
   --foreground: #e9e0c9;
-  --accent: #fb3640;
-  --accent-soft: #fc6d72;
-  --accent-deep: #c92730;
+  --accent: #990000;
+  --accent-soft: #cc3333;
+  --accent-deep: #660000;
   --surface: rgba(233, 224, 201, 0.05);
   --line: rgba(233, 224, 201, 0.14);
   --muted: rgba(233, 224, 201, 0.62);

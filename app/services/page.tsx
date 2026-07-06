@@ -29,7 +29,7 @@ export default function ServicesPage() {
             className="h-full w-full object-cover"
             style={{ filter: "grayscale(0.35)" }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#000f08]/82 via-[#000f08]/58 to-[#000f08]/92" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/82 via-[#0a0a0a]/58 to-[#0a0a0a]/92" />
         </div>
         <Container className="relative grid items-stretch gap-10 py-14 md:grid-cols-2 md:gap-12 md:py-20">
           <div className="flex flex-col justify-center text-[#e9e0c9] md:text-foreground">
@@ -76,7 +76,7 @@ export default function ServicesPage() {
       <section className="py-11 md:py-16">
         <Container>
           <div
-            className="relative overflow-hidden rounded-sm border-[0.5px] px-6 py-16 text-center shadow-[0_0_30px_-8px_rgba(251,54,64,0.35)] transition-shadow duration-500 hover:shadow-[0_0_50px_-5px_rgba(251,54,64,0.5)] md:px-16 md:py-24"
+            className="relative overflow-hidden rounded-sm border-[0.5px] px-6 py-16 text-center shadow-[0_0_30px_-8px_rgba(153,0,0,0.35)] transition-shadow duration-500 hover:shadow-[0_0_50px_-5px_rgba(153,0,0,0.5)] md:px-16 md:py-24"
             style={{ borderColor: "var(--accent)" }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}

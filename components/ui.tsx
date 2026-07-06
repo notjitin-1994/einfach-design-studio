@@ -80,9 +80,9 @@ export function Button({
   const styles = cn(
     "group inline-flex items-center justify-center gap-2 rounded-sm px-7 py-3.5 text-sm font-medium tracking-wide transition-all duration-300",
     variant === "primary" &&
-      "bg-accent text-white hover:bg-accent-deep shadow-[0_8px_30px_-12px_rgba(251,54,64,0.6)]",
+      "bg-accent text-white hover:bg-accent-deep shadow-[0_8px_30px_-12px_rgba(153,0,0,0.6)]",
     variant === "ghost" &&
-      "border border-line bg-foreground/10 text-foreground backdrop-blur-md hover:border-accent hover:text-accent hover:shadow-[0_0_0_1px_#fb3640,0_0_28px_-6px_rgba(251,54,64,0.65)]",
+      "border border-line bg-foreground/10 text-foreground backdrop-blur-md hover:border-accent hover:text-accent hover:shadow-[0_0_0_1px_#990000,0_0_28px_-6px_rgba(153,0,0,0.65)]",
     className,
   );
   if (!href) {

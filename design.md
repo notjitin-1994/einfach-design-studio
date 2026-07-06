@@ -18,19 +18,19 @@
 ## 3. Color Tokens
 | Token | Dark (default) | Light |
 |---|---|---|
-| background | `#000f08` | `#e9e0c9` |
-| foreground | `#e9e0c9` | `#000f08` |
-| accent | `#fb3640` | `#fb3640` (same) |
+| background | `#0a0a0a` | `#e9e0c9` |
+| foreground | `#e9e0c9` | `#0a0a0a` |
+| accent | `#990000` | `#990000` (same) |
 
-**Accent ramp (tints/shades of #fb3640):**
-- `--accent-soft`  `#fc6d72`  (lighter, hover glows)
-- `--accent`       `#fb3640`  (base)
-- `--accent-deep`  `#c92730`  (pressed/active)
-- `--accent-glow`  `rgba(251,54,64,0.14)` (halos, focus rings)
+**Accent ramp (tints/shades of #990000):**
+- `--accent-soft`  `#cc3333`  (lighter, hover glows)
+- `--accent`       `#990000`  (base)
+- `--accent-deep`  `#990000`  (pressed/active)
+- `--accent-glow`  `rgba(153,0,0,0.14)` (halos, focus rings)
 
 Surfaces (translucent foreground overlays for cards/lines):
-- `--surface` `rgba(233,224,201,0.06)` dark / `rgba(0,15,8,0.05)` light
-- `--border` `rgba(233,224,201,0.14)` dark / `rgba(0,15,8,0.14)` light
+- `--surface` `rgba(233,224,201,0.06)` dark / `rgba(10,10,10,0.05)` light
+- `--border` `rgba(233,224,201,0.14)` dark / `rgba(10,10,10,0.14)` light
 - `--muted` ~60% foreground
 
 ## 4. Typography

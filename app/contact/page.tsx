@@ -16,11 +16,16 @@ const projectTypes = [
 
 const contactDetails = [
   { icon: Mail, label: "Email", value: "hello@einfachdesignstudio.com", href: "mailto:hello@einfachdesignstudio.com" },
-  { icon: Phone, label: "Phone", value: "+971 XX XXX XXXX", href: "tel:+971000000000" },
-  { icon: MapPin, label: "Location", value: "Dubai, United Arab Emirates", href: undefined },
+  { icon: Phone, label: "Phone", value: "+971 52 192 9045 (UAE)\n+91 99025 99325 (India)", href: "tel:+971521929045" },
+  { icon: MapPin, label: "Location", value: "UAE\nErnakulam, Kerala, India", href: undefined },
 ];
 
-const socials = ["Instagram", "LinkedIn", "Behance", "Pinterest"];
+const socials = [
+  { label: "Instagram", href: "#" },
+  { label: "LinkedIn", href: "#" },
+  { label: "Behance", href: "#" },
+  { label: "Pinterest", href: "https://pin.it/1fkyqXBI4" },
+];
 
 const EMAIL_RE = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
 const PHONE_RE = /^[+\d\s\-()]{7,20}$/;
@@ -166,38 +171,27 @@ export default function ContactPage() {
                     {href ? (
                       <a
                         href={href}
-                        className="link-underline mt-1 inline-block text-base"
+                        className="link-underline mt-1 inline-block whitespace-pre-line text-base"
                       >
                         {value}
                       </a>
                     ) : (
-                      <p className="mt-1 text-base">{value}</p>
+                      <p className="mt-1 whitespace-pre-line text-base">{value}</p>
                     )}
                   </div>
                 </li>
               ))}
             </ul>
 
-            <div className="mt-10 overflow-hidden rounded-sm border border-line">
-              <iframe
-                title="Einfach Design Studio location — Dubai, UAE"
-                src="https://maps.google.com/maps?q=Dubai,+United+Arab+Emirates&t=&z=11&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="220"
-                style={{ border: 0, display: "block" }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="map-dark"
-              />
-            </div>
-
             <p className="eyebrow mt-12">Follow our journey</p>
             <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
               {socials.map((s) => (
-                <li key={s}>
-                  <a href="#" className="link-underline text-sm text-muted hover:text-foreground">
-                    {s}
+                <li key={s.label}>
+                  <a
+                    href={s.href}
+                    className="link-underline text-sm text-muted hover:text-foreground"
+                  >
+                    {s.label}
                   </a>
                 </li>
               ))}

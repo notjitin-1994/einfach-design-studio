@@ -19,7 +19,7 @@ export function BookConsultationButton({
       type="button"
       onClick={open}
       className={cn(
-        "group inline-flex items-center justify-center gap-2 rounded-sm bg-accent px-7 py-3.5 text-sm font-medium tracking-wide text-white transition-all duration-300 hover:bg-accent-deep shadow-[0_8px_30px_-12px_rgba(251,54,64,0.6)]",
+        "group inline-flex items-center justify-center gap-2 rounded-sm bg-accent px-7 py-3.5 text-sm font-medium tracking-wide text-white transition-all duration-300 hover:bg-accent-deep shadow-[0_8px_30px_-12px_rgba(153,0,0,0.6)]",
         className,
       )}
     >

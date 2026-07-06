@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     template: "%s · Einfach Design Studio",
   },
   description:
-    "Einfach Design Studio creates architecture and interiors that are functional, timeless, and centred around the people who use them. Dubai, UAE.",
+    "Einfach Design Studio creates architecture and interiors that are functional, timeless, and centred around the people who use them.",
   keywords: [
     "architecture studio",
     "interior design",
@@ -51,8 +51,8 @@ export const metadata: Metadata = {
     siteName: "Einfach Design Studio",
   },
   icons: {
-    icon: [{ url: "/einfach-monogram.png", type: "image/png" }],
-    apple: [{ url: "/einfach-monogram.png" }],
+    icon: [{ url: "/eds-logo-icon.png", type: "image/png" }],
+    apple: [{ url: "/eds-logo-icon.png" }],
   },
   robots: { index: true, follow: true },
 };
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#e9e0c9" },
-    { media: "(prefers-color-scheme: dark)", color: "#000f08" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
   ],
   viewportFit: "cover",
 };
