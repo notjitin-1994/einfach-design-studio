@@ -103,9 +103,10 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.75, duration: 0.8, ease: EASE }}
-        className="relative"
+        className="absolute inset-x-0 bottom-0 z-10"
+        style={{ paddingBottom: "calc(1.25rem + env(safe-area-inset-bottom))" }}
       >
-        <Container className="flex items-center justify-between gap-6 pb-9 pt-4 text-[0.68rem] uppercase tracking-[0.2em] text-[#e9e0c9]/60">
+        <Container className="flex items-center justify-between gap-6 text-[0.64rem] uppercase tracking-[0.2em] text-[#e9e0c9]/60 sm:text-[0.68rem]">
           <span>Est. 2020</span>
         </Container>
       </motion.footer>

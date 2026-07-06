@@ -233,9 +233,7 @@ export default function HomePage() {
             <Reveal className="relative">
               <Eyebrow>Let&apos;s Create Better Spaces</Eyebrow>
               <h2 className="font-display mx-auto mt-6 max-w-3xl text-balance text-[clamp(2rem,5vw,4rem)] font-light leading-[1.05]">
-                Whether you&apos;re planning a new home, reimagining a workplace,
-                renovating an existing space, or looking for an independent
-                design opinion, we&apos;d love to help.
+                Let&apos;s create spaces that feel right.
               </h2>
               <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted">
                 Let&apos;s create spaces that feel right — not just on the day
