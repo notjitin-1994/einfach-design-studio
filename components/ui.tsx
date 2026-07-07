@@ -126,7 +126,7 @@ export function ProjectCard({ project }: { project: Project }) {
             <div>
               <h3 className="font-display text-2xl font-light">{project.title}</h3>
               <p className="mt-1 text-xs text-white/75">
-                {project.location} · {project.year}
+                {project.location}
               </p>
             </div>
             <span className="translate-y-2 text-white opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">

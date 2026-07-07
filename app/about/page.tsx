@@ -58,7 +58,7 @@ export default function AboutPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/82 via-[#0a0a0a]/58 to-[#0a0a0a]/92" />
         </div>
-        <Container className="relative grid items-center gap-12 py-14 md:grid-cols-12 md:py-20">
+        <Container className="relative grid items-center gap-12 py-10 md:grid-cols-12 md:py-14">
           <div className="text-[#e9e0c9] md:col-span-7 md:text-foreground">
             <Reveal>
               <span className="inline-flex items-center gap-2 text-[0.74rem] font-medium uppercase tracking-[0.22em] text-[#e9e0c9]/70 md:text-muted">
