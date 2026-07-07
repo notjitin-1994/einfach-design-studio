@@ -80,7 +80,7 @@ export default async function ProjectPage({
           <Reveal>
             <span className="inline-flex items-center gap-2 text-[0.74rem] font-medium uppercase tracking-[0.22em] text-[#e9e0c9]/70">
               <span className="h-px w-6 bg-accent/80" aria-hidden />
-              {project.category} · {project.year}
+              {project.category}
             </span>
           </Reveal>
           <Reveal delay={0.05}>
