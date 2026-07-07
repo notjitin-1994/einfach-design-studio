@@ -60,6 +60,7 @@ export default function ServicesPage() {
               src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/commercial-renovation-ernakulam/01.png"
               alt="Design process and drafting"
               className="duotone absolute inset-0 rounded-sm border border-line object-cover"
+              style={{ objectPosition: "center bottom" }}
             />
           </div>
         </Container>

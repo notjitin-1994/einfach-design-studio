@@ -116,6 +116,7 @@ export default function AboutPage() {
                   src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/residence-renovation-ernakulam/03.png"
                   alt="Residence Renovation, Ernakulam — View 3"
                   className="duotone h-full w-full object-cover"
+                  style={{ objectPosition: "left center" }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/50 via-transparent to-transparent" />
               </div>
@@ -204,6 +205,7 @@ export default function AboutPage() {
                     loading="lazy"
                     decoding="async"
                     className="duotone h-full w-full object-cover"
+                    style={{ transform: "scale(1.2)", transformOrigin: "center center" }}
                   />
                 </div>
               </Reveal>

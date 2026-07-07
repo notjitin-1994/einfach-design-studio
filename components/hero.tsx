@@ -71,7 +71,7 @@ export function Hero() {
             variants={{ hidden, show }}
             className="font-display text-balance text-[clamp(2.9rem,8.5vw,7.5rem)] font-light leading-[0.98] text-[#e9e0c9]"
           >
-            Design with <span className="italic text-accent">clarity.</span>
+            Design with <span className="italic text-accent">Simplicity.</span>
           </motion.h1>
 
           <motion.p
