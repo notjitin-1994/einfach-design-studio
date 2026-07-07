@@ -11,7 +11,8 @@ import {
 } from "@/components/ui";
 import { BookConsultationButton } from "@/components/book-consultation-button";
 import type { Metadata } from "next";
-import { services, processSteps, principles, projects } from "@/lib/content";
+import { processSteps, principles } from "@/lib/content";
+import { getProjects, getServices } from "@/lib/supabase/queries";
 
 const SB_MEDIA =
   "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media";
@@ -52,7 +53,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
+export const revalidate = 60; // Revalidate every minute
+
+export default async function HomePage() {
+  const [projects, services] = await Promise.all([getProjects(), getServices()]);
+  
   return (
     <>
       {/* HERO */}
@@ -230,15 +235,21 @@ export default function HomePage() {
             </Button>
           </div>
           <Stagger className="mt-14 grid gap-6 md:grid-cols-3">
-            <StaggerItem>
-              <ProjectCard project={projects[0]} />
-            </StaggerItem>
-            <StaggerItem>
-              <ProjectCard project={projects.find((p) => p.id === "e3-media-office-ajman")!} />
-            </StaggerItem>
-            <StaggerItem>
-              <ProjectCard project={projects.find((p) => p.category === "Commercial")!} />
-            </StaggerItem>
+            {projects[0] && (
+              <StaggerItem>
+                <ProjectCard project={projects[0]} />
+              </StaggerItem>
+            )}
+            {projects.find((p) => p.id === "e3-media-office-ajman") && (
+              <StaggerItem>
+                <ProjectCard project={projects.find((p) => p.id === "e3-media-office-ajman")!} />
+              </StaggerItem>
+            )}
+            {projects.find((p) => p.category === "Commercial" && p.id !== "e3-media-office-ajman") && (
+              <StaggerItem>
+                <ProjectCard project={projects.find((p) => p.category === "Commercial" && p.id !== "e3-media-office-ajman")!} />
+              </StaggerItem>
+            )}
           </Stagger>
         </Container>
       </section>

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { Reveal } from "@/components/reveal";
 import { Container, Eyebrow, Button } from "@/components/ui";
 import { BookConsultationButton } from "@/components/book-consultation-button";
-import { projects, getProject } from "@/lib/content";
+import { getProjects, getProjectBySlug } from "@/lib/supabase/queries";
 import { cn } from "@/lib/utils";
 
 const bentoSpans = [
@@ -18,7 +18,8 @@ const bentoSpans = [
   "col-span-2 md:col-span-2",
 ];
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const projects = await getProjects();
   return projects.map((p) => ({ slug: p.id }));
 }
 
@@ -28,7 +29,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const project = getProject(slug);
+  const project = await getProjectBySlug(slug);
   if (!project) return { title: "Project not found" };
   return {
     title: project.title,
@@ -51,13 +52,15 @@ const PHASES = [
   { key: "support", label: "Support", index: "06" },
 ] as const;
 
+export const revalidate = 60;
+
 export default async function ProjectPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const project = getProject(slug);
+  const project = await getProjectBySlug(slug);
   if (!project) notFound();
 
   return (
