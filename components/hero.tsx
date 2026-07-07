@@ -36,7 +36,6 @@ export function Hero() {
             aria-hidden="true"
             className="h-full w-full object-cover"
             style={{ filter: "grayscale(0.4) contrast(1.05) brightness(0.95)" }}
-            poster={HERO_IMAGE}
           >
             <source src={HERO_VIDEO} type="video/mp4" />
           </video>
