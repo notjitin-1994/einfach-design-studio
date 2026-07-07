@@ -33,7 +33,7 @@ function mapProject(dbProject: any): Project {
       support: dbProject.process_phases?.find((p: any) => p.title.toLowerCase() === "support")?.description || "",
     },
     gallery: (dbProject.gallery_images || []).map((img: any) => ({
-      src: img.url,
+      src: img.url || img.src || "",
       alt: img.alt || "",
     })),
   };
