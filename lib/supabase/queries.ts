@@ -66,3 +66,25 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
 
   return mapProject(data);
 }
+
+export async function getServices() {
+  const supabase = getClient();
+  const { data, error } = await supabase
+    .from("services")
+    .select("*")
+    .eq("is_active", true)
+    .order("sort_order", { ascending: true })
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error("Error fetching services:", error);
+    return [];
+  }
+
+  return (data || []).map((dbService: any, index: number) => ({
+    index: String(index + 1).padStart(2, "0"),
+    title: dbService.title,
+    description: dbService.description,
+    bullets: dbService.details || [],
+  }));
+}

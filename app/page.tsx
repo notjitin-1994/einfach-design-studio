@@ -11,8 +11,8 @@ import {
 } from "@/components/ui";
 import { BookConsultationButton } from "@/components/book-consultation-button";
 import type { Metadata } from "next";
-import { services, processSteps, principles } from "@/lib/content";
-import { getProjects } from "@/lib/supabase/queries";
+import { processSteps, principles } from "@/lib/content";
+import { getProjects, getServices } from "@/lib/supabase/queries";
 
 const SB_MEDIA =
   "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media";
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const projects = await getProjects();
+  const [projects, services] = await Promise.all([getProjects(), getServices()]);
   
   return (
     <>

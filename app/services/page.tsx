@@ -2,7 +2,7 @@ import { Reveal } from "@/components/reveal";
 import { Container, Eyebrow } from "@/components/ui";
 import { BookConsultationButton } from "@/components/book-consultation-button";
 import { ServicesAccordion } from "@/components/services-accordion";
-import { services } from "@/lib/content";
+import { getServices } from "@/lib/supabase/queries";
 
 export const metadata = {
   title: "Services",
@@ -15,7 +15,9 @@ export const metadata = {
   },
 };
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const services = await getServices();
+
   return (
     <>
       <section className="relative overflow-hidden border-b border-line">
