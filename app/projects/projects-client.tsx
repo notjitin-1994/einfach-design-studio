@@ -7,7 +7,7 @@ import { Container, Eyebrow, ProjectCard } from "@/components/ui";
 import { BookConsultationButton } from "@/components/book-consultation-button";
 import { projectCategories, type Project } from "@/lib/content";
 
-const ITEMS_PER_PAGE = 6;
+const ITEMS_PER_PAGE = 10;
 
 export function ProjectsClient({ projects }: { projects: Project[] }) {
   const [active, setActive] =
