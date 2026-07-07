@@ -113,10 +113,9 @@ export default function AboutPage() {
               <div className="relative aspect-[4/5] overflow-hidden rounded-sm border border-line">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/residence-renovation-ernakulam/03.png"
-                  alt="Residence Renovation, Ernakulam — View 3"
+                  src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/apartment-interior-ernakulam/01.jpg"
+                  alt="Einfach Design Studio project — Ernakulam"
                   className="duotone h-full w-full object-cover"
-                  style={{ objectPosition: "left center" }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/50 via-transparent to-transparent" />
               </div>

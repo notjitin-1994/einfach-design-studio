@@ -57,10 +57,9 @@ export default function ServicesPage() {
           <div className="relative hidden overflow-hidden md:block">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/commercial-renovation-ernakulam/01.png"
-              alt="Design process and drafting"
+              src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/commercial-renovation-ernakulam/03.png"
+              alt="Commercial Renovation, Ernakulam — biophilic framework detail"
               className="duotone absolute inset-0 rounded-sm border border-line object-cover"
-              style={{ objectPosition: "center bottom" }}
             />
           </div>
         </Container>
