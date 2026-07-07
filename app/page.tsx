@@ -53,6 +53,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const revalidate = 60; // Revalidate every minute
+
 export default async function HomePage() {
   const [projects, services] = await Promise.all([getProjects(), getServices()]);
   

@@ -52,6 +52,8 @@ const PHASES = [
   { key: "support", label: "Support", index: "06" },
 ] as const;
 
+export const revalidate = 60;
+
 export default async function ProjectPage({
   params,
 }: {
