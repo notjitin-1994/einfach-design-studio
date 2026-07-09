@@ -6,9 +6,8 @@ import { Container } from "@/components/ui";
 import { BookConsultationButton } from "@/components/book-consultation-button";
 
 const HERO_IMAGE = "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/residence-design-tirur/01.png";
-// TODO: Replace with Joe's hero background video URL once shared.
-// Supports direct MP4/WebM URLs. Leave empty to keep the static image fallback.
-const HERO_VIDEO: string | null = "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/videos/hero.webm";
+const HERO_VIDEO_WEBM: string | null = "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/videos/hero.webm";
+const HERO_VIDEO_MP4: string | null = "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/videos/hero.mp4";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 export function Hero() {
@@ -26,7 +25,7 @@ export function Hero() {
   return (
     <section className="relative isolate flex h-[calc(100dvh-var(--header-height))] flex-col overflow-hidden">
       <div className="absolute inset-0 -z-10">
-        {HERO_VIDEO ? (
+        {(HERO_VIDEO_WEBM || HERO_VIDEO_MP4) ? (
           <video
             autoPlay
             muted
@@ -37,7 +36,8 @@ export function Hero() {
             className="h-full w-full object-cover"
             style={{ filter: "grayscale(0.4) contrast(1.05) brightness(0.95)" }}
           >
-            <source src={HERO_VIDEO} type="video/mp4" />
+            {HERO_VIDEO_WEBM && <source src={HERO_VIDEO_WEBM} type="video/webm" />}
+            {HERO_VIDEO_MP4 && <source src={HERO_VIDEO_MP4} type="video/mp4" />}
           </video>
         ) : (
           <div
