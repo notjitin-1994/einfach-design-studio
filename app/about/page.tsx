@@ -51,7 +51,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 md:hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/residence-renovation-ernakulam/03.png"
+            src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/apartment-interior-ernakulam/01.jpg"
             alt=""
             className="h-full w-full object-cover"
             style={{ filter: "grayscale(0.35) contrast(1.05)" }}

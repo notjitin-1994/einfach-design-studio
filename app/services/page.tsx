@@ -27,7 +27,7 @@ export default async function ServicesPage() {
         <div className="absolute inset-0 md:hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/commercial-renovation-ernakulam/01.png"
+            src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/commercial-renovation-ernakulam/03.png"
             alt=""
             aria-hidden
             className="h-full w-full object-cover"
