@@ -17,6 +17,9 @@ export const metadata = {
 
 export const revalidate = 60;
 
+const SERVICES_HERO_IMAGE =
+  "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/commercial-renovation-ernakulam/04.png";
+
 export default async function ServicesPage() {
   const services = await getServices();
 
@@ -27,7 +30,7 @@ export default async function ServicesPage() {
         <div className="absolute inset-0 md:hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/commercial-renovation-ernakulam/03.png"
+            src={SERVICES_HERO_IMAGE}
             alt=""
             aria-hidden
             className="h-full w-full object-cover"
@@ -61,8 +64,8 @@ export default async function ServicesPage() {
           <div className="relative hidden overflow-hidden md:block">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/commercial-renovation-ernakulam/03.png"
-              alt="Commercial Renovation, Ernakulam — biophilic framework detail"
+              src={SERVICES_HERO_IMAGE}
+              alt="Commercial Renovation, Ernakulam — renovated facade view 4"
               className="duotone absolute inset-0 rounded-sm border border-line object-cover"
             />
           </div>
