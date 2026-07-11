@@ -34,7 +34,7 @@ export function Hero() {
             preload="auto"
             aria-hidden="true"
             className="h-full w-full object-cover"
-            style={{ filter: "grayscale(0.4) contrast(1.05) brightness(0.95)" }}
+            style={{ filter: "grayscale(0.4) contrast(1.05) brightness(0.85)" }}
           >
             {HERO_VIDEO_WEBM && <source src={HERO_VIDEO_WEBM} type="video/webm" />}
             {HERO_VIDEO_MP4 && <source src={HERO_VIDEO_MP4} type="video/mp4" />}
@@ -45,13 +45,26 @@ export function Hero() {
             className="h-full w-full bg-cover bg-center"
             style={{
               backgroundImage: `url(${HERO_IMAGE})`,
-              filter: "grayscale(0.4) contrast(1.05) brightness(0.95)",
+              filter: "grayscale(0.4) contrast(1.05) brightness(0.85)",
             }}
           />
         )}
 
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/70 via-[#0a0a0a]/45 to-[#0a0a0a]/90" />
-        <div className="absolute left-1/2 top-1/3 h-[42vh] w-[64vw] -translate-x-1/2 rounded-full bg-accent/[0.07] blur-[130px]" />
+        {/* Brand-compliant scrim stack — guarantees AA contrast for centered
+            cream text and maximises accent-red legibility where it physically can:
+            1) solid onyx floor, 2) radial darkening behind the text block,
+            3) vertical edge anchors (header/footer), 4) warm accent glow. */}
+        <div className="absolute inset-0 bg-[#0a0a0a]/55" />
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(125% 80% at 50% 44%, #0a0a0a 0%, rgba(10,10,10,0.65) 34%, rgba(10,10,10,0) 72%)",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/80 via-transparent to-[#0a0a0a]/92" />
+        <div className="absolute left-1/2 top-[40%] h-[42vh] w-[64vw] -translate-x-1/2 rounded-full bg-accent/[0.08] blur-[130px]" />
         <div className="absolute inset-x-0 bottom-0 h-px bg-line" />
       </div>
 
@@ -76,7 +89,7 @@ export function Hero() {
 
           <motion.p
             variants={{ hidden, show }}
-            className="mx-auto mt-8 max-w-2xl text-pretty text-lg leading-relaxed text-[#e9e0c9]/75 md:text-xl"
+            className="mx-auto mt-8 max-w-2xl text-pretty text-lg leading-relaxed text-[#e9e0c9]/85 md:text-xl"
           >
             Complexity ends here. We create thoughtful architecture and interiors
             that begin with <span className="text-accent">people</span> — not
