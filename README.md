@@ -44,7 +44,8 @@ npx tsc --noEmit  # typecheck only
 ```
 
 ## Notes
-- The favicon / logo uses `public/eds-logo-icon.png`.
+- All imagery (logos, favicon, project/process images) is served from the
+  Supabase `media` storage bucket — no raster assets live in `public/`.
 - The Projects page ships with 9 dummy projects (3 per category) using
   placeholder imagery and copy — ready to swap for real work.
 - The contact form is front-end only (success state) — wire it to an API or

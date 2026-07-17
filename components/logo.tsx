@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
+const SB_BRAND =
+  "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/brand";
+
 export function Logo({
   className,
   withWordmark,
@@ -22,13 +25,13 @@ export function Logo({
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/eds-logo-black.png"
+        src={`${SB_BRAND}/eds-logo-black.png`}
         alt="Einfach Design Studio"
         className="h-8 w-auto object-contain [html.dark_&]:hidden"
       />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/eds-logo-white.png"
+        src={`${SB_BRAND}/eds-logo-white.png`}
         alt="Einfach Design Studio"
         className="hidden h-8 w-auto object-contain [html.dark_&]:block"
       />

@@ -1,14 +1,18 @@
 import { ImageResponse } from "next/og";
-import { readFileSync } from "fs";
-import { join } from "path";
+
+const LOGO_URL =
+  "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/brand/eds-logo-white.png";
 
 export const alt = "Einfach Design Studio — Architecture & Interior Design";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OpenGraphImage() {
-  const logoPath = join(process.cwd(), "public", "eds-logo-white.png");
-  const logoBase64 = readFileSync(logoPath).toString("base64");
+export default async function OpenGraphImage() {
+  const res = await fetch(LOGO_URL, { next: { revalidate: 604800 } });
+  if (!res.ok) {
+    throw new Error(`Failed to load OG logo: ${res.status}`);
+  }
+  const logoBase64 = Buffer.from(await res.arrayBuffer()).toString("base64");
   const logoSrc = `data:image/png;base64,${logoBase64}`;
 
   return new ImageResponse(

@@ -24,6 +24,8 @@ const fraunces = Fraunces({
 });
 
 const siteUrl = "https://einfachdesignstudio.com";
+const supabaseHost = "https://yzidfofruhqoxujkbvdi.supabase.co";
+const faviconUrl = `${supabaseHost}/storage/v1/object/public/media/brand/eds-logo-icon.png`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -51,8 +53,8 @@ export const metadata: Metadata = {
     siteName: "Einfach Design Studio",
   },
   icons: {
-    icon: [{ url: "/eds-logo-icon.png", type: "image/png" }],
-    apple: [{ url: "/eds-logo-icon.png" }],
+    icon: [{ url: faviconUrl, type: "image/png" }],
+    apple: [{ url: faviconUrl }],
   },
   robots: { index: true, follow: true },
 };
@@ -74,6 +76,10 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${fraunces.variable} h-full antialiased`}
     >
+      <head>
+        <link rel="preconnect" href={supabaseHost} crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href={supabaseHost} />
+      </head>
       <body suppressHydrationWarning className="min-h-full flex flex-col">
         <ThemeProvider
           attribute="class"
