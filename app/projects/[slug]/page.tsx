@@ -220,7 +220,7 @@ export default async function ProjectPage({
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/process/01-understand.jpg"
+              src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/process/01-understand.webp"
               alt=""
               aria-hidden
               className="absolute inset-0 h-full w-full object-cover"

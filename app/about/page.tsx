@@ -51,7 +51,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 md:hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/apartment-interior-ernakulam/01.jpg"
+            src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/apartment-interior-ernakulam/01.webp"
             alt=""
             className="h-full w-full object-cover"
             style={{ filter: "grayscale(0.35) contrast(1.05)" }}
@@ -113,7 +113,7 @@ export default function AboutPage() {
               <div className="relative aspect-[4/5] overflow-hidden rounded-sm border border-line">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/apartment-interior-ernakulam/01.jpg"
+                  src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/apartment-interior-ernakulam/01.webp"
                   alt="Einfach Design Studio project — Ernakulam"
                   className="duotone h-full w-full object-cover"
                 />
@@ -199,7 +199,7 @@ export default function AboutPage() {
                 <div className="relative aspect-[4/5] overflow-hidden rounded-sm border border-line">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/IMG_5715.PNG"
+                    src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/IMG_5715.webp"
                     alt="Cathrin Yesudas E and Joe V Johnson, co-founders of Einfach Design Studio"
                     loading="lazy"
                     decoding="async"
@@ -327,7 +327,7 @@ export default function AboutPage() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/process/01-understand.jpg"
+              src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/process/01-understand.webp"
               alt=""
               aria-hidden
               className="absolute inset-0 h-full w-full object-cover"

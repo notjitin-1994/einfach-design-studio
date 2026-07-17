@@ -18,7 +18,7 @@ export const metadata = {
 export const revalidate = 60;
 
 const SERVICES_HERO_IMAGE =
-  "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/commercial-renovation-ernakulam/04.png";
+  "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/commercial-renovation-ernakulam/04.webp";
 
 export default async function ServicesPage() {
   const services = await getServices();
@@ -60,13 +60,14 @@ export default async function ServicesPage() {
               </p>
             </Reveal>
           </div>
-          {/* Desktop: equal-height image column */}
-          <div className="relative hidden overflow-hidden md:block">
+          {/* Desktop: image column — full image at its natural portrait ratio
+              (was object-cover, which cropped ~67% of a 9:16 facade photo). */}
+          <div className="hidden md:block">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={SERVICES_HERO_IMAGE}
               alt="Commercial Renovation, Ernakulam — renovated facade view 4"
-              className="duotone absolute inset-0 rounded-sm border border-line object-cover"
+              className="duotone h-auto w-full rounded-sm border border-line"
             />
           </div>
         </Container>
@@ -88,7 +89,7 @@ export default async function ServicesPage() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/process/01-understand.jpg"
+              src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/process/01-understand.webp"
               alt=""
               aria-hidden
               className="absolute inset-0 h-full w-full object-cover"

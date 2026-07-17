@@ -37,7 +37,7 @@ export function ProjectsClient({ projects }: { projects: Project[] }) {
         <div className="absolute inset-0 md:hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/residence-design-tirur/02.png"
+            src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/residence-design-tirur/02.webp"
             alt=""
             aria-hidden
             className="h-full w-full object-cover"
@@ -66,7 +66,7 @@ export function ProjectsClient({ projects }: { projects: Project[] }) {
           <div className="relative hidden overflow-hidden md:block">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/residence-design-tirur/02.png"
+              src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/residence-design-tirur/02.webp"
               alt="Featured architecture project"
               className="duotone absolute inset-0 rounded-sm border border-line object-cover"
             />
@@ -164,7 +164,7 @@ export function ProjectsClient({ projects }: { projects: Project[] }) {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/process/01-understand.jpg"
+              src="https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/process/01-understand.webp"
               alt=""
               aria-hidden
               className="absolute inset-0 h-full w-full object-cover"

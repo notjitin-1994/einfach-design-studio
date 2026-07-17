@@ -17,18 +17,18 @@ import { getProjects, getServices } from "@/lib/supabase/queries";
 const SB_MEDIA =
   "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media";
 const SERVICE_IMAGE_POOL = [
-  `${SB_MEDIA}/projects/apartment-complex-ernakulam/01.png`,
-  `${SB_MEDIA}/projects/apartment-interior-dubai/01.png`,
-  `${SB_MEDIA}/projects/apartment-interior-ernakulam/01.jpg`,
-  `${SB_MEDIA}/projects/commercial-renovation-ernakulam/01.png`,
-  `${SB_MEDIA}/projects/e3-media-office-ajman/01.png`,
-  `${SB_MEDIA}/projects/residence-design-tirur/01.png`,
-  `${SB_MEDIA}/projects/residence-renovation-ernakulam/01.png`,
-  `${SB_MEDIA}/projects/apartment-complex-ernakulam/03.png`,
-  `${SB_MEDIA}/projects/apartment-interior-dubai/03.png`,
-  `${SB_MEDIA}/projects/residence-design-tirur/03.png`,
-  `${SB_MEDIA}/projects/apartment-complex-ernakulam/05.png`,
-  `${SB_MEDIA}/projects/residence-renovation-ernakulam/03.png`,
+  `${SB_MEDIA}/projects/apartment-complex-ernakulam/01.webp`,
+  `${SB_MEDIA}/projects/apartment-interior-dubai/01.webp`,
+  `${SB_MEDIA}/projects/apartment-interior-ernakulam/01.webp`,
+  `${SB_MEDIA}/projects/commercial-renovation-ernakulam/01.webp`,
+  `${SB_MEDIA}/projects/e3-media-office-ajman/01.webp`,
+  `${SB_MEDIA}/projects/residence-design-tirur/01.webp`,
+  `${SB_MEDIA}/projects/residence-renovation-ernakulam/01.webp`,
+  `${SB_MEDIA}/projects/apartment-complex-ernakulam/03.webp`,
+  `${SB_MEDIA}/projects/apartment-interior-dubai/03.webp`,
+  `${SB_MEDIA}/projects/residence-design-tirur/03.webp`,
+  `${SB_MEDIA}/projects/apartment-complex-ernakulam/05.webp`,
+  `${SB_MEDIA}/projects/residence-renovation-ernakulam/03.webp`,
 ];
 
 function shuffle<T>(arr: readonly T[]): T[] {
@@ -265,7 +265,7 @@ export default async function HomePage() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={`${SB_MEDIA}/process/01-understand.jpg`}
+              src={`${SB_MEDIA}/process/01-understand.webp`}
               alt=""
               aria-hidden
               className="absolute inset-0 h-full w-full object-cover"

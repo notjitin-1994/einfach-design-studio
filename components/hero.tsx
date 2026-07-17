@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { Container } from "@/components/ui";
 import { BookConsultationButton } from "@/components/book-consultation-button";
 
-const HERO_IMAGE = "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/residence-design-tirur/01.png";
+const HERO_IMAGE = "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/projects/residence-design-tirur/01.webp";
 const HERO_VIDEO_WEBM: string | null = "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/videos/hero.webm";
 const HERO_VIDEO_MP4: string | null = "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media/videos/hero.mp4";
 const EASE = [0.22, 1, 0.36, 1] as const;
