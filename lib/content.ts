@@ -118,8 +118,10 @@ export const nav = [
 
 // ---------- Project assets & copy ----------
 
-const SB_MEDIA = "https://yzidfofruhqoxujkbvdi.supabase.co/storage/v1/object/public/media";
-const d = (slug: string) => `${SB_MEDIA}/projects/${slug}`;
+import { MEDIA_BASE } from "@/lib/media";
+
+const SB_MEDIA = MEDIA_BASE;
+const d = (slug: string) => `${SB_MEDIA}/projects/${slug}/`;
 
 export const projects: Project[] = [
   {
@@ -130,7 +132,7 @@ export const projects: Project[] = [
     location: "Ernakulam, Kerala",
     summary:
       "Sixteen compact 2BHK apartments across four floors — proof that density and dignity can coexist when every square foot earns its place.",
-    image: `${d("apartment-complex-ernakulam")}/thumb.png`,
+    image: `${d("apartment-complex-ernakulam")}thumb.webp`,
     tags: ["Architecture", "Interiors", "Multi-Unit"],
     hero:
       "A G+3 residential development of sixteen 2BHK homes, each held under 700 square feet without ever feeling small. Through disciplined planning, cross-ventilation, and a soft material palette, the complex proves that affordability and generosity can share the same address.",
@@ -149,14 +151,14 @@ export const projects: Project[] = [
         "Through construction we reviewed the first typical floor as a prototype, settled details before the remaining three were repeated, and stayed available to resolve the questions that only surface on site.",
     },
     gallery: [
-      { src: `${d("apartment-complex-ernakulam")}/01.png`, alt: "Principal elevation at golden hour" },
-      { src: `${d("apartment-complex-ernakulam")}/02.png`, alt: "Entrance sequence framing a tree" },
-      { src: `${d("apartment-complex-ernakulam")}/03.png`, alt: "Side elevation showing the two-wing split" },
-      { src: `${d("apartment-complex-ernakulam")}/04.png`, alt: "Deep concrete overhang detail" },
-      { src: `${d("apartment-complex-ernakulam")}/05.png`, alt: "Street view at dusk" },
-      { src: `${d("apartment-complex-ernakulam")}/06.png`, alt: "Vertical fin screen close-up" },
-      { src: `${d("apartment-complex-ernakulam")}/07.png`, alt: "Aerial perspective of the footprint" },
-      { src: `${d("apartment-complex-ernakulam")}/08.png`, alt: "Rear elevation" },
+      { src: `${d("apartment-complex-ernakulam")}01.webp`, alt: "Principal elevation at golden hour" },
+      { src: `${d("apartment-complex-ernakulam")}02.webp`, alt: "Entrance sequence framing a tree" },
+      { src: `${d("apartment-complex-ernakulam")}03.webp`, alt: "Side elevation showing the two-wing split" },
+      { src: `${d("apartment-complex-ernakulam")}04.webp`, alt: "Deep concrete overhang detail" },
+      { src: `${d("apartment-complex-ernakulam")}05.webp`, alt: "Street view at dusk" },
+      { src: `${d("apartment-complex-ernakulam")}06.webp`, alt: "Vertical fin screen close-up" },
+      { src: `${d("apartment-complex-ernakulam")}07.webp`, alt: "Aerial perspective of the footprint" },
+      { src: `${d("apartment-complex-ernakulam")}08.webp`, alt: "Rear elevation" },
     ],
   },
   {
@@ -167,7 +169,7 @@ export const projects: Project[] = [
     location: "Dubai, UAE",
     summary:
       "Quiet luxury in a 3BHK — muted tones, layered lighting, and spatial zoning that turns a standard plan into a calm, purposeful home.",
-    image: `${d("apartment-interior-dubai")}/thumb.png`,
+    image: `${d("apartment-interior-dubai")}thumb.webp`,
     tags: ["Interiors", "Lighting Design", "Bespoke Joinery"],
     hero:
       "A full interior revamp of a Dubai 3BHK — foyer, living, kitchen, and two bedrooms — guided by one conviction: premium does not have to mean loud. Through spatial zoning, muted material tones, and a layered lighting strategy, the apartment reads as understated, intentional, and calm.",
@@ -186,13 +188,13 @@ export const projects: Project[] = [
         "On site we approved material samples, checked veneer matching, and resolved the inevitable service clashes that appear once walls close up.",
     },
     gallery: [
-      { src: `${d("apartment-interior-dubai")}/01.png`, alt: "Living room with fluted stone feature wall" },
-      { src: `${d("apartment-interior-dubai")}/02.png`, alt: "Open-plan living and dining" },
-      { src: `${d("apartment-interior-dubai")}/03.png`, alt: "Kitchen with handleless oak cabinetry" },
-      { src: `${d("apartment-interior-dubai")}/04.png`, alt: "Dining area at dusk" },
-      { src: `${d("apartment-interior-dubai")}/05.png`, alt: "Primary bedroom" },
-      { src: `${d("apartment-interior-dubai")}/06.png`, alt: "Bespoke joinery detail" },
-      { src: `${d("apartment-interior-dubai")}/07.png`, alt: "Foyer and entry" },
+      { src: `${d("apartment-interior-dubai")}01.webp`, alt: "Living room with fluted stone feature wall" },
+      { src: `${d("apartment-interior-dubai")}02.webp`, alt: "Open-plan living and dining" },
+      { src: `${d("apartment-interior-dubai")}03.webp`, alt: "Kitchen with handleless oak cabinetry" },
+      { src: `${d("apartment-interior-dubai")}04.webp`, alt: "Dining area at dusk" },
+      { src: `${d("apartment-interior-dubai")}05.webp`, alt: "Primary bedroom" },
+      { src: `${d("apartment-interior-dubai")}06.webp`, alt: "Bespoke joinery detail" },
+      { src: `${d("apartment-interior-dubai")}07.webp`, alt: "Foyer and entry" },
     ],
   },
   {
@@ -203,7 +205,7 @@ export const projects: Project[] = [
     location: "Ernakulam, Kerala",
     summary:
       "A realised apartment where real wood, bright accents, and traditional Indian warmth meet modern minimalist discipline.",
-    image: `${d("apartment-interior-ernakulam")}/thumb.jpg`,
+    image: `${d("apartment-interior-ernakulam")}thumb.webp`,
     tags: ["Interiors", "Execution", "Spatial Zoning"],
     hero:
       "An apartment interior designed and executed end to end — rethinking an existing layout through spatial zoning, relocating key functions for privacy and hygiene, and introducing a palette of real wood and bright colour drawn from traditional Indian interiors, balanced by modern minimalist restraint.",
@@ -222,13 +224,13 @@ export const projects: Project[] = [
         "Because we executed the project, support was built in. Every detail was resolved on site, adjusted as real materials met real light, and carried through to the final handover.",
     },
     gallery: [
-      { src: `${d("apartment-interior-ernakulam")}/01.jpg`, alt: "Axial living space" },
-      { src: `${d("apartment-interior-ernakulam")}/02.jpg`, alt: "Living room seating area" },
-      { src: `${d("apartment-interior-ernakulam")}/03.jpg`, alt: "Dining and kitchen connection" },
-      { src: `${d("apartment-interior-ernakulam")}/04.jpg`, alt: "Kitchen detail" },
-      { src: `${d("apartment-interior-ernakulam")}/05.jpg`, alt: "Corridor storage wall" },
-      { src: `${d("apartment-interior-ernakulam")}/06.jpg`, alt: "Bedroom" },
-      { src: `${d("apartment-interior-ernakulam")}/07.jpg`, alt: "Material and detail close-up" },
+      { src: `${d("apartment-interior-ernakulam")}01.webp`, alt: "Axial living space" },
+      { src: `${d("apartment-interior-ernakulam")}02.webp`, alt: "Living room seating area" },
+      { src: `${d("apartment-interior-ernakulam")}03.webp`, alt: "Dining and kitchen connection" },
+      { src: `${d("apartment-interior-ernakulam")}04.webp`, alt: "Kitchen detail" },
+      { src: `${d("apartment-interior-ernakulam")}05.webp`, alt: "Corridor storage wall" },
+      { src: `${d("apartment-interior-ernakulam")}06.webp`, alt: "Bedroom" },
+      { src: `${d("apartment-interior-ernakulam")}07.webp`, alt: "Material and detail close-up" },
     ],
   },
   {
@@ -239,7 +241,7 @@ export const projects: Project[] = [
     location: "Ernakulam, Kerala",
     summary:
       "A budget-friendly facade transformation for a twenty-year-old building — minimal invasion, maximum impact, and a breath of green.",
-    image: `${d("commercial-renovation-ernakulam")}/thumb.png`,
+    image: `${d("commercial-renovation-ernakulam")}thumb.webp`,
     tags: ["Facade", "Renovation", "Biophilic"],
     hero:
       "A twenty-year-old commercial building given a new face without losing its bones. Through a lightweight framework layered over the existing facade — without disrupting the structure or its natural ventilation — and the introduction of biophilic elements, the building reads as contemporary, alive, and inviting, all on a budget that respected the client's constraints.",
@@ -258,10 +260,10 @@ export const projects: Project[] = [
         "Through construction we reviewed the facade mock-up, oversaw the planting installation, and ensured the existing structure was respected at every junction.",
     },
     gallery: [
-      { src: `${d("commercial-renovation-ernakulam")}/01.png`, alt: "Renovated facade view 1" },
-      { src: `${d("commercial-renovation-ernakulam")}/02.png`, alt: "Renovated facade view 2" },
-      { src: `${d("commercial-renovation-ernakulam")}/03.png`, alt: "Biophilic framework detail" },
-      { src: `${d("commercial-renovation-ernakulam")}/04.png`, alt: "Renovated facade view 4" },
+      { src: `${d("commercial-renovation-ernakulam")}01.webp`, alt: "Renovated facade view 1" },
+      { src: `${d("commercial-renovation-ernakulam")}02.webp`, alt: "Renovated facade view 2" },
+      { src: `${d("commercial-renovation-ernakulam")}03.webp`, alt: "Biophilic framework detail" },
+      { src: `${d("commercial-renovation-ernakulam")}04.webp`, alt: "Renovated facade view 4" },
     ],
   },
   {
@@ -272,7 +274,7 @@ export const projects: Project[] = [
     location: "Ajman, UAE",
     summary:
       "A podcast studio and nine-person office designed around wellbeing — clustered workspaces, a breakout zone built for decompression, and branding that works for staff and guests alike.",
-    image: `${d("e3-media-office-ajman")}/thumb.png`,
+    image: `${d("e3-media-office-ajman")}thumb.webp`,
     tags: ["Workplace", "Studio", "Branding"],
     hero:
       "An office interior with a dedicated podcast studio for a nine-person media team — designed under real space and budget constraints, yet planned as a genuinely positive work environment. Wellbeing, not just aesthetics, drove every decision: clustered workspaces that invite collaboration, a breakout space engineered for stress relief, and a brand language that elevates the experience for everyone who walks in.",
@@ -291,9 +293,9 @@ export const projects: Project[] = [
         "Through fit-out we approved fabric and finish samples, coordinated the studio's acoustic and AV install, and protected the brand moments from value engineering.",
     },
     gallery: [
-      { src: `${d("e3-media-office-ajman")}/01.png`, alt: "Open collaboration hub" },
-      { src: `${d("e3-media-office-ajman")}/02.png`, alt: "Podcast studio" },
-      { src: `${d("e3-media-office-ajman")}/03.png`, alt: "Breakout and meeting zone" },
+      { src: `${d("e3-media-office-ajman")}01.webp`, alt: "Open collaboration hub" },
+      { src: `${d("e3-media-office-ajman")}02.webp`, alt: "Podcast studio" },
+      { src: `${d("e3-media-office-ajman")}03.webp`, alt: "Breakout and meeting zone" },
     ],
   },
   {
@@ -304,7 +306,7 @@ export const projects: Project[] = [
     location: "Tirur, Kerala",
     summary:
       "A budget-conscious Kerala home with a built-in growth path — 2BHK today, 4BHK tomorrow, rooted in tropical modern style and rustic warmth.",
-    image: `${d("residence-design-tirur")}/thumb.png`,
+    image: `${d("residence-design-tirur")}thumb.webp`,
     tags: ["Architecture", "Interiors", "New Build"],
     hero:
       "A residence designed under real budget and area constraints, yet given the freedom to feel spacious. Planned as a 2BHK with a deliberate path to expand into a 4BHK, the home blends Kerala traditional character with simple rustic warmth inside and a tropical modern exterior — proof that constraint and generosity can share a roof.",
@@ -323,11 +325,11 @@ export const projects: Project[] = [
         "Our scope included execution coordination — we stayed engaged through construction, guiding the builder, settling details on site, and ensuring the design intent survived the realities of budget building.",
     },
     gallery: [
-      { src: `${d("residence-design-tirur")}/01.png`, alt: "Courtyard view" },
-      { src: `${d("residence-design-tirur")}/02.png`, alt: "Principal elevation" },
-      { src: `${d("residence-design-tirur")}/03.png`, alt: "Living area opening to courtyard" },
-      { src: `${d("residence-design-tirur")}/04.png`, alt: "Upper-floor balcony" },
-      { src: `${d("residence-design-tirur")}/05.png`, alt: "Entry and circulation" },
+      { src: `${d("residence-design-tirur")}01.webp`, alt: "Courtyard view" },
+      { src: `${d("residence-design-tirur")}02.webp`, alt: "Principal elevation" },
+      { src: `${d("residence-design-tirur")}03.webp`, alt: "Living area opening to courtyard" },
+      { src: `${d("residence-design-tirur")}04.webp`, alt: "Upper-floor balcony" },
+      { src: `${d("residence-design-tirur")}05.webp`, alt: "Entry and circulation" },
     ],
   },
   {
@@ -338,7 +340,7 @@ export const projects: Project[] = [
     location: "Ernakulam, Kerala",
     summary:
       "A complete exterior, interior, and landscape renovation — exposed laterite, jali screens, an extended verandah, and an industrial staircase that transform a structurally sound but tired home.",
-    image: `${d("residence-renovation-ernakulam")}/thumb.png`,
+    image: `${d("residence-renovation-ernakulam")}thumb.webp`,
     tags: ["Renovation", "Landscape", "Facade"],
     hero:
       "A full renovation — exterior, interior, and landscape — of a structurally sound home whose facade, circulation, and outdoor life had all failed the family. The transformation introduces exposed laterite and jali screens, an extended verandah with new outdoor seating, an industrial staircase replacing a removed interior stair, and a calm interior palette of natural wood tones and neutral colours.",
@@ -357,11 +359,11 @@ export const projects: Project[] = [
         "Renovations always hide surprises behind old walls. We stayed close through the build, resolving structural findings as they surfaced, coordinating the stair installation, and protecting the design intent from the inevitable pressure to simplify.",
     },
     gallery: [
-      { src: `${d("residence-renovation-ernakulam")}/01.png`, alt: "Renovated facade with laterite and jali" },
-      { src: `${d("residence-renovation-ernakulam")}/02.png`, alt: "Extended verandah and outdoor seating" },
-      { src: `${d("residence-renovation-ernakulam")}/03.png`, alt: "Industrial staircase" },
-      { src: `${d("residence-renovation-ernakulam")}/04.png`, alt: "Interior with natural wood tones" },
-      { src: `${d("residence-renovation-ernakulam")}/05.jpg`, alt: "The house before renovation" },
+      { src: `${d("residence-renovation-ernakulam")}01.webp`, alt: "Renovated facade with laterite and jali" },
+      { src: `${d("residence-renovation-ernakulam")}02.webp`, alt: "Extended verandah and outdoor seating" },
+      { src: `${d("residence-renovation-ernakulam")}03.webp`, alt: "Industrial staircase" },
+      { src: `${d("residence-renovation-ernakulam")}04.webp`, alt: "Interior with natural wood tones" },
+      { src: `${d("residence-renovation-ernakulam")}05.webp`, alt: "The house before renovation" },
     ],
   },
 ];

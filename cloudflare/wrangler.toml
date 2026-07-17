@@ -1,0 +1,9 @@
+name = "eds-media"
+main = "media-cache-worker.js"
+compatibility_date = "2024-09-01"
+
+# Optional: map a custom domain (e.g. cdn.einfachdesignstudio.com) to this Worker.
+# Uncomment and set after adding the route in the Cloudflare dashboard.
+# routes = [
+#   { pattern = "cdn.einfachdesignstudio.com/*", custom_domain = true }
+# ]
